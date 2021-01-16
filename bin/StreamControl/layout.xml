@@ -1,0 +1,118 @@
+<!DOCTYPE StreamControlLayout>
+<layout width="460" height="260" tabbed="1">
+    <tab name="Match Info">
+        <label x="10" y="14" width="46" height="13">Player 1</label>
+        <lineEdit id="playerNote1" x="60" y="10" width="131" height="20" />
+        <lineEdit id="playerName1" x="60" y="40" width="131" height="20" />
+        <label x="200" y="14" width="46" height="13">Player 2</label>
+        <lineEdit id="playerNote2" x="260" y="10" width="131" height="20" />
+        <lineEdit id="playerName2" x="260" y="40" width="131" height="20" />
+        <button type="swap" x="400" y="10" width="41" height="23" tooltip="Swap the Scores" id="swap" swapSet1="playerName1,playerNote1" swapSet2="playerName2,playerNote2">Swap</button>
+        <button type="reset" x="400" y="40" width="41" height="23" tooltip="Reset the Scores" id="reset" reset="playerName1,playerNote1,playerName2,playerNote2">Reset</button>
+        <label x="10" y="74" width="100" height="13">Winning / Losing</label>
+        <label x="10" y="104" width="46" height="13">None</label>
+        <label x="10" y="134" width="46" height="13">Player 1</label>
+        <label x="10" y="164" width="46" height="13">Player 2</label>
+        <radioGroup id="wins1">
+            <radioButton x="60" y="100" width="20" height="20" value="0" />
+            <radioButton x="60" y="130" width="20" height="20" value="1" />
+            <radioButton x="60" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins2">
+            <radioButton x="80" y="100" width="20" height="20" value="0" />
+            <radioButton x="80" y="130" width="20" height="20" value="1" />
+            <radioButton x="80" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins3">
+            <radioButton x="100" y="100" width="20" height="20" value="0" />
+            <radioButton x="100" y="130" width="20" height="20" value="1" />
+            <radioButton x="100" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins4">
+            <radioButton x="120" y="100" width="20" height="20" value="0" />
+            <radioButton x="120" y="130" width="20" height="20" value="1" />
+            <radioButton x="120" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins5">
+            <radioButton x="140" y="100" width="20" height="20" value="0" />
+            <radioButton x="140" y="130" width="20" height="20" value="1" />
+            <radioButton x="140" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins6">
+            <radioButton x="160" y="100" width="20" height="20" value="0" />
+            <radioButton x="160" y="130" width="20" height="20" value="1" />
+            <radioButton x="160" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins7">
+            <radioButton x="180" y="100" width="20" height="20" value="0" />
+            <radioButton x="180" y="130" width="20" height="20" value="1" />
+            <radioButton x="180" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins8">
+            <radioButton x="200" y="100" width="20" height="20" value="0" />
+            <radioButton x="200" y="130" width="20" height="20" value="1" />
+            <radioButton x="200" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins9">
+            <radioButton x="220" y="100" width="20" height="20" value="0" />
+            <radioButton x="220" y="130" width="20" height="20" value="1" />
+            <radioButton x="220" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins10">
+            <radioButton x="240" y="100" width="20" height="20" value="0" />
+            <radioButton x="240" y="130" width="20" height="20" value="1" />
+            <radioButton x="240" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins11">
+            <radioButton x="260" y="100" width="20" height="20" value="0" />
+            <radioButton x="260" y="130" width="20" height="20" value="1" />
+            <radioButton x="260" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins12">
+            <radioButton x="280" y="100" width="20" height="20" value="0" />
+            <radioButton x="280" y="130" width="20" height="20" value="1" />
+            <radioButton x="280" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins13">
+            <radioButton x="300" y="100" width="20" height="20" value="0" />
+            <radioButton x="300" y="130" width="20" height="20" value="1" />
+            <radioButton x="300" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins14">
+            <radioButton x="320" y="100" width="20" height="20" value="0" />
+            <radioButton x="320" y="130" width="20" height="20" value="1" />
+            <radioButton x="320" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins15">
+            <radioButton x="340" y="100" width="20" height="20" value="0" />
+            <radioButton x="340" y="130" width="20" height="20" value="1" />
+            <radioButton x="340" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins16">
+            <radioButton x="360" y="100" width="20" height="20" value="0" />
+            <radioButton x="360" y="130" width="20" height="20" value="1" />
+            <radioButton x="360" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins17">
+            <radioButton x="380" y="100" width="20" height="20" value="0" />
+            <radioButton x="380" y="130" width="20" height="20" value="1" />
+            <radioButton x="380" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins18">
+            <radioButton x="400" y="100" width="20" height="20" value="0" />
+            <radioButton x="400" y="130" width="20" height="20" value="1" />
+            <radioButton x="400" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <radioGroup id="wins19">
+            <radioButton x="420" y="100" width="20" height="20" value="0" />
+            <radioButton x="420" y="130" width="20" height="20" value="1" />
+            <radioButton x="420" y="160" width="20" height="20" value="2" />
+        </radioGroup>
+        <!--
+        <label x="300" y="14" width="46" height="13">Rounds</label>
+        <spinBox id="pScore1" x="250" y="10" width="42" height="22" maximum="999" />
+        <spinBox id="pScore2" x="250" y="40" width="42" height="22" maximum="999" />
+        <spinBox id="rounds" x="340" y="10" width="42" height="22" maximum="999" />
+        -->
+    </tab>
+</layout>

@@ -1,0 +1,63 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: Meiryo, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+div {
+    display: flex;
+}
+
+#main {
+    width: 1280px;
+    height: 720px;
+}
+
+.vertical {
+    flex-direction: column;
+}
+
+.player-area {
+    width: 240px;
+    height: 24px;
+    padding: 4px;
+}
+
+.player1 {
+    background-color: #0d47a1;
+}
+
+.player2 {
+    background-color: #b71c1c;
+}
+
+.wins-area {
+    width: 800px;
+    height: 32px;
+}
+
+.wins {
+    width: 48px;
+}
+
+.text-left,
+.text-center,
+.text-right {
+    align-items: center;
+}
+
+.text-left {
+    justify-content: flex-start;
+}
+
+.text-center {
+    justify-content: center;
+}
+
+.text-right {
+    justify-content: flex-end;
+}
