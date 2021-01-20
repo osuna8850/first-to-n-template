@@ -108,11 +108,5 @@
             <radioButton x="420" y="130" width="20" height="20" value="1" />
             <radioButton x="420" y="160" width="20" height="20" value="2" />
         </radioGroup>
-        <!--
-        <label x="300" y="14" width="46" height="13">Rounds</label>
-        <spinBox id="pScore1" x="250" y="10" width="42" height="22" maximum="999" />
-        <spinBox id="pScore2" x="250" y="40" width="42" height="22" maximum="999" />
-        <spinBox id="rounds" x="340" y="10" width="42" height="22" maximum="999" />
-        -->
     </tab>
 </layout>
