@@ -5,43 +5,88 @@ body {
     color: #ffffff;
     font-family: Meiryo, sans-serif;
     font-weight: bold;
-    font-size: 20px;
+    text-shadow: #00000080 0 0 0.1em, #00000080 0 0 0.2em, #00000080 0 0 0.3em,
+        #00000080 0 0 0.4em, #00000080 0 0 0.5em;
 }
 
 div {
     display: flex;
 }
 
-#main {
+.background {
+    position: absolute;
+    z-index: -1;
     width: 1280px;
-    height: 720px;
+    height: 64px;
+}
+
+#player1-background {
+    clip-path: polygon(
+        0px 0px,
+        1020px 0px,
+        1000px 32px,
+        280px 32px,
+        260px 64px,
+        0px 64px
+    );
+}
+
+#player2-background {
+    clip-path: polygon(
+        1020px 0px,
+        1000px 32px,
+        280px 32px,
+        260px 64px,
+        1280px 64px,
+        1280px 0px
+    );
 }
 
 .vertical {
     flex-direction: column;
 }
 
-.player-area {
-    width: 240px;
-    height: 24px;
-    padding: 4px;
-}
-
 .player1 {
-    background-color: #0d47a1;
+    background: linear-gradient(330deg, #0d47a1, #0d47a1, #0d47a1, #000000);
 }
 
 .player2 {
-    background-color: #b71c1c;
+    background: linear-gradient(150deg, #b71c1c, #b71c1c, #b71c1c, #000000);
+}
+
+.player-area {
+    width: 200px;
+}
+
+.note-area {
+    height: 20px;
+    padding: 2px 0px;
+    font-size: 16px;
+}
+
+.name-area {
+    height: 32px;
+    padding: 4px 0px;
+    font-size: 28px;
+}
+
+.wins-count-area {
+    width: 80px;
+    height: 64px;
+    font-size: 40px;
 }
 
 .wins-area {
-    width: 800px;
+    width: 720px;
     height: 32px;
 }
 
 .wins {
     width: 48px;
+    font-size: 20px;
+    color: #fff9c4;
+    text-shadow: #bc5100 0 0 0.1em, #bc5100 0 0 0.2em, #bc5100 0 0 0.3em,
+        #bc5100 0 0 0.4em, #bc5100 0 0 0.5em;
 }
 
 .text-left,
