@@ -1,0 +1,3 @@
+# Export Ignore 
+.gitignore export-ignore
+build.bat export-ignore
