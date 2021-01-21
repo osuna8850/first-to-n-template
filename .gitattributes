@@ -1,3 +1,4 @@
 # Export Ignore 
 .gitignore export-ignore
+.gitattributes export-ignore
 build.bat export-ignore
