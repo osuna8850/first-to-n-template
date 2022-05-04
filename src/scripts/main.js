@@ -3,44 +3,71 @@
 $(initialize);
 
 /**
- * N先の数
+ * StreamControl データのパス。
+ * @const {string}
  */
-const fisrtTo = 10;
+const STREAM_CONTROL_DATA_PATH = 'http://localhost:8080/streamcontrol.json';
 
 /**
- * 更新間隔
+ * 更新間隔 (ミリ秒)。
+ * @const {number}
  */
-const interval = 500;
+const UPDATE_INTERVAL = 1000;
 
 /**
- * 更新間隔
+ * フェードイン間隔 (ミリ秒)。
+ * @const {number}
  */
-const streamControlDataPath = 'bin/StreamControl/streamcontrol.json';
+const FADE_INTERVAL = 1000;
 
 /**
- * Player 1 勝敗
+ * 既定の StreamControl 対戦データ。
+ * @const {object}
  */
-const player1WinningAndLosing = {
-    '0': '',
-    '1': 'V',
-    '2': '-',
+const DEFAULT_MATCH_INFO = {
+    /**
+     * タイムスタンプ。
+     * @type {string}
+     */
+    timestamp: undefined,
+    /**
+     * N 先の数。
+     * @type {string}
+     */
+    firstTo: undefined,
 };
 
 /**
- * Player 2 勝敗
+ * 勝敗。
+ * @enum {string}
  */
-const player2WinningAndLosing = {
-    '0': '',
-    '1': '-',
-    '2': 'V',
+const WinningAndLosingStrings = {
+    NONE: '',
+    WINNING: 'V',
+    LOSING: '-',
 };
+
+/**
+ * チェックボックスの状態。
+ * @enum {string}
+ */
+const CheckBoxValues = {
+    UNCHECKED: '0',
+    CHECKED: '1',
+};
+
+/**
+ * 既定の StreamControl 対戦データ。
+ * @param {object}
+ */
+let matchInfo = DEFAULT_MATCH_INFO;
 
 /**
  * 初期化を行います。
  */
 function initialize() {
     // 更新間隔で定期更新を行います。
-    setInterval(update, interval);
+    setInterval(update, UPDATE_INTERVAL);
 }
 
 /**
@@ -48,30 +75,145 @@ function initialize() {
  */
 function update() {
     // StreamControl の出力を取得します。
-    $.get(streamControlDataPath, undefined, json => {
-        const data = JSON.parse(json);
+    $.get(STREAM_CONTROL_DATA_PATH, undefined, response => {
+        $('#error').fadeOut();
+
+        // タイムスタンプに変更がない場合は処理しません。
+        if (matchInfo.timestamp === response.timestamp) {
+            return;
+        }
+
+        if (matchInfo.firstTo !== response.firstTo) {
+            $('#player1-wins').empty();
+            $('#player2-wins').empty();
+        }
 
         // Player 1
-        $('#player1-note').text(data.playerNote1);
-        $('#player1-name').text(data.playerName1);
+        setVisible('#player1-note-area', matchInfo.playerNote1);
+        setText('#player1-note', response.playerNote1, true);
+        setVisible('#player1-note-area', response.playerNote1);
+        setText('#player1-name', response.playerName1, true);
 
         // Player 2
-        $('#player2-note').text(data.playerNote2);
-        $('#player2-name').text(data.playerName2);
+        setVisible('#player2-note-area', matchInfo.playerNote2);
+        setText('#player2-note', response.playerNote2, true);
+        setVisible('#player2-note-area', response.playerNote2);
+        setText('#player2-name', response.playerName2, true);
 
         // 勝敗
         let player1WinsCount = 0;
         let player2WinsCount = 0;
-        for (let index = 1; index < fisrtTo * 2; index++) {
-            const wins = data['wins' + index.toString()];
-            $('#player1-wins' + index.toString()).text(player1WinningAndLosing[wins]);
-            $('#player2-wins' + index.toString()).text(player2WinningAndLosing[wins]);
+        const firstTo = parseInt(response.firstTo);
+        for (let number = 1; number < firstTo * 2; number++) {
+            const player1Winning = response[`wins${number}-1`] === CheckBoxValues.CHECKED;
+            const player2Winning = response[`wins${number}-2`] === CheckBoxValues.CHECKED;
 
-            player1WinsCount = player1WinsCount + (wins === '1' ? 1 : 0);
-            player2WinsCount = player2WinsCount + (wins === '2' ? 1 : 0);
+            const player1Wins = findAndCreateDivIfNotExists('player1-wins', number, firstTo);
+            const player2Wins = findAndCreateDivIfNotExists('player2-wins', number, firstTo);
+
+            setText(player1Wins, getWinningAndLosingString(player1Winning, player2Winning));
+            setText(player2Wins, getWinningAndLosingString(player2Winning, player1Winning));
+
+            player1WinsCount += player1Winning ? 1 : 0;
+            player2WinsCount += player2Winning ? 1 : 0;
         }
 
-        $('#player1-wins-count').text(player1WinsCount.toString());
-        $('#player2-wins-count').text(player2WinsCount.toString());
+        setText('#player1-wins-count', player1WinsCount.toString());
+        setText('#player2-wins-count', player2WinsCount.toString());
+
+        // StreamControl のデータをバックアップします。
+        matchInfo = response;
+    }).fail(() => {
+        matchInfo = DEFAULT_MATCH_INFO;
+
+        // Player 1
+        setText('#player1-note', '');
+        setText('#player1-name', '');
+
+        // Player 2
+        setText('#player2-note', '');
+        setText('#player2-name', '');
+
+        // 勝敗
+        $('#player1-wins').empty();
+        $('#player2-wins').empty();
+        setText('#player1-wins-count', '');
+        setText('#player2-wins-count', '');
+
+        $('#error').fadeIn();
     });
+}
+
+/**
+ * テキストを設定します。
+ * @param {string} selector セレクター。
+ * @param {string} text テキスト。
+ * @param {boolean} hasScaleX X 軸のスケールがあるかどうか。
+ */
+function setText(selector, text, hasScaleX) {
+    const element = $(selector);
+    if (element.text() === text) {
+        return;
+    }
+
+    element.hide();
+    element.text(text);
+    element.fadeIn(FADE_INTERVAL);
+
+    if (hasScaleX) {
+        const width = element.width();
+        const parentWidth = element.parent().width();
+        const ratio = width <= parentWidth ? 1 : parentWidth / width;
+        element.css('transform', `scaleX(${ratio})`);
+    }
+}
+
+/**
+ * テキストが空の場合は非表示、そうでなければフェードインをします。
+ * @param {string} selector セレクター。
+ * @param {string} text テキスト。
+ */
+function setVisible(selector, text) {
+    const element = $(selector);
+    if (text === '') {
+        element.hide();
+    } else {
+        element.fadeIn(FADE_INTERVAL);
+    }
+}
+
+/**
+ * 勝敗文字列を取得します。
+ * @param {boolean} selfWinning 自身が勝利しているかどうか。
+ * @param {boolean} otherWinning 相手が勝利しているかどうか。
+ */
+function getWinningAndLosingString(selfWinning, otherWinning) {
+    if (selfWinning || otherWinning) {
+        if (selfWinning) {
+            return WinningAndLosingStrings.WINNING;
+        } else {
+            return WinningAndLosingStrings.LOSING;
+        }
+    } else {
+        return WinningAndLosingStrings.NONE;
+    }
+}
+
+/**
+ * DIV を検索し、存在しなければ作成します。
+ * @param {string} parentId 親要素の ID。
+ * @param {number} number 番号。
+ * @param {number} fisrtTo N 先の数。
+ */
+function findAndCreateDivIfNotExists(parentId, number, fisrtTo) {
+    let div = $(`#${parentId}${number}`);
+    if (div.length === 0) {
+        div = $('<div>');
+        div.appendTo($(`#${parentId}`));
+        div.attr('id', `${parentId}${number}`);
+        div.addClass('wins text-center');
+        div.css('width', `${100 / (fisrtTo - 1)}%`)
+    }
+
+    return div;
 }
