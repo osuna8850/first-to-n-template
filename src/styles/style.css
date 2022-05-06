@@ -1,6 +1,7 @@
 @font-face {
-    font-family: "GenShinGothic P Heavy";
-    src: url("../fonts/GenShinGothic-P-Heavy.ttf") format('truetype');
+    font-family: 'GenShinGothic P Heavy';
+    src: url('../fonts/GenShinGothic-P-Heavy.ttf') format('truetype');
+    font-display: fallback;
 }
 
 body {
@@ -8,8 +9,9 @@ body {
     padding: 0px;
     background-color: #000000;
     color: #ffffff;
-    font-family: "GenShinGothic P Heavy", sans-serif;
-    text-shadow: #00000080 0 0 0.1em, #00000080 0 0 0.2em, #00000080 0 0 0.3em, #00000080 0 0 0.4em, #00000080 0 0 0.5em;
+    font-family: 'GenShinGothic P Heavy', sans-serif;
+    text-shadow: #00000080 0 0 0.1em, #00000080 0 0 0.2em, #00000080 0 0 0.3em,
+        #00000080 0 0 0.4em, #00000080 0 0 0.5em;
 }
 
 div {
@@ -20,39 +22,55 @@ div {
 
 .main {
     position: absolute;
-    left: 0px;
-    top: 0px;
     width: 100%;
     height: 64px;
 }
 
-.background {
-    position: absolute;
+.border {
     z-index: 0;
+    background-color: #ffffff;
 }
 
-#main {
+.background {
     z-index: 1;
 }
 
-#player1-background {
-    clip-path: polygon(0px 0px, calc(100% - 260px) 0px, calc(100% - 280px) 32px, 280px 32px, 260px 64px, 0px 64px);
-}
-
-#player2-background {
-    clip-path: polygon(calc(100% - 260px) 0px, calc(100% - 280px) 32px, 280px 32px, 260px 64px, 100% 64px, 100% 0px);
-}
-
-.vertical {
-    flex-direction: column;
-}
-
 .player1 {
+    clip-path: polygon(
+        calc(0% + 2px) calc(0% + 2px),
+        calc(100% - 260px - 1px) calc(0% + 2px),
+        calc(100% - 280px - 1px) calc(50% - 1px),
+        calc(280px - 1px) calc(50% - 1px),
+        calc(260px - 1px) calc(100% - 2px),
+        calc(0% + 2px) calc(100% - 2px)
+    );
+}
+
+#player1-background {
     background: linear-gradient(330deg, #0d47a1, #0d47a1, #0d47a1, #000000);
 }
 
 .player2 {
+    clip-path: polygon(
+        calc(100% - 260px + 1px) calc(0% + 2px),
+        calc(100% - 280px + 1px) calc(50% + 1px),
+        calc(280px + 1px) calc(50% + 1px),
+        calc(260px + 1px) calc(100% - 2px),
+        calc(100% - 2px) calc(100% - 2px),
+        calc(100% - 2px) calc(0% + 2px)
+    );
+}
+
+#player2-background {
     background: linear-gradient(150deg, #b71c1c, #b71c1c, #b71c1c, #000000);
+}
+
+#text {
+    z-index: 2;
+}
+
+.vertical {
+    flex-direction: column;
 }
 
 .player-area {
@@ -69,19 +87,17 @@ div {
 
 .note-area {
     height: 20px;
-    padding: 2px 0px;
+    margin: 4px 0px;
     font-size: 16px;
 }
 
 .name-area {
-    height: 100%;
-    padding: 2px 0px;
+    margin: -8px 0px;
     font-size: 28px;
 }
 
 .wins-count-area {
     width: 80px;
-    height: 64px;
     font-size: 40px;
 }
 
@@ -97,7 +113,8 @@ div {
     max-width: 32px;
     font-size: 22px;
     color: #fff9c4;
-    text-shadow: #bc5100 0 0 0.1em, #bc5100 0 0 0.2em, #bc5100 0 0 0.3em, #bc5100 0 0 0.4em, #bc5100 0 0 0.5em;
+    text-shadow: #bc5100 0 0 0.1em, #bc5100 0 0 0.2em, #bc5100 0 0 0.3em,
+        #bc5100 0 0 0.4em, #bc5100 0 0 0.5em;
 }
 
 .text-left,
@@ -118,43 +135,42 @@ div {
     justify-content: flex-end;
 }
 
+#message {
+    z-index: 3;
+    font-size: 16px;
+    text-align: center;
+}
+
+.error {
+    color: #fff9c4;
+    text-shadow: #bc5100 0 0 0.1em, #bc5100 0 0 0.2em, #bc5100 0 0 0.3em,
+        #bc5100 0 0 0.4em, #bc5100 0 0 0.5em;
+}
+
 @media screen and (max-height: 63px) {
     body {
         height: 96px;
     }
-    .background {
+
+    .main {
         height: 48px;
     }
-    #player1-background {
-        clip-path: polygon(0px 0px, calc(100% - 260px) 0px, calc(100% - 280px) 24px, 280px 24px, 260px 48px, 0px 48px);
-    }
-    #player2-background {
-        clip-path: polygon(calc(100% - 260px) 0px, calc(100% - 280px) 24px, 280px 24px, 260px 48px, 100% 48px, 100% 0px);
-    }
+
     .note-area {
         height: 14px;
-        font-size: 14px;
+        font-size: 12px;
     }
+
     .name-area {
-        height: 24px;
+        margin: -10px 0px;
         font-size: 24px;
     }
-    .wins-count-area {
-        height: 48px;
-    }
+
     .wins-area {
         height: 24px;
     }
-    .wins {
-        font-size: 20px;
-    }
-}
 
-#error {
-    display: none;
-    z-index: 2;
-    font-size: 16px;
-    color: #fff9c4;
-    text-shadow: #bc5100 0 0 0.1em, #bc5100 0 0 0.2em, #bc5100 0 0 0.3em, #bc5100 0 0 0.4em, #bc5100 0 0 0.5em;
-    text-align: center;
+    .wins {
+        font-size: 18px;
+    }
 }

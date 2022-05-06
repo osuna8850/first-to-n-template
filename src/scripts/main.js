@@ -3,10 +3,16 @@
 $(initialize);
 
 /**
- * StreamControl データのパス。
+ * StreamControl JSON ファイルの名前。
  * @const {string}
  */
-const STREAM_CONTROL_DATA_PATH = 'http://localhost:8080/streamcontrol.json';
+const STREAM_CONTROL_FILE_NAME = 'streamcontrol.json';
+
+/**
+ * StreamControl JSON ファイルの URL。
+ * @const {string}
+ */
+const STREAM_CONTROL_FILE_URL = `http://localhost:8080/${STREAM_CONTROL_FILE_NAME}`;
 
 /**
  * 更新間隔 (ミリ秒)。
@@ -21,21 +27,24 @@ const UPDATE_INTERVAL = 1000;
 const FADE_INTERVAL = 1000;
 
 /**
- * 既定の StreamControl 対戦データ。
- * @const {object}
+ * メイン言語の表示間隔 (ミリ秒)。
+ * @const {number}
  */
-const DEFAULT_MATCH_INFO = {
-    /**
-     * タイムスタンプ。
-     * @type {string}
-     */
-    timestamp: undefined,
-    /**
-     * N 先の数。
-     * @type {string}
-     */
-    firstTo: undefined,
-};
+const MAIN_LANGUAGE_DISPLAY_INTERVAL = 10000;
+
+/**
+ * サブ言語の表示間隔 (ミリ秒)。
+ * @const {number}
+ */
+const SUB_LANGUAGE_DISPLAY_INTERVAL = 5000;
+
+/**
+ * エラーメッセージ HTML。
+ * @const {string}
+ */
+const ERROR_MESSAGE_HTML =
+    'Error: "streamcontrol.json" is not found.<br>' +
+    'Please execute "bin/SimpleWebServer/SimpleWebServer.exe".';
 
 /**
  * 勝敗。
@@ -60,7 +69,13 @@ const CheckBoxValues = {
  * 既定の StreamControl 対戦データ。
  * @param {object}
  */
-let matchInfo = DEFAULT_MATCH_INFO;
+let matchInfo;
+
+/**
+ * 中止コントローラー。
+ * @param {object}
+ */
+let abortController;
 
 /**
  * 初期化を行います。
@@ -75,44 +90,90 @@ function initialize() {
  */
 function update() {
     // StreamControl の出力を取得します。
-    $.get(STREAM_CONTROL_DATA_PATH, undefined, response => {
-        $('#error').fadeOut();
+    $.get(STREAM_CONTROL_FILE_URL, undefined, async (response) => {
+        $('#message').fadeOut(FADE_INTERVAL);
 
         // タイムスタンプに変更がない場合は処理しません。
-        if (matchInfo.timestamp === response.timestamp) {
+        if (matchInfo?.timestamp === response.timestamp) {
             return;
         }
 
-        if (matchInfo.firstTo !== response.firstTo) {
-            $('#player1-wins').empty();
-            $('#player2-wins').empty();
+        if (
+            matchInfo !== undefined &&
+            matchInfo?.firstTo !== response.firstTo
+        ) {
+            await fadeOut('#player1-wins, #player2-wins');
         }
 
+        abortController?.abort();
+        abortController = new AbortController();
+
         // Player 1
-        setVisible('#player1-note-area', matchInfo.playerNote1);
-        setText('#player1-note', response.playerNote1, true);
-        setVisible('#player1-note-area', response.playerNote1);
-        setText('#player1-name', response.playerName1, true);
+        setVisible('#player1-note-area', matchInfo?.playerNoteMain1);
+        setTextRotation(
+            '#player1-note',
+            response.playerNoteMain1,
+            response.playerNoteSub1,
+            abortController.signal
+        );
+        setVisible('#player1-note-area', response.playerNoteMain1);
+        setTextRotation(
+            '#player1-name',
+            response.playerNameMain1,
+            response.playerNameSub1,
+            abortController.signal
+        );
 
         // Player 2
-        setVisible('#player2-note-area', matchInfo.playerNote2);
-        setText('#player2-note', response.playerNote2, true);
-        setVisible('#player2-note-area', response.playerNote2);
-        setText('#player2-name', response.playerName2, true);
+        setVisible('#player2-note-area', matchInfo?.playerNoteMain2);
+        setTextRotation(
+            '#player2-note',
+            response.playerNoteMain2,
+            response.playerNoteSub2,
+            abortController.signal
+        );
+        setVisible('#player2-note-area', response.playerNoteMain2);
+        setTextRotation(
+            '#player2-name',
+            response.playerNameMain2,
+            response.playerNameSub2,
+            abortController.signal
+        );
 
         // 勝敗
         let player1WinsCount = 0;
         let player2WinsCount = 0;
         const firstTo = parseInt(response.firstTo);
         for (let number = 1; number < firstTo * 2; number++) {
-            const player1Winning = response[`wins${number}-1`] === CheckBoxValues.CHECKED;
-            const player2Winning = response[`wins${number}-2`] === CheckBoxValues.CHECKED;
+            const player1Winning =
+                response[`wins${number}-1`] === CheckBoxValues.CHECKED;
+            const player2Winning =
+                response[`wins${number}-2`] === CheckBoxValues.CHECKED;
 
-            const player1Wins = findAndCreateDivIfNotExists('player1-wins', number, firstTo);
-            const player2Wins = findAndCreateDivIfNotExists('player2-wins', number, firstTo);
+            const player1WinsString = getWinningAndLosingString(
+                player1Winning,
+                player2Winning
+            );
+            const player2WinsString = getWinningAndLosingString(
+                player2Winning,
+                player1Winning
+            );
 
-            setText(player1Wins, getWinningAndLosingString(player1Winning, player2Winning));
-            setText(player2Wins, getWinningAndLosingString(player2Winning, player1Winning));
+            const player1Wins = findAndCreateDivIfNotExists(
+                'player1-wins',
+                number,
+                firstTo,
+                player1WinsString
+            );
+            const player2Wins = findAndCreateDivIfNotExists(
+                'player2-wins',
+                number,
+                firstTo,
+                player2WinsString
+            );
+
+            setText(player1Wins, player1WinsString);
+            setText(player2Wins, player2WinsString);
 
             player1WinsCount += player1Winning ? 1 : 0;
             player2WinsCount += player2Winning ? 1 : 0;
@@ -121,10 +182,12 @@ function update() {
         setText('#player1-wins-count', player1WinsCount.toString());
         setText('#player2-wins-count', player2WinsCount.toString());
 
-        // StreamControl のデータをバックアップします。
+        // StreamControl JSON データをバックアップします。
         matchInfo = response;
-    }).fail(() => {
-        matchInfo = DEFAULT_MATCH_INFO;
+    }).fail(async () => {
+        matchInfo = undefined;
+
+        abortController?.abort();
 
         // Player 1
         setText('#player1-note', '');
@@ -135,32 +198,137 @@ function update() {
         setText('#player2-name', '');
 
         // 勝敗
-        $('#player1-wins').empty();
-        $('#player2-wins').empty();
+        await fadeOut('#player1-wins, #player2-wins');
         setText('#player1-wins-count', '');
         setText('#player2-wins-count', '');
 
-        $('#error').fadeIn();
+        // エラーメッセージ
+        setText('#message', ERROR_MESSAGE_HTML, 'error', true);
     });
+}
+
+/**
+ * 指定の時間だけスリーブします。
+ * @param {number} milliSeconds ミリ秒。
+ * @param {AbortSignal} signal 中止シグナル。
+ */
+function delay(milliSeconds, signal) {
+    return new Promise((resolve, reject) => {
+        const onSetTimeout = setTimeout(() => {
+            resolve();
+            signal?.removeEventListener('abort', onAbort);
+        }, milliSeconds);
+
+        const onAbort = () => {
+            clearTimeout(onSetTimeout);
+            reject(new DOMException('Aborted.', 'AbortError'));
+        };
+
+        signal?.addEventListener('abort', onAbort);
+    });
+}
+
+/**
+ * フェードアウトします。
+ * @param {string} selector セレクター。
+ */
+async function fadeOut(selector) {
+    const playerWins = $(selector);
+    playerWins.fadeOut(FADE_INTERVAL);
+    await delay(FADE_INTERVAL);
+    playerWins.empty();
+    playerWins.show();
 }
 
 /**
  * テキストを設定します。
  * @param {string} selector セレクター。
  * @param {string} text テキスト。
- * @param {boolean} hasScaleX X 軸のスケールがあるかどうか。
+ * @param {string} subText サブテキスト。
+ * @param {AbortSignal} signal 中止シグナル。
  */
-function setText(selector, text, hasScaleX) {
+async function setTextRotation(selector, text, subText, signal) {
+    if (subText === '') {
+        subText = text;
+    }
+
+    try {
+        setText(selector, text, undefined, true, false, signal);
+        await delay(MAIN_LANGUAGE_DISPLAY_INTERVAL, signal);
+
+        setText(selector, subText, undefined, true, false, signal);
+        await delay(SUB_LANGUAGE_DISPLAY_INTERVAL, signal);
+
+        setTextRotation(selector, text, subText, signal);
+    } catch (e) {
+        if (e.name === 'AbortError') {
+            // 処理を終了します。
+            return;
+        } else {
+            // エラーを再スローします。
+            throw e;
+        }
+    }
+}
+
+/**
+ * テキストを設定します。
+ * @param {string} selector セレクター。
+ * @param {string} text テキスト。
+ * @param {string} addingClass 追加する CSS クラス。
+ * @param {boolean} isHtml HTML かどうか。
+ * @param {boolean} adjustScaleX X 軸のスケールを調整するかどうか。
+ * @param {AbortSignal} signal 中止シグナル。
+ */
+async function setText(
+    selector,
+    text,
+    addingClass,
+    isHtml,
+    adjustScaleX,
+    signal
+) {
     const element = $(selector);
-    if (element.text() === text) {
+
+    // テキストが同一の場合は何もしません。
+    if (isHtml) {
+        if (element.html() === text) {
+            return;
+        }
+    } else if (element.text() === text) {
         return;
     }
 
-    element.hide();
-    element.text(text);
+    // フェードアウトします。
+    element.fadeOut(FADE_INTERVAL);
+    try {
+        await delay(FADE_INTERVAL, signal);
+    } catch (e) {
+        if (e.name === 'AbortError') {
+            // 処理を終了します。
+            return;
+        } else {
+            // エラーを再スローします。
+            throw e;
+        }
+    }
+
+    // テキストを変更します。
+    if (isHtml) {
+        element.html(text);
+    } else {
+        element.text(text);
+    }
+
+    if (addingClass !== undefined) {
+        element.addClass(addingClass);
+    }
+
+    // フェードインします。
     element.fadeIn(FADE_INTERVAL);
 
-    if (hasScaleX) {
+    // X 軸のスケールを調整します。
+    if (adjustScaleX) {
         const width = element.width();
         const parentWidth = element.parent().width();
         const ratio = width <= parentWidth ? 1 : parentWidth / width;
@@ -204,15 +372,19 @@ function getWinningAndLosingString(selfWinning, otherWinning) {
  * @param {string} parentId 親要素の ID。
  * @param {number} number 番号。
  * @param {number} fisrtTo N 先の数。
+ * @param {string} text テキスト。
  */
-function findAndCreateDivIfNotExists(parentId, number, fisrtTo) {
+function findAndCreateDivIfNotExists(parentId, number, fisrtTo, text) {
     let div = $(`#${parentId}${number}`);
     if (div.length === 0) {
         div = $('<div>');
         div.appendTo($(`#${parentId}`));
         div.attr('id', `${parentId}${number}`);
         div.addClass('wins text-center');
-        div.css('width', `${100 / (fisrtTo - 1)}%`)
+        div.css('width', `${100 / (fisrtTo - 1)}%`);
+        if (text !== '') {
+            div.css('display', 'none');
+        }
     }
 
     return div;
