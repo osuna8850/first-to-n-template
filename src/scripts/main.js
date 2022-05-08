@@ -21,18 +21,18 @@ const streamControlDataPath = 'bin/StreamControl/streamcontrol.json';
  * Player 1 勝敗
  */
 const player1WinningAndLosing = {
-    '0': '',
-    '1': 'V',
-    '2': '-',
+    0: '',
+    1: 'V',
+    2: '-',
 };
 
 /**
  * Player 2 勝敗
  */
 const player2WinningAndLosing = {
-    '0': '',
-    '1': '-',
-    '2': 'V',
+    0: '',
+    1: '-',
+    2: 'V',
 };
 
 /**
@@ -47,10 +47,10 @@ function initialize() {
  * 更新を行います。
  */
 function update() {
-    // StreamControl の出力を取得します。
-    $.get(streamControlDataPath, undefined, json => {
-        const data = JSON.parse(json);
+    const url = `${streamControlDataPath}?v=${Date.now()}`;
 
+    // StreamControl の出力を取得します。
+    $.get(url, undefined, (data) => {
         // Player 1
         $('#player1-note').text(data.playerNote1);
         $('#player1-name').text(data.playerName1);
@@ -64,8 +64,12 @@ function update() {
         let player2WinsCount = 0;
         for (let index = 1; index < fisrtTo * 2; index++) {
             const wins = data['wins' + index.toString()];
-            $('#player1-wins' + index.toString()).text(player1WinningAndLosing[wins]);
-            $('#player2-wins' + index.toString()).text(player2WinningAndLosing[wins]);
+            $('#player1-wins' + index.toString()).text(
+                player1WinningAndLosing[wins]
+            );
+            $('#player2-wins' + index.toString()).text(
+                player2WinningAndLosing[wins]
+            );
 
             player1WinsCount = player1WinsCount + (wins === '1' ? 1 : 0);
             player2WinsCount = player2WinsCount + (wins === '2' ? 1 : 0);
