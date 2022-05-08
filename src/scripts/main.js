@@ -12,7 +12,7 @@ const STREAM_CONTROL_FILE_NAME = 'streamcontrol.json';
  * StreamControl JSON ファイルの URL。
  * @const {string}
  */
-const STREAM_CONTROL_FILE_URL = `http://localhost:8080/${STREAM_CONTROL_FILE_NAME}`;
+const STREAM_CONTROL_FILE_URL = `bin/StreamControl/${STREAM_CONTROL_FILE_NAME}`;
 
 /**
  * 更新間隔 (ミリ秒)。
@@ -42,9 +42,7 @@ const SUB_DISPLAY_DURATION = 5000;
  * エラーメッセージ HTML。
  * @const {string}
  */
-const ERROR_MESSAGE_HTML =
-    `Error: "${STREAM_CONTROL_FILE_NAME}" is not found.<br>` +
-    'Please execute "bin/SimpleWebServer/SimpleWebServer.exe".';
+const ERROR_MESSAGE_HTML = `Error: "${STREAM_CONTROL_FILE_URL}" is not found.`;
 
 /**
  * 勝敗。
@@ -93,8 +91,10 @@ function initialize() {
  * 更新を行います。
  */
 function update() {
+    const url = `${STREAM_CONTROL_FILE_URL}?v=${Date.now()}`;
+
     // StreamControl の出力を取得します。
-    $.get(STREAM_CONTROL_FILE_URL, undefined, async (response) => {
+    $.get(url, undefined, async (response) => {
         $('#message').fadeOut(FADE_DURATION);
 
         // タイムスタンプに変更がない場合は処理しません。
@@ -106,7 +106,7 @@ function update() {
             matchInfo !== undefined &&
             matchInfo?.firstTo !== response.firstTo
         ) {
-            await fadeOut('#player1-wins, #player2-wins');
+            await fadeOutAndToEmpty('#player1-wins, #player2-wins');
         }
 
         abortController?.abort();
@@ -202,7 +202,7 @@ function update() {
         setText('#player2-name', '');
 
         // 勝敗
-        await fadeOut('#player1-wins, #player2-wins');
+        await fadeOutAndToEmpty('#player1-wins, #player2-wins');
         setText('#player1-wins-count', '');
         setText('#player2-wins-count', '');
 
@@ -233,15 +233,15 @@ function delay(milliSeconds, signal) {
 }
 
 /**
- * フェードアウトします。
+ * フェードアウトして、要素の中身を空にします。
  * @param {string} selector セレクター。
  */
-async function fadeOut(selector) {
-    const playerWins = $(selector);
-    playerWins.fadeOut(FADE_DURATION);
+async function fadeOutAndToEmpty(selector) {
+    const div = $(selector);
+    div.fadeOut(FADE_DURATION);
     await delay(FADE_DURATION);
-    playerWins.empty();
-    playerWins.show();
+    div.empty();
+    div.show();
 }
 
 /**
