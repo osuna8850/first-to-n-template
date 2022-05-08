@@ -7,7 +7,7 @@
 body {
     margin: 0px;
     padding: 0px;
-    background-color: #000000;
+    overflow: hidden;
     color: #ffffff;
     font-family: 'GenShinGothic P Heavy', sans-serif;
     text-shadow: #00000080 0 0 0.1em, #00000080 0 0 0.2em, #00000080 0 0 0.3em,
@@ -20,53 +20,96 @@ div {
     white-space: nowrap;
 }
 
+.container {
+    position: relative;
+}
+
 .main {
     position: absolute;
     width: 100%;
     height: 64px;
 }
 
+.inner {
+    position: static;
+    width: 100%;
+    height: 100%;
+}
+
 .border {
-    z-index: 0;
     background-color: #ffffff;
 }
 
-.background {
-    z-index: 1;
+.inner-border {
+    background-color: #000000;
 }
 
-.player1 {
+.player1.border {
+    clip-path: polygon(
+        calc(0%) calc(0%),
+        calc(100% - 260px) calc(0%),
+        calc(100% - 280px) calc(50% + 1px),
+        calc(280px) calc(50% + 1px),
+        calc(260px) calc(100%),
+        calc(0%) calc(100%)
+    );
+}
+
+.player1.inner-border {
     clip-path: polygon(
         calc(0% + 2px) calc(0% + 2px),
-        calc(100% - 260px - 1px) calc(0% + 2px),
-        calc(100% - 280px - 1px) calc(50% - 1px),
-        calc(280px - 1px) calc(50% - 1px),
-        calc(260px - 1px) calc(100% - 2px),
+        calc(100% - 262.5px) calc(0% + 2px),
+        calc(100% - 281px) calc(50% - 1px),
+        calc(279px) calc(50% - 1px),
+        calc(259px) calc(100% - 2px),
         calc(0% + 2px) calc(100% - 2px)
     );
 }
 
-#player1-background {
+.player1.background {
+    clip-path: polygon(
+        calc(0% + 3px) calc(0% + 3px),
+        calc(100% - 265px) calc(0% + 3px),
+        calc(100% - 282px) calc(50% - 2px),
+        calc(278px) calc(50% - 2px),
+        calc(258px) calc(100% - 3px),
+        calc(0% + 3px) calc(100% - 3px)
+    );
     background: linear-gradient(330deg, #0d47a1, #0d47a1, #0d47a1, #000000);
 }
 
-.player2 {
+.player2.border {
     clip-path: polygon(
-        calc(100% - 260px + 1px) calc(0% + 2px),
-        calc(100% - 280px + 1px) calc(50% + 1px),
-        calc(280px + 1px) calc(50% + 1px),
-        calc(260px + 1px) calc(100% - 2px),
+        calc(100% - 260px) calc(0%),
+        calc(100% - 280px) calc(50% - 1px),
+        calc(280px) calc(50% - 1px),
+        calc(260px) calc(100%),
+        calc(100%) calc(100%),
+        calc(100%) calc(0%)
+    );
+}
+
+.player2.inner-border {
+    clip-path: polygon(
+        calc(100% - 259px) calc(0% + 2px),
+        calc(100% - 279px) calc(50% + 1px),
+        calc(281px) calc(50% + 1px),
+        calc(262.5px) calc(100% - 2px),
         calc(100% - 2px) calc(100% - 2px),
         calc(100% - 2px) calc(0% + 2px)
     );
 }
 
-#player2-background {
+.player2.background {
+    clip-path: polygon(
+        calc(100% - 258px) calc(0% + 3px),
+        calc(100% - 278px) calc(50% + 2px),
+        calc(282px) calc(50% + 2px),
+        calc(265px) calc(100% - 3px),
+        calc(100% - 3px) calc(100% - 3px),
+        calc(100% - 3px) calc(0% + 3px)
+    );
     background: linear-gradient(150deg, #b71c1c, #b71c1c, #b71c1c, #000000);
-}
-
-#text {
-    z-index: 2;
 }
 
 .vertical {
@@ -78,21 +121,23 @@ div {
 }
 
 .player1-area-inner {
+    margin: 0px -8px;
     transform-origin: right;
 }
 
 .player2-area-inner {
+    margin: 0px -8px;
     transform-origin: left;
 }
 
 .note-area {
     height: 20px;
-    margin: 4px 0px;
+    margin-top: 4px;
     font-size: 16px;
 }
 
 .name-area {
-    margin: -8px 0px;
+    margin-top: -4px;
     font-size: 28px;
 }
 
@@ -135,8 +180,7 @@ div {
     justify-content: flex-end;
 }
 
-#message {
-    z-index: 3;
+.message {
     font-size: 16px;
     text-align: center;
 }
@@ -162,7 +206,7 @@ div {
     }
 
     .name-area {
-        margin: -10px 0px;
+        margin-top: -6px;
         font-size: 24px;
     }
 

@@ -21,29 +21,29 @@ const STREAM_CONTROL_FILE_URL = `http://localhost:8080/${STREAM_CONTROL_FILE_NAM
 const UPDATE_INTERVAL = 1000;
 
 /**
- * フェードイン間隔 (ミリ秒)。
+ * フェード時間 (ミリ秒)。
  * @const {number}
  */
-const FADE_INTERVAL = 1000;
+const FADE_DURATION = 1000;
 
 /**
- * メイン言語の表示間隔 (ミリ秒)。
+ * メインの表示時間 (ミリ秒)。
  * @const {number}
  */
-const MAIN_LANGUAGE_DISPLAY_INTERVAL = 10000;
+const MAIN_DISPLAY_DURATION = 10000;
 
 /**
- * サブ言語の表示間隔 (ミリ秒)。
+ * サブの表示時間 (ミリ秒)。
  * @const {number}
  */
-const SUB_LANGUAGE_DISPLAY_INTERVAL = 5000;
+const SUB_DISPLAY_DURATION = 5000;
 
 /**
  * エラーメッセージ HTML。
  * @const {string}
  */
 const ERROR_MESSAGE_HTML =
-    'Error: "streamcontrol.json" is not found.<br>' +
+    `Error: "${STREAM_CONTROL_FILE_NAME}" is not found.<br>` +
     'Please execute "bin/SimpleWebServer/SimpleWebServer.exe".';
 
 /**
@@ -81,6 +81,10 @@ let abortController;
  * 初期化を行います。
  */
 function initialize() {
+    // 起動時の表示アニメーションを設定します。
+    $('.player1.border').effect('slide', { direction: 'left' }, FADE_DURATION);
+    $('.player2.border').effect('slide', { direction: 'right' }, FADE_DURATION);
+
     // 更新間隔で定期更新を行います。
     setInterval(update, UPDATE_INTERVAL);
 }
@@ -91,7 +95,7 @@ function initialize() {
 function update() {
     // StreamControl の出力を取得します。
     $.get(STREAM_CONTROL_FILE_URL, undefined, async (response) => {
-        $('#message').fadeOut(FADE_INTERVAL);
+        $('#message').fadeOut(FADE_DURATION);
 
         // タイムスタンプに変更がない場合は処理しません。
         if (matchInfo?.timestamp === response.timestamp) {
@@ -116,13 +120,13 @@ function update() {
             response.playerNoteSub1,
             abortController.signal
         );
-        setVisible('#player1-note-area', response.playerNoteMain1);
         setTextRotation(
             '#player1-name',
             response.playerNameMain1,
             response.playerNameSub1,
             abortController.signal
         );
+        setVisible('#player1-note-area', response.playerNoteMain1);
 
         // Player 2
         setVisible('#player2-note-area', matchInfo?.playerNoteMain2);
@@ -132,13 +136,13 @@ function update() {
             response.playerNoteSub2,
             abortController.signal
         );
-        setVisible('#player2-note-area', response.playerNoteMain2);
         setTextRotation(
             '#player2-name',
             response.playerNameMain2,
             response.playerNameSub2,
             abortController.signal
         );
+        setVisible('#player2-note-area', response.playerNoteMain2);
 
         // 勝敗
         let player1WinsCount = 0;
@@ -234,8 +238,8 @@ function delay(milliSeconds, signal) {
  */
 async function fadeOut(selector) {
     const playerWins = $(selector);
-    playerWins.fadeOut(FADE_INTERVAL);
-    await delay(FADE_INTERVAL);
+    playerWins.fadeOut(FADE_DURATION);
+    await delay(FADE_DURATION);
     playerWins.empty();
     playerWins.show();
 }
@@ -253,11 +257,11 @@ async function setTextRotation(selector, text, subText, signal) {
     }
 
     try {
-        setText(selector, text, undefined, true, false, signal);
-        await delay(MAIN_LANGUAGE_DISPLAY_INTERVAL, signal);
+        setText(selector, text, undefined, false, true, signal);
+        await delay(MAIN_DISPLAY_DURATION, signal);
 
-        setText(selector, subText, undefined, true, false, signal);
-        await delay(SUB_LANGUAGE_DISPLAY_INTERVAL, signal);
+        setText(selector, subText, undefined, false, true, signal);
+        await delay(SUB_DISPLAY_DURATION, signal);
 
         setTextRotation(selector, text, subText, signal);
     } catch (e) {
@@ -300,9 +304,9 @@ async function setText(
     }
 
     // フェードアウトします。
-    element.fadeOut(FADE_INTERVAL);
+    element.fadeOut(FADE_DURATION);
     try {
-        await delay(FADE_INTERVAL, signal);
+        await delay(FADE_DURATION, signal);
     } catch (e) {
         if (e.name === 'AbortError') {
             // 処理を終了します。
@@ -325,7 +329,7 @@ async function setText(
     }
 
     // フェードインします。
-    element.fadeIn(FADE_INTERVAL);
+    element.fadeIn(FADE_DURATION);
 
     // X 軸のスケールを調整します。
     if (adjustScaleX) {
@@ -337,16 +341,16 @@ async function setText(
 }
 
 /**
- * テキストが空の場合は非表示、そうでなければフェードインをします。
+ * テキストが空の場合はフェードアウト、そうでなければフェードインをします。
  * @param {string} selector セレクター。
  * @param {string} text テキスト。
  */
 function setVisible(selector, text) {
     const element = $(selector);
     if (text === '') {
-        element.hide();
+        element.fadeOut(FADE_DURATION);
     } else {
-        element.fadeIn(FADE_INTERVAL);
+        element.fadeIn(FADE_DURATION);
     }
 }
 
