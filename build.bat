@@ -1,5 +1,6 @@
+@echo off
 set project=first-to-n-template
-set version=1.0.0
+set version=2.0.0
 set name=%project%-%version%
 
-git-bash --cd=%~dp0 -c "git archive HEAD --worktree-attributes -o build/%name%.zip"
+git archive HEAD --worktree-attributes -o build/%name%.zip
