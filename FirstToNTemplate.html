@@ -12,13 +12,13 @@
 
     <body>
         <div class="container">
-            <div class="main player1 border">
+            <div id="player1-background" class="main player1 border">
                 <div class="inner player1 inner-border">
                     <div class="inner player1 background"></div>
                 </div>
             </div>
 
-            <div class="main player2 border">
+            <div id="player2-background" class="main player2 border">
                 <div class="inner player2 inner-border">
                     <div class="inner player2 background"></div>
                 </div>
@@ -27,15 +27,33 @@
             <div class="main">
                 <div class="vertical">
                     <div
-                        id="player1-note-area"
-                        class="player-area note-area text-right"
+                        id="player1-comment-area"
+                        class="player-area comment-area text-right"
                     >
-                        <div id="player1-note" class="player1-area-inner">
+                        <div
+                            id="player1-comment-main"
+                            class="player1-area-inner"
+                        >
+                            &nbsp;
+                        </div>
+                        <div
+                            id="player1-comment-sub"
+                            class="player1-area-inner"
+                        >
                             &nbsp;
                         </div>
                     </div>
-                    <div class="player-area name-area text-right">
-                        <div id="player1-name" class="player1-area-inner">
+                    <div class="player-area text-right">
+                        <div
+                            id="player1-name-main"
+                            class="name-area player1-area-inner"
+                        >
+                            &nbsp;
+                        </div>
+                        <div
+                            id="player1-name-sub"
+                            class="name-area player1-area-inner"
+                        >
                             &nbsp;
                         </div>
                     </div>
@@ -58,22 +76,38 @@
                 </div>
                 <div class="vertical">
                     <div
-                        id="player2-note-area"
-                        class="player-area note-area text-left"
+                        id="player2-comment-area"
+                        class="player-area comment-area text-left"
                     >
-                        <div id="player2-note" class="player2-area-inner">
+                        <div
+                            id="player2-comment-main"
+                            class="player2-area-inner"
+                        >
+                            &nbsp;
+                        </div>
+                        <div
+                            id="player2-comment-sub"
+                            class="player2-area-inner"
+                        >
                             &nbsp;
                         </div>
                     </div>
-                    <div class="player-area name-area text-left">
-                        <div id="player2-name" class="player2-area-inner">
+                    <div class="player-area text-left">
+                        <div
+                            id="player2-name-main"
+                            class="name-area player2-area-inner"
+                        >
+                            &nbsp;
+                        </div>
+                        <div
+                            id="player2-name-sub"
+                            class="name-area player2-area-inner"
+                        >
                             &nbsp;
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div id="message" class="main message text-center">Loading...</div>
         </div>
     </body>
 </html>

@@ -121,24 +121,31 @@ div {
 }
 
 .player1-area-inner {
+    position: absolute;
     margin: 0px -8px;
     transform-origin: right;
 }
 
 .player2-area-inner {
+    position: absolute;
     margin: 0px -8px;
     transform-origin: left;
 }
 
-.note-area {
+.comment-area {
     height: 20px;
     margin-top: 4px;
     font-size: 16px;
 }
 
 .name-area {
-    margin-top: -4px;
+    margin-top: 32px;
     font-size: 28px;
+}
+
+.name-area-big {
+    margin-top: 16px;
+    font-size: 48px;
 }
 
 .wins-count-area {
@@ -200,7 +207,7 @@ div {
         height: 48px;
     }
 
-    .note-area {
+    .comment-area {
         height: 14px;
         font-size: 12px;
     }
