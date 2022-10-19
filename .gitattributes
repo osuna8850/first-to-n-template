@@ -1,6 +1,0 @@
-# Export Ignore 
-.gitignore export-ignore
-.gitattributes export-ignore
-.eslintrc.json export-ignore
-.prettierrc export-ignore
-build.bat export-ignore

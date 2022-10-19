@@ -117,28 +117,43 @@ div {
 }
 
 .player-area {
-    width: 200px;
+    height: 100%;
+    width: 192px;
+    max-width: 192px;
+}
+
+.player1-area {
+    margin-left: 8px;
+}
+
+.player2-area {
+    margin-right: 8px;
 }
 
 .player1-area-inner {
-    margin: 0px -8px;
+    position: absolute;
     transform-origin: right;
 }
 
 .player2-area-inner {
-    margin: 0px -8px;
+    position: absolute;
     transform-origin: left;
 }
 
-.note-area {
+.comment-area {
     height: 20px;
     margin-top: 4px;
     font-size: 16px;
 }
 
 .name-area {
-    margin-top: -4px;
+    margin-top: 32px;
     font-size: 28px;
+}
+
+.name-area-big {
+    margin-top: -20px;
+    font-size: 40px;
 }
 
 .wins-count-area {
@@ -200,7 +215,7 @@ div {
         height: 48px;
     }
 
-    .note-area {
+    .comment-area {
         height: 14px;
         font-size: 12px;
     }
@@ -208,6 +223,10 @@ div {
     .name-area {
         margin-top: -6px;
         font-size: 24px;
+    }
+
+    .name-area-big {
+        margin-top: -14px;
     }
 
     .wins-area {
