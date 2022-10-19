@@ -31,6 +31,11 @@ class App {
     #mainViewModel;
 
     /**
+     * タイマー。
+     */
+    #timer;
+
+    /**
      * アプリケーションの新しいインスタンスを初期化します。
      */
     constructor() {
@@ -47,9 +52,11 @@ class App {
 
             await this.onInitialize();
 
-            Task.interval(this.#configuration.updateInterval, () => {
-                this.onUpdate(this);
-            });
+            this.#timer = new Timer(this.#configuration.updateInterval);
+            this.#timer.action = async () => {
+                await this.onUpdate(this);
+            };
+            this.#timer.start();
         });
     }
 
@@ -99,7 +106,9 @@ class App {
             sender.data !== undefined &&
             sender.data.matchFirstTo !== data.matchFirstTo
         ) {
+            sender.#timer.stop();
             await sender.#mainViewModel.reset();
+            sender.#timer.start();
         }
 
         await sender.#mainViewModel.update(data);
@@ -202,10 +211,10 @@ class MainViewModel {
      */
     async reset() {
         const div = $('#player1-wins, #player2-wins');
-        div.fadeOut(this.#configuration.duration.fade);
+        div.animate({ opacity: 0 }, this.#configuration.duration.fade);
         await Task.delay(this.#configuration.duration.fade);
         div.empty();
-        div.show();
+        div.stop().css({ opacity: 1 });
     }
 
     /**
@@ -240,11 +249,15 @@ class MainViewModel {
         // Player 1
         $('#player1-name-main').textWithFade(
             data.matchPlayer1NameMain,
-            this.#configuration.duration.fade
+            this.#configuration.duration.fade,
+            false,
+            true
         );
         $('#player1-comment-main').textWithFade(
             data.matchPlayer1CommentMain,
-            this.#configuration.duration.fade
+            this.#configuration.duration.fade,
+            false,
+            true
         );
 
         if (Utility.isEmpty(data.matchPlayer1NameSub)) {
@@ -258,16 +271,20 @@ class MainViewModel {
         $('#player1-name-sub').textWithFade(
             data.matchPlayer1NameSub,
             this.#configuration.duration.fade,
+            true,
             true
         );
         $('#player1-comment-sub').textWithFade(
             data.matchPlayer1CommentSub,
             this.#configuration.duration.fade,
+            true,
             true
         );
         $('#player1-score').textWithFade(
             data.matchPlayer1Score,
-            this.#configuration.duration.fade
+            this.#configuration.duration.fade,
+            false,
+            true
         );
 
         if (Utility.isEmpty(data.matchPlayer1CommentMain)) {
@@ -285,11 +302,15 @@ class MainViewModel {
         // Player 2
         $('#player2-name-main').textWithFade(
             data.matchPlayer2NameMain,
-            this.#configuration.duration.fade
+            this.#configuration.duration.fade,
+            false,
+            true
         );
         $('#player2-comment-main').textWithFade(
             data.matchPlayer2CommentMain,
-            this.#configuration.duration.fade
+            this.#configuration.duration.fade,
+            false,
+            true
         );
 
         if (Utility.isEmpty(data.matchPlayer2NameSub)) {
@@ -303,16 +324,20 @@ class MainViewModel {
         $('#player2-name-sub').textWithFade(
             data.matchPlayer2NameSub,
             this.#configuration.duration.fade,
+            true,
             true
         );
         $('#player2-comment-sub').textWithFade(
             data.matchPlayer2CommentSub,
             this.#configuration.duration.fade,
+            true,
             true
         );
         $('#player2-score').textWithFade(
             data.matchPlayer2Score,
-            this.#configuration.duration.fade
+            this.#configuration.duration.fade,
+            false,
+            true
         );
 
         if (Utility.isEmpty(data.matchPlayer2CommentMain)) {
@@ -361,11 +386,15 @@ class MainViewModel {
 
             player1Wins.textWithFade(
                 player1WinsString,
-                this.#configuration.duration.fade
+                this.#configuration.duration.fade,
+                false,
+                true
             );
             player2Wins.textWithFade(
                 player2WinsString,
-                this.#configuration.duration.fade
+                this.#configuration.duration.fade,
+                false,
+                true
             );
 
             player1WinsCount += player1Win ? 1 : 0;
@@ -374,11 +403,15 @@ class MainViewModel {
 
         $('#player1-wins-count').textWithFade(
             player1WinsCount.toString(),
-            this.#configuration.duration.fade
+            this.#configuration.duration.fade,
+            false,
+            true
         );
         $('#player2-wins-count').textWithFade(
             player2WinsCount.toString(),
-            this.#configuration.duration.fade
+            this.#configuration.duration.fade,
+            false,
+            true
         );
     }
 
@@ -433,8 +466,14 @@ class Extensions {
          * @param {string} text テキスト。
          * @param {number} duration フェード時間。
          * @param {boolean} isFadeOutOnly フェードアウトのみかどうか。
+         * @param {boolean} isOverwrite アニメーションを上書きするかどうか。
          */
-        textWithFade: async function (text, duration, isFadeOutOnly) {
+        textWithFade: async function (
+            text,
+            duration,
+            isFadeOutOnly,
+            isOverwrite
+        ) {
             // テキストが同一の場合、何もしません。
             if (this.text() === text) {
                 return;
@@ -443,6 +482,12 @@ class Extensions {
             // テキストが非表示の場合、テキストだけを設定して終了します。
             if (this.css('opacity') === '0') {
                 this.text(text);
+
+                const width = this.width();
+                const parentWidth = this.parent().width();
+                const ratio = width <= parentWidth ? 1 : parentWidth / width;
+                this.css('transform', `scaleX(${ratio})`);
+
                 return;
             }
 
@@ -456,11 +501,17 @@ class Extensions {
                 isFadeOutOnly = false;
             }
 
-            // キューのアニメーションを停止します。
-            this.stop(true, true);
+            if (Utility.isEmpty(isOverwrite)) {
+                isOverwrite = false;
+            }
+
+            if (isOverwrite) {
+                this.stop(true, true);
+            }
 
             // フェードアウトします。
-            await this.animate({ opacity: 0 }, halfDuration).promise();
+            this.stop().animate({ opacity: 0 }, halfDuration);
+            await Task.delay(halfDuration);
 
             // テキストを変更します。
             this.text(text);
@@ -472,7 +523,8 @@ class Extensions {
 
             // フェードアウトのみではない場合、フェードインします。
             if (!isFadeOutOnly) {
-                await this.animate({ opacity: 1 }, halfDuration).promise();
+                this.stop().animate({ opacity: 1 }, halfDuration);
+                await Task.delay(halfDuration);
             }
         },
 
@@ -504,11 +556,11 @@ class Extensions {
             const first = isFirstFadeIn ? 1 : 0;
             const second = isFirstFadeIn ? 0 : 1;
 
-            this.animate({ opacity: first }, durationOptions.fade);
+            this.stop().animate({ opacity: first }, durationOptions.fade);
             await Task.delay(
                 durationOptions.fade + durationOptions.mainLanguage
             );
-            this.animate({ opacity: second }, durationOptions.fade);
+            this.stop().animate({ opacity: second }, durationOptions.fade);
             await Task.delay(
                 durationOptions.fade + durationOptions.subLanguage
             );
@@ -556,7 +608,7 @@ class Task {
     }
 
     /**
-     * 指定の時間だけスリーブします。
+     * 指定の時間だけスリープします。
      * @param {number} milliseconds ミリ秒。
      */
     static delay(milliseconds) {
@@ -566,19 +618,47 @@ class Task {
             }, milliseconds);
         });
     }
+}
+
+/**
+ * タイマーを表します。
+ */
+class Timer {
+    /**
+     * タイマーの刻み間隔の時間。
+     */
+    interval = 0;
 
     /**
-     * 指定の時間の間隔で関数を実行します。
-     * @param {number} milliseconds ミリ秒。
-     * @param {Function} action 関数。
+     * 実行する関数。
      */
-    static interval(milliseconds, action, abortSignal) {
-        return new Promise(resolve => {
-            setInterval(() => {
-                action();
-                resolve();
-            }, milliseconds);
-        });
+    action = () => {};
+
+    /**
+     * タイマー ID。
+     */
+    #id;
+
+    /**
+     * タイマーの新しいインスタンスを初期化します。
+     * @param {number} interval タイマーの刻み間隔。
+     */
+    constructor(interval) {
+        this.interval = interval;
+    }
+
+    /**
+     * タイマーを開始します。
+     */
+    start() {
+        this.#id = setInterval(this.action, this.interval);
+    }
+
+    /**
+     * タイマーを停止します。
+     */
+    stop() {
+        clearInterval(this.#id);
     }
 }
 
