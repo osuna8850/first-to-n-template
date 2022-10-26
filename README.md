@@ -18,8 +18,8 @@
 
 ## Notes
 
--   OBS Studio 上での FirstToNTemplate.html の幅は 800 以上、高さは 48 または 64 が対応しています
--   StreamControl の各プレイヤーの No. は数値を入力後、オートコンプリートから選択する必要があります
+-   OBS Studio 上での FirstToNTemplate.html はサイズ 1920 x 1080 に最適化しています
+-   StreamControl の各プレイヤーの ID は入力後にオートコンプリートから選択する必要があります
     -   オートコンプリートから選択しないと、プレイヤーの名前とコメントが反映されません
 
 ## License
