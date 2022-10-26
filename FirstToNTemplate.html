@@ -11,99 +11,818 @@
     </head>
 
     <body>
-        <div class="container">
-            <div id="player1-background" class="main player1 border">
-                <div class="inner player1 inner-border">
-                    <div class="inner player1 background"></div>
+        <div class="container vertical">
+            <div class="first-to-n">
+                <div id="player1-background" class="main player1 border">
+                    <div class="inner player1 inner-border">
+                        <div class="inner player1 background"></div>
+                    </div>
+                </div>
+
+                <div id="player2-background" class="main player2 border">
+                    <div class="inner player2 inner-border">
+                        <div class="inner player2 background"></div>
+                    </div>
+                </div>
+
+                <div class="main">
+                    <div class="vertical">
+                        <div
+                            id="player1-comment-area"
+                            class="player-area player1-area comment-area text-right"
+                        >
+                            <div
+                                id="player1-comment-main"
+                                class="player1-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="player1-comment-sub"
+                                class="player1-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                        <div class="player-area player1-area text-right">
+                            <div
+                                id="player1-name-main"
+                                class="name-area player1-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="player1-name-sub"
+                                class="name-area player1-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wins-count-area">
+                        <div
+                            id="player1-wins-count"
+                            class="wins-count-area text-center"
+                        ></div>
+                    </div>
+                    <div class="vertical wins-area-outer">
+                        <div
+                            id="player1-wins"
+                            class="wins-area text-center"
+                        ></div>
+                        <div
+                            id="player2-wins"
+                            class="wins-area text-center"
+                        ></div>
+                    </div>
+                    <div class="wins-count-area">
+                        <div
+                            id="player2-wins-count"
+                            class="wins-count-area text-center"
+                        ></div>
+                    </div>
+                    <div class="vertical">
+                        <div
+                            id="player2-comment-area"
+                            class="player-area player2-area comment-area text-left"
+                        >
+                            <div
+                                id="player2-comment-main"
+                                class="player2-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="player2-comment-sub"
+                                class="player2-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                        <div class="player-area player2-area text-left">
+                            <div
+                                id="player2-name-main"
+                                class="name-area player2-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="player2-name-sub"
+                                class="name-area player2-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div id="player2-background" class="main player2 border">
-                <div class="inner player2 inner-border">
-                    <div class="inner player2 background"></div>
-                </div>
-            </div>
+            <div class="info">
+                <div id="team1" class="team-info team1-info vertical">
+                    <div id="team1-player1" class="team-player team1-player">
+                        <div class="team1 border">
+                            <div class="inner team1 inner-border">
+                                <div class="inner team1 background"></div>
+                            </div>
+                        </div>
+                        <div id="team1-player1-name" class="team1 text-right">
+                            <div
+                                id="team1-player1-name-main"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team1-player1-name-sub"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="main">
-                <div class="vertical">
-                    <div
-                        id="player1-comment-area"
-                        class="player-area player1-area comment-area text-right"
-                    >
-                        <div
-                            id="player1-comment-main"
-                            class="player1-area-inner"
-                        >
-                            &nbsp;
+                    <div id="team1-player2" class="team-player team1-player">
+                        <div class="team1 border">
+                            <div class="inner team1 inner-border">
+                                <div class="inner team1 background"></div>
+                            </div>
                         </div>
-                        <div
-                            id="player1-comment-sub"
-                            class="player1-area-inner"
-                        >
-                            &nbsp;
-                        </div>
-                    </div>
-                    <div class="player-area player1-area text-right">
-                        <div
-                            id="player1-name-main"
-                            class="name-area player1-area-inner"
-                        >
-                            &nbsp;
-                        </div>
-                        <div
-                            id="player1-name-sub"
-                            class="name-area player1-area-inner"
-                        >
-                            &nbsp;
+                        <div id="team1-player2-name" class="team1 text-right">
+                            <div
+                                id="team1-player2-name-main"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team1-player2-name-sub"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="wins-count-area">
-                    <div
-                        id="player1-wins-count"
-                        class="wins-count-area text-center"
-                    ></div>
-                </div>
-                <div class="vertical wins-area-outer">
-                    <div id="player1-wins" class="wins-area text-center"></div>
-                    <div id="player2-wins" class="wins-area text-center"></div>
-                </div>
-                <div class="wins-count-area">
-                    <div
-                        id="player2-wins-count"
-                        class="wins-count-area text-center"
-                    ></div>
-                </div>
-                <div class="vertical">
-                    <div
-                        id="player2-comment-area"
-                        class="player-area player2-area comment-area text-left"
-                    >
-                        <div
-                            id="player2-comment-main"
-                            class="player2-area-inner"
-                        >
-                            &nbsp;
+
+                    <div id="team1-player3" class="team-player team1-player">
+                        <div class="team1 border">
+                            <div class="inner team1 inner-border">
+                                <div class="inner team1 background"></div>
+                            </div>
                         </div>
-                        <div
-                            id="player2-comment-sub"
-                            class="player2-area-inner"
-                        >
-                            &nbsp;
+                        <div id="team1-player3-name" class="team1 text-right">
+                            <div
+                                id="team1-player3-name-main"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team1-player3-name-sub"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
                         </div>
                     </div>
-                    <div class="player-area player2-area text-left">
-                        <div
-                            id="player2-name-main"
-                            class="name-area player2-area-inner"
-                        >
-                            &nbsp;
+
+                    <div id="team1-player4" class="team-player team1-player">
+                        <div class="team1 border">
+                            <div class="inner team1 inner-border">
+                                <div class="inner team1 background"></div>
+                            </div>
                         </div>
-                        <div
-                            id="player2-name-sub"
-                            class="name-area player2-area-inner"
-                        >
-                            &nbsp;
+                        <div id="team1-player4-name" class="team1 text-right">
+                            <div
+                                id="team1-player4-name-main"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team1-player4-name-sub"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team1-player5" class="team-player team1-player">
+                        <div class="team1 border">
+                            <div class="inner team1 inner-border">
+                                <div class="inner team1 background"></div>
+                            </div>
+                        </div>
+                        <div id="team1-player5-name" class="team1 text-right">
+                            <div
+                                id="team1-player5-name-main"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team1-player5-name-sub"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team1-player6" class="team-player team1-player">
+                        <div class="team1 border">
+                            <div class="inner team1 inner-border">
+                                <div class="inner team1 background"></div>
+                            </div>
+                        </div>
+                        <div id="team1-player6-name" class="team1 text-right">
+                            <div
+                                id="team1-player6-name-main"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team1-player6-name-sub"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team1-player7" class="team-player team1-player">
+                        <div class="team1 border">
+                            <div class="inner team1 inner-border">
+                                <div class="inner team1 background"></div>
+                            </div>
+                        </div>
+                        <div id="team1-player7-name" class="team1 text-right">
+                            <div
+                                id="team1-player7-name-main"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team1-player7-name-sub"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team1-player8" class="team-player team1-player">
+                        <div class="team1 border">
+                            <div class="inner team1 inner-border">
+                                <div class="inner team1 background"></div>
+                            </div>
+                        </div>
+                        <div id="team1-player8-name" class="team1 text-right">
+                            <div
+                                id="team1-player8-name-main"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team1-player8-name-sub"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team1-player9" class="team-player team1-player">
+                        <div class="team1 border">
+                            <div class="inner team1 inner-border">
+                                <div class="inner team1 background"></div>
+                            </div>
+                        </div>
+                        <div id="team1-player9-name" class="team1 text-right">
+                            <div
+                                id="team1-player9-name-main"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team1-player9-name-sub"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team1-player10" class="team-player team1-player">
+                        <div class="team1 border">
+                            <div class="inner team1 inner-border">
+                                <div class="inner team1 background"></div>
+                            </div>
+                        </div>
+                        <div id="team1-player10-name" class="team1 text-right">
+                            <div
+                                id="team1-player10-name-main"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team1-player10-name-sub"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team1-player11" class="team-player team1-player">
+                        <div class="team1 border">
+                            <div class="inner team1 inner-border">
+                                <div class="inner team1 background"></div>
+                            </div>
+                        </div>
+                        <div id="team1-player11-name" class="team1 text-right">
+                            <div
+                                id="team1-player11-name-main"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team1-player11-name-sub"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team1-player12" class="team-player team1-player">
+                        <div class="team1 border">
+                            <div class="inner team1 inner-border">
+                                <div class="inner team1 background"></div>
+                            </div>
+                        </div>
+                        <div id="team1-player12-name" class="team1 text-right">
+                            <div
+                                id="team1-player12-name-main"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team1-player12-name-sub"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team1-player13" class="team-player team1-player">
+                        <div class="team1 border">
+                            <div class="inner team1 inner-border">
+                                <div class="inner team1 background"></div>
+                            </div>
+                        </div>
+                        <div id="team1-player13-name" class="team1 text-right">
+                            <div
+                                id="team1-player13-name-main"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team1-player13-name-sub"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team1-player14" class="team-player team1-player">
+                        <div class="team1 border">
+                            <div class="inner team1 inner-border">
+                                <div class="inner team1 background"></div>
+                            </div>
+                        </div>
+                        <div id="team1-player14-name" class="team1 text-right">
+                            <div
+                                id="team1-player14-name-main"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team1-player14-name-sub"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team1-player15" class="team-player team1-player">
+                        <div class="team1 border">
+                            <div class="inner team1 inner-border">
+                                <div class="inner team1 background"></div>
+                            </div>
+                        </div>
+                        <div id="team1-player15-name" class="team1 text-right">
+                            <div
+                                id="team1-player15-name-main"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team1-player15-name-sub"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team1-player16" class="team-player team1-player">
+                        <div class="team1 border">
+                            <div class="inner team1 inner-border">
+                                <div class="inner team1 background"></div>
+                            </div>
+                        </div>
+                        <div id="team1-player16-name" class="team1 text-right">
+                            <div
+                                id="team1-player16-name-main"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team1-player16-name-sub"
+                                class="team1-name-area-inner"
+                                class="team1-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="team2" class="team-info team2-info vertical">
+                    <div id="team2-player1" class="team-player team2-player">
+                        <div class="team2 border">
+                            <div class="inner team2 inner-border">
+                                <div class="inner team2 background"></div>
+                            </div>
+                        </div>
+                        <div id="team2-player1-name" class="team2 text-left">
+                            <div
+                                id="team2-player1-name-main"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team2-player1-name-sub"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team2-player2" class="team-player team2-player">
+                        <div class="team2 border">
+                            <div class="inner team2 inner-border">
+                                <div class="inner team2 background"></div>
+                            </div>
+                        </div>
+                        <div id="team2-player2-name" class="team2 text-left">
+                            <div
+                                id="team2-player2-name-main"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team2-player2-name-sub"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team2-player3" class="team-player team2-player">
+                        <div class="team2 border">
+                            <div class="inner team2 inner-border">
+                                <div class="inner team2 background"></div>
+                            </div>
+                        </div>
+                        <div id="team2-player3-name" class="team2 text-left">
+                            <div
+                                id="team2-player3-name-main"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team2-player3-name-sub"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team2-player4" class="team-player team2-player">
+                        <div class="team2 border">
+                            <div class="inner team2 inner-border">
+                                <div class="inner team2 background"></div>
+                            </div>
+                        </div>
+                        <div id="team2-player4-name" class="team2 text-left">
+                            <div
+                                id="team2-player4-name-main"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team2-player4-name-sub"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team2-player5" class="team-player team2-player">
+                        <div class="team2 border">
+                            <div class="inner team2 inner-border">
+                                <div class="inner team2 background"></div>
+                            </div>
+                        </div>
+                        <div id="team2-player5-name" class="team2 text-left">
+                            <div
+                                id="team2-player5-name-main"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team2-player5-name-sub"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team2-player6" class="team-player team2-player">
+                        <div class="team2 border">
+                            <div class="inner team2 inner-border">
+                                <div class="inner team2 background"></div>
+                            </div>
+                        </div>
+                        <div id="team2-player6-name" class="team2 text-left">
+                            <div
+                                id="team2-player6-name-main"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team2-player6-name-sub"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team2-player7" class="team-player team2-player">
+                        <div class="team2 border">
+                            <div class="inner team2 inner-border">
+                                <div class="inner team2 background"></div>
+                            </div>
+                        </div>
+                        <div id="team2-player7-name" class="team2 text-left">
+                            <div
+                                id="team2-player7-name-main"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team2-player7-name-sub"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team2-player8" class="team-player team2-player">
+                        <div class="team2 border">
+                            <div class="inner team2 inner-border">
+                                <div class="inner team2 background"></div>
+                            </div>
+                        </div>
+                        <div id="team2-player8-name" class="team2 text-left">
+                            <div
+                                id="team2-player8-name-main"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team2-player8-name-sub"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team2-player9" class="team-player team2-player">
+                        <div class="team2 border">
+                            <div class="inner team2 inner-border">
+                                <div class="inner team2 background"></div>
+                            </div>
+                        </div>
+                        <div id="team2-player9-name" class="team2 text-left">
+                            <div
+                                id="team2-player9-name-main"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team2-player9-name-sub"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team2-player10" class="team-player team2-player">
+                        <div class="team2 border">
+                            <div class="inner team2 inner-border">
+                                <div class="inner team2 background"></div>
+                            </div>
+                        </div>
+                        <div id="team2-player10-name" class="team2 text-left">
+                            <div
+                                id="team2-player10-name-main"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team2-player10-name-sub"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team2-player11" class="team-player team2-player">
+                        <div class="team2 border">
+                            <div class="inner team2 inner-border">
+                                <div class="inner team2 background"></div>
+                            </div>
+                        </div>
+                        <div id="team2-player11-name" class="team2 text-left">
+                            <div
+                                id="team2-player11-name-main"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team2-player11-name-sub"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team2-player12" class="team-player team2-player">
+                        <div class="team2 border">
+                            <div class="inner team2 inner-border">
+                                <div class="inner team2 background"></div>
+                            </div>
+                        </div>
+                        <div id="team2-player12-name" class="team2 text-left">
+                            <div
+                                id="team2-player12-name-main"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team2-player12-name-sub"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team2-player13" class="team-player team2-player">
+                        <div class="team2 border">
+                            <div class="inner team2 inner-border">
+                                <div class="inner team2 background"></div>
+                            </div>
+                        </div>
+                        <div id="team2-player13-name" class="team2 text-left">
+                            <div
+                                id="team2-player13-name-main"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team2-player13-name-sub"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team2-player14" class="team-player team2-player">
+                        <div class="team2 border">
+                            <div class="inner team2 inner-border">
+                                <div class="inner team2 background"></div>
+                            </div>
+                        </div>
+                        <div id="team2-player14-name" class="team2 text-left">
+                            <div
+                                id="team2-player14-name-main"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team2-player14-name-sub"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team2-player15" class="team-player team2-player">
+                        <div class="team2 border">
+                            <div class="inner team2 inner-border">
+                                <div class="inner team2 background"></div>
+                            </div>
+                        </div>
+                        <div id="team2-player15-name" class="team2 text-left">
+                            <div
+                                id="team2-player15-name-main"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team2-player15-name-sub"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team2-player16" class="team-player team2-player">
+                        <div class="team2 border">
+                            <div class="inner team2 inner-border">
+                                <div class="inner team2 background"></div>
+                            </div>
+                        </div>
+                        <div id="team2-player16-name" class="team2 text-left">
+                            <div
+                                id="team2-player16-name-main"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
+                            <div
+                                id="team2-player16-name-sub"
+                                class="team2-name-area-inner"
+                            >
+                                &nbsp;
+                            </div>
                         </div>
                     </div>
                 </div>
