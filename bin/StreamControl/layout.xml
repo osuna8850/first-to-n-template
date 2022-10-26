@@ -1,570 +1,435 @@
 <!DOCTYPE StreamControlLayout>
-<layout width="670" height="445" tabbed="1">
+<layout width="750" height="445" tabbed="1">
     <tab name="Match Info">
-        <tabSet x="10" y="10" width="282" height="210">
-            <tab name="Player 1                                                      ">
-                <label x="10" y="5" width="200" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <button type="reset" x="220" y="0" width="50" height="23" tooltip="Clear the Player1" id="clearPlayer1" reset="matchPlayer1Id,matchPlayer1NameMain,matchPlayer1NameSub,matchPlayer1CommentMain,matchPlayer1CommentSub">Clear</button>
-                <label x="10" y="30" width="80" height="23">ID</label>
-                <lineEdit id="matchPlayer1Id" x="100" y="30" width="170" height="23" dataSet="players.csv" dataField="1">Player 1 ID</lineEdit>
-                <label x="10" y="60" width="80" height="23">Name</label>
-                <lineEdit id="matchPlayer1NameMain" x="100" y="60" width="170" height="23" dataSet="players.csv" dataField="2" master="matchPlayer1Id">Player 1 Name</lineEdit>
-                <label x="10" y="90" width="80" height="23">Comment</label>
-                <lineEdit id="matchPlayer1CommentMain" x="100" y="90" width="170" height="23" dataSet="players.csv" dataField="4" master="matchPlayer1Id">Player 1 Comment</lineEdit>
-                <label x="10" y="120" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="matchPlayer1NameSub" x="100" y="120" width="170" height="23" dataSet="players.csv" dataField="3" master="matchPlayer1Id">Player 1 Name (Sub)</lineEdit>
-                <label x="10" y="150" width="80" height="23">Comment (Sub)</label>
-                <lineEdit id="matchPlayer1CommentSub" x="100" y="150" width="170" height="23" dataSet="players.csv" dataField="5" master="matchPlayer1Id">Player 1 Comment (Sub)</lineEdit>
+        <tabSet x="10" y="10" width="322" height="155">
+            <tab name="Player 1                                                                ">
+                <label x="10" y="5" width="80" height="35">ID</label>
+                <lineEdit id="matchPlayer1Id" x="85" y="5" width="110" height="35" dataSet="players.csv" dataField="1">Player 1 ID</lineEdit>
+                <button type="reset" x="260" y="5" width="50" height="35" tooltip="Clear the Player 1" id="clearPlayer1" reset="matchPlayer1Id,matchPlayer1NameMain,matchPlayer1NameSub,matchPlayer1CommentMain,matchPlayer1CommentSub">Clear</button>
+
+                <label x="10" y="45" width="80" height="35">Comment</label>
+                <lineEdit id="matchPlayer1CommentMain" x="85" y="45" width="110" height="35" dataSet="players.csv" dataField="4" master="matchPlayer1Id">Comment</lineEdit>
+                <lineEdit id="matchPlayer1CommentSub" x="200" y="45" width="110" height="35" dataSet="players.csv" dataField="5" master="matchPlayer1Id">Comment (Sub)</lineEdit>
+
+                <label x="10" y="85" width="80" height="35">Name</label>
+                <lineEdit id="matchPlayer1NameMain" x="85" y="85" width="110" height="35" dataSet="players.csv" dataField="2" master="matchPlayer1Id">Name</lineEdit>
+                <lineEdit id="matchPlayer1NameSub" x="200" y="85" width="110" height="35" dataSet="players.csv" dataField="3" master="matchPlayer1Id">Name (Sub)</lineEdit>
             </tab>
         </tabSet>
 
-        <button type="swap" x="300" y="10" width="50" height="23" tooltip="Swap All" id="swapAll" swapSet1="matchPlayer1Id,matchPlayer1NameMain,matchPlayer1NameSub,matchPlayer1CommentMain,matchPlayer1CommentSub,matchPlayer1Wins1,matchPlayer1Wins2,matchPlayer1Wins3,matchPlayer1Wins4,matchPlayer1Wins5,matchPlayer1Wins6,matchPlayer1Wins7,matchPlayer1Wins8,matchPlayer1Wins9,matchPlayer1Wins10,matchPlayer1Wins11,matchPlayer1Wins12,matchPlayer1Wins13,matchPlayer1Wins14,matchPlayer1Wins15,matchPlayer1Wins16,matchPlayer1Wins17,matchPlayer1Wins18,matchPlayer1Wins19" swapSet2="matchPlayer2Id,matchPlayer2NameMain,matchPlayer2NameSub,matchPlayer2CommentMain,matchPlayer2CommentSub,matchPlayer2Wins1,matchPlayer2Wins2,matchPlayer2Wins3,matchPlayer2Wins4,matchPlayer2Wins5,matchPlayer2Wins6,matchPlayer2Wins7,matchPlayer2Wins8,matchPlayer2Wins9,matchPlayer2Wins10,matchPlayer2Wins11,matchPlayer2Wins12,matchPlayer2Wins13,matchPlayer2Wins14,matchPlayer2Wins15,matchPlayer2Wins16,matchPlayer2Wins17,matchPlayer2Wins18,matchPlayer2Wins19">Swap All</button>
-        <button type="reset" x="300" y="40" width="50" height="23" tooltip="Clear All" id="clearAll" reset="matchPlayer1Id,matchPlayer1NameMain,matchPlayer1NameSub,matchPlayer1CommentMain,matchPlayer1CommentSub,matchPlayer2Id,matchPlayer2NameMain,matchPlayer2NameSub,matchPlayer2CommentMain,matchPlayer2CommentSub,matchPlayer1Wins1,matchPlayer2Wins1,matchPlayer1Wins2,matchPlayer2Wins2,matchPlayer1Wins3,matchPlayer2Wins3,matchPlayer1Wins4,matchPlayer2Wins4,matchPlayer1Wins5,matchPlayer2Wins5,matchPlayer1Wins6,matchPlayer2Wins6,matchPlayer1Wins7,matchPlayer2Wins7,matchPlayer1Wins8,matchPlayer2Wins8,matchPlayer1Wins9,matchPlayer2Wins9,matchPlayer1Wins10,matchPlayer2Wins10,matchPlayer1Wins11,matchPlayer2Wins11,matchPlayer1Wins12,matchPlayer2Wins12,matchPlayer1Wins13,matchPlayer2Wins13,matchPlayer1Wins14,matchPlayer2Wins14,matchPlayer1Wins15,matchPlayer2Wins15,matchPlayer1Wins16,matchPlayer2Wins16,matchPlayer1Wins17,matchPlayer2Wins17,matchPlayer1Wins18,matchPlayer2Wins18,matchPlayer1Wins19,matchPlayer2Wins19">Clear All</button>
-        <label x="305" y="70" width="60" height="23">Players</label>
-        <button type="swap" x="300" y="95" width="50" height="23" tooltip="Swap the Players" id="swapPlayers" swapSet1="matchPlayer1Id,matchPlayer1NameMain,matchPlayer1NameSub,matchPlayer1CommentMain,matchPlayer1CommentSub" swapSet2="matchPlayer2Id,matchPlayer2NameMain,matchPlayer2NameSub,matchPlayer2CommentMain,matchPlayer2CommentSub">Swap</button>
-        <button type="reset" x="300" y="125" width="50" height="23" tooltip="Clear the Players" id="clearPlayers" reset="matchPlayer1Id,matchPlayer1NameMain,matchPlayer1NameSub,matchPlayer1CommentMain,matchPlayer1CommentSub,matchPlayer2Id,matchPlayer2NameMain,matchPlayer2NameSub,matchPlayer2CommentMain,matchPlayer2CommentSub">Clear</button>
+        <button type="swap" x="340" y="10" width="50" height="35" tooltip="Swap All" id="swapAll" swapSet1="matchPlayer1Id,matchPlayer1NameMain,matchPlayer1NameSub,matchPlayer1CommentMain,matchPlayer1CommentSub,matchPlayer1Wins1,matchPlayer1Wins2,matchPlayer1Wins3,matchPlayer1Wins4,matchPlayer1Wins5,matchPlayer1Wins6,matchPlayer1Wins7,matchPlayer1Wins8,matchPlayer1Wins9,matchPlayer1Wins10,matchPlayer1Wins11,matchPlayer1Wins12,matchPlayer1Wins13,matchPlayer1Wins14,matchPlayer1Wins15,matchPlayer1Wins16,matchPlayer1Wins17,matchPlayer1Wins18,matchPlayer1Wins19" swapSet2="matchPlayer2Id,matchPlayer2NameMain,matchPlayer2NameSub,matchPlayer2CommentMain,matchPlayer2CommentSub,matchPlayer2Wins1,matchPlayer2Wins2,matchPlayer2Wins3,matchPlayer2Wins4,matchPlayer2Wins5,matchPlayer2Wins6,matchPlayer2Wins7,matchPlayer2Wins8,matchPlayer2Wins9,matchPlayer2Wins10,matchPlayer2Wins11,matchPlayer2Wins12,matchPlayer2Wins13,matchPlayer2Wins14,matchPlayer2Wins15,matchPlayer2Wins16,matchPlayer2Wins17,matchPlayer2Wins18,matchPlayer2Wins19">Swap All</button>
+        <button type="reset" x="340" y="50" width="50" height="35" tooltip="Clear All" id="clearAll" reset="matchPlayer1Id,matchPlayer1NameMain,matchPlayer1NameSub,matchPlayer1CommentMain,matchPlayer1CommentSub,matchPlayer2Id,matchPlayer2NameMain,matchPlayer2NameSub,matchPlayer2CommentMain,matchPlayer2CommentSub,matchPlayer1Wins1,matchPlayer2Wins1,matchPlayer1Wins2,matchPlayer2Wins2,matchPlayer1Wins3,matchPlayer2Wins3,matchPlayer1Wins4,matchPlayer2Wins4,matchPlayer1Wins5,matchPlayer2Wins5,matchPlayer1Wins6,matchPlayer2Wins6,matchPlayer1Wins7,matchPlayer2Wins7,matchPlayer1Wins8,matchPlayer2Wins8,matchPlayer1Wins9,matchPlayer2Wins9,matchPlayer1Wins10,matchPlayer2Wins10,matchPlayer1Wins11,matchPlayer2Wins11,matchPlayer1Wins12,matchPlayer2Wins12,matchPlayer1Wins13,matchPlayer2Wins13,matchPlayer1Wins14,matchPlayer2Wins14,matchPlayer1Wins15,matchPlayer2Wins15,matchPlayer1Wins16,matchPlayer2Wins16,matchPlayer1Wins17,matchPlayer2Wins17,matchPlayer1Wins18,matchPlayer2Wins18,matchPlayer1Wins19,matchPlayer2Wins19">Clear All</button>
+        <button type="swap" x="340" y="90" width="50" height="35" tooltip="Swap the Players" id="swapPlayers" swapSet1="matchPlayer1Id,matchPlayer1NameMain,matchPlayer1NameSub,matchPlayer1CommentMain,matchPlayer1CommentSub" swapSet2="matchPlayer2Id,matchPlayer2NameMain,matchPlayer2NameSub,matchPlayer2CommentMain,matchPlayer2CommentSub">Swap</button>
+        <button type="reset" x="340" y="130" width="50" height="35" tooltip="Clear the Players" id="clearPlayers" reset="matchPlayer1Id,matchPlayer1NameMain,matchPlayer1NameSub,matchPlayer1CommentMain,matchPlayer1CommentSub,matchPlayer2Id,matchPlayer2NameMain,matchPlayer2NameSub,matchPlayer2CommentMain,matchPlayer2CommentSub">Clear</button>
 
-        <tabSet x="358" y="10" width="282" height="210">
-            <tab name="Player 2                                                      ">
-                <label x="10" y="5" width="200" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <button type="reset" x="220" y="0" width="50" height="23" tooltip="Clear the Player2" id="clearPlayer2" reset="matchPlayer2Id,matchPlayer2NameMain,matchPlayer2NameSub,matchPlayer2CommentMain,matchPlayer2CommentSub">Clear</button>
-                <label x="10" y="30" width="80" height="23">ID</label>
-                <lineEdit id="matchPlayer2Id" x="100" y="30" width="170" height="23" dataSet="players.csv" dataField="1">Player 2 ID</lineEdit>
-                <label x="10" y="60" width="80" height="23">Name</label>
-                <lineEdit id="matchPlayer2NameMain" x="100" y="60" width="170" height="23" dataSet="players.csv" dataField="2" master="matchPlayer2Id">Player 2 Name</lineEdit>
-                <label x="10" y="90" width="80" height="23">Comment</label>
-                <lineEdit id="matchPlayer2CommentMain" x="100" y="90" width="170" height="23" dataSet="players.csv" dataField="4" master="matchPlayer2Id">Player 2 Comment</lineEdit>
-                <label x="10" y="120" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="matchPlayer2NameSub" x="100" y="120" width="170" height="23" dataSet="players.csv" dataField="3" master="matchPlayer2Id">Player 2 Name (Sub)</lineEdit>
-                <label x="10" y="150" width="80" height="23">Comment (Sub)</label>
-                <lineEdit id="matchPlayer2CommentSub" x="100" y="150" width="170" height="23" dataSet="players.csv" dataField="5" master="matchPlayer2Id">Player 2 Comment (Sub)</lineEdit>
+        <tabSet x="398" y="10" width="322" height="155">
+            <tab name="Player 2                                                                ">
+                <label x="10" y="5" width="80" height="35">ID</label>
+                <lineEdit id="matchPlayer2Id" x="85" y="5" width="110" height="35" dataSet="players.csv" dataField="1">Player 1 ID</lineEdit>
+                <button type="reset" x="260" y="5" width="50" height="35" tooltip="Clear the Player 2" id="clearPlayer2" reset="matchPlayer2Id,matchPlayer2NameMain,matchPlayer2NameSub,matchPlayer2CommentMain,matchPlayer2CommentSub">Clear</button>
+
+                <label x="10" y="45" width="80" height="35">Comment</label>
+                <lineEdit id="matchPlayer2CommentMain" x="85" y="45" width="110" height="35" dataSet="players.csv" dataField="4" master="matchPlayer2Id">Comment</lineEdit>
+                <lineEdit id="matchPlayer2CommentSub" x="200" y="45" width="110" height="35" dataSet="players.csv" dataField="5" master="matchPlayer2Id">Comment (Sub)</lineEdit>
+
+                <label x="10" y="85" width="80" height="35">Name</label>
+                <lineEdit id="matchPlayer2NameMain" x="85" y="85" width="110" height="35" dataSet="players.csv" dataField="2" master="matchPlayer2Id">Name</lineEdit>
+                <lineEdit id="matchPlayer2NameSub" x="200" y="85" width="110" height="35" dataSet="players.csv" dataField="3" master="matchPlayer2Id">Name (Sub)</lineEdit>
             </tab>
         </tabSet>
 
-        <tabSet x="10" y="230" width="628" height="140">
-            <tab name="Win / Lose                                                                                                                                         ">
-                <label x="10" y="0" width="608" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <label x="10" y="20" width="60" height="13">First to</label>
+        <tabSet x="10" y="175" width="712" height="140">
+            <tab name="Win / Lose                                                                                                                                                              ">
+                <label x="10" y="5" width="60" height="30">First to</label>
                 <radioGroup id="matchFirstTo">
-                    <radioButton x="70" y="17" width="40" height="20" value="5">5</radioButton>
-                    <radioButton x="110" y="17" width="40" height="20" value="10">10</radioButton>
+                    <radioButton x="70" y="5" width="40" height="30" value="5">5</radioButton>
+                    <radioButton x="120" y="5" width="40" height="30" value="10">10</radioButton>
                 </radioGroup>
 
-                <label x="10" y="50" width="60" height="13">Player 1</label>
-                <label x="10" y="80" width="60" height="13">Player 2</label>
-                <checkBox x="70" y="47" width="20" height="20" id="matchPlayer1Wins1" />
-                <checkBox x="70" y="77" width="20" height="20" id="matchPlayer2Wins1" />
-                <checkBox x="90" y="47" width="20" height="20" id="matchPlayer1Wins2" />
-                <checkBox x="90" y="77" width="20" height="20" id="matchPlayer2Wins2" />
-                <checkBox x="110" y="47" width="20" height="20" id="matchPlayer1Wins3" />
-                <checkBox x="110" y="77" width="20" height="20" id="matchPlayer2Wins3" />
-                <checkBox x="130" y="47" width="20" height="20" id="matchPlayer1Wins4" />
-                <checkBox x="130" y="77" width="20" height="20" id="matchPlayer2Wins4" />
-                <checkBox x="150" y="47" width="20" height="20" id="matchPlayer1Wins5" />
-                <checkBox x="150" y="77" width="20" height="20" id="matchPlayer2Wins5" />
-                <checkBox x="170" y="47" width="20" height="20" id="matchPlayer1Wins6" />
-                <checkBox x="170" y="77" width="20" height="20" id="matchPlayer2Wins6" />
-                <checkBox x="190" y="47" width="20" height="20" id="matchPlayer1Wins7" />
-                <checkBox x="190" y="77" width="20" height="20" id="matchPlayer2Wins7" />
-                <checkBox x="210" y="47" width="20" height="20" id="matchPlayer1Wins8" />
-                <checkBox x="210" y="77" width="20" height="20" id="matchPlayer2Wins8" />
-                <checkBox x="230" y="47" width="20" height="20" id="matchPlayer1Wins9" />
-                <checkBox x="230" y="77" width="20" height="20" id="matchPlayer2Wins9" />
-                <checkBox x="250" y="47" width="20" height="20" id="matchPlayer1Wins10" />
-                <checkBox x="250" y="77" width="20" height="20" id="matchPlayer2Wins10" />
-                <checkBox x="270" y="47" width="20" height="20" id="matchPlayer1Wins11" />
-                <checkBox x="270" y="77" width="20" height="20" id="matchPlayer2Wins11" />
-                <checkBox x="290" y="47" width="20" height="20" id="matchPlayer1Wins12" />
-                <checkBox x="290" y="77" width="20" height="20" id="matchPlayer2Wins12" />
-                <checkBox x="310" y="47" width="20" height="20" id="matchPlayer1Wins13" />
-                <checkBox x="310" y="77" width="20" height="20" id="matchPlayer2Wins13" />
-                <checkBox x="330" y="47" width="20" height="20" id="matchPlayer1Wins14" />
-                <checkBox x="330" y="77" width="20" height="20" id="matchPlayer2Wins14" />
-                <checkBox x="350" y="47" width="20" height="20" id="matchPlayer1Wins15" />
-                <checkBox x="350" y="77" width="20" height="20" id="matchPlayer2Wins15" />
-                <checkBox x="370" y="47" width="20" height="20" id="matchPlayer1Wins16" />
-                <checkBox x="370" y="77" width="20" height="20" id="matchPlayer2Wins16" />
-                <checkBox x="390" y="47" width="20" height="20" id="matchPlayer1Wins17" />
-                <checkBox x="390" y="77" width="20" height="20" id="matchPlayer2Wins17" />
-                <checkBox x="410" y="47" width="20" height="20" id="matchPlayer1Wins18" />
-                <checkBox x="410" y="77" width="20" height="20" id="matchPlayer2Wins18" />
-                <checkBox x="430" y="47" width="20" height="20" id="matchPlayer1Wins19" />
-                <checkBox x="430" y="77" width="20" height="20" id="matchPlayer2Wins19" />
+                <label x="10" y="40" width="60" height="30">Player 1</label>
+                <label x="10" y="70" width="60" height="30">Player 2</label>
+                <checkBox x="70" y="40" width="30" height="30" id="matchPlayer1Wins1" />
+                <checkBox x="70" y="70" width="30" height="30" id="matchPlayer2Wins1" />
+                <checkBox x="95" y="40" width="30" height="30" id="matchPlayer1Wins2" />
+                <checkBox x="95" y="70" width="30" height="30" id="matchPlayer2Wins2" />
+                <checkBox x="120" y="40" width="30" height="30" id="matchPlayer1Wins3" />
+                <checkBox x="120" y="70" width="30" height="30" id="matchPlayer2Wins3" />
+                <checkBox x="145" y="40" width="30" height="30" id="matchPlayer1Wins4" />
+                <checkBox x="145" y="70" width="30" height="30" id="matchPlayer2Wins4" />
+                <checkBox x="170" y="40" width="30" height="30" id="matchPlayer1Wins5" />
+                <checkBox x="170" y="70" width="30" height="30" id="matchPlayer2Wins5" />
+                <checkBox x="195" y="40" width="30" height="30" id="matchPlayer1Wins6" />
+                <checkBox x="195" y="70" width="30" height="30" id="matchPlayer2Wins6" />
+                <checkBox x="220" y="40" width="30" height="30" id="matchPlayer1Wins7" />
+                <checkBox x="220" y="70" width="30" height="30" id="matchPlayer2Wins7" />
+                <checkBox x="245" y="40" width="30" height="30" id="matchPlayer1Wins8" />
+                <checkBox x="245" y="70" width="30" height="30" id="matchPlayer2Wins8" />
+                <checkBox x="270" y="40" width="30" height="30" id="matchPlayer1Wins9" />
+                <checkBox x="270" y="70" width="30" height="30" id="matchPlayer2Wins9" />
+                <checkBox x="295" y="40" width="30" height="30" id="matchPlayer1Wins10" />
+                <checkBox x="295" y="70" width="30" height="30" id="matchPlayer2Wins10" />
+                <checkBox x="320" y="40" width="30" height="30" id="matchPlayer1Wins11" />
+                <checkBox x="320" y="70" width="30" height="30" id="matchPlayer2Wins11" />
+                <checkBox x="345" y="40" width="30" height="30" id="matchPlayer1Wins12" />
+                <checkBox x="345" y="70" width="30" height="30" id="matchPlayer2Wins12" />
+                <checkBox x="370" y="40" width="30" height="30" id="matchPlayer1Wins13" />
+                <checkBox x="370" y="70" width="30" height="30" id="matchPlayer2Wins13" />
+                <checkBox x="395" y="40" width="30" height="30" id="matchPlayer1Wins14" />
+                <checkBox x="395" y="70" width="30" height="30" id="matchPlayer2Wins14" />
+                <checkBox x="420" y="40" width="30" height="30" id="matchPlayer1Wins15" />
+                <checkBox x="420" y="70" width="30" height="30" id="matchPlayer2Wins15" />
+                <checkBox x="445" y="40" width="30" height="30" id="matchPlayer1Wins16" />
+                <checkBox x="445" y="70" width="30" height="30" id="matchPlayer2Wins16" />
+                <checkBox x="470" y="40" width="30" height="30" id="matchPlayer1Wins17" />
+                <checkBox x="470" y="70" width="30" height="30" id="matchPlayer2Wins17" />
+                <checkBox x="495" y="40" width="30" height="30" id="matchPlayer1Wins18" />
+                <checkBox x="495" y="70" width="30" height="30" id="matchPlayer2Wins18" />
+                <checkBox x="520" y="40" width="30" height="30" id="matchPlayer1Wins19" />
+                <checkBox x="520" y="70" width="30" height="30" id="matchPlayer2Wins19" />
 
-                <button type="swap" x="460" y="50" width="70" height="46" tooltip="Swap the Scores" id="swapScores" swapSet1="matchPlayer1Wins1,matchPlayer1Wins2,matchPlayer1Wins3,matchPlayer1Wins4,matchPlayer1Wins5,matchPlayer1Wins6,matchPlayer1Wins7,matchPlayer1Wins8,matchPlayer1Wins9,matchPlayer1Wins10,matchPlayer1Wins11,matchPlayer1Wins12,matchPlayer1Wins13,matchPlayer1Wins14,matchPlayer1Wins15,matchPlayer1Wins16,matchPlayer1Wins17,matchPlayer1Wins18,matchPlayer1Wins19" swapSet2="matchPlayer2Wins1,matchPlayer2Wins2,matchPlayer2Wins3,matchPlayer2Wins4,matchPlayer2Wins5,matchPlayer2Wins6,matchPlayer2Wins7,matchPlayer2Wins8,matchPlayer2Wins9,matchPlayer2Wins10,matchPlayer2Wins11,matchPlayer2Wins12,matchPlayer2Wins13,matchPlayer2Wins14,matchPlayer2Wins15,matchPlayer2Wins16,matchPlayer2Wins17,matchPlayer2Wins18,matchPlayer2Wins19">Swap</button>
-                <button type="reset" x="540" y="50" width="70" height="46" tooltip="Clear the Scores" id="clearScores" reset="matchPlayer1Wins1,matchPlayer2Wins1,matchPlayer1Wins2,matchPlayer2Wins2,matchPlayer1Wins3,matchPlayer2Wins3,matchPlayer1Wins4,matchPlayer2Wins4,matchPlayer1Wins5,matchPlayer2Wins5,matchPlayer1Wins6,matchPlayer2Wins6,matchPlayer1Wins7,matchPlayer2Wins7,matchPlayer1Wins8,matchPlayer2Wins8,matchPlayer1Wins9,matchPlayer2Wins9,matchPlayer1Wins10,matchPlayer2Wins10,matchPlayer1Wins11,matchPlayer2Wins11,matchPlayer1Wins12,matchPlayer2Wins12,matchPlayer1Wins13,matchPlayer2Wins13,matchPlayer1Wins14,matchPlayer2Wins14,matchPlayer1Wins15,matchPlayer2Wins15,matchPlayer1Wins16,matchPlayer2Wins16,matchPlayer1Wins17,matchPlayer2Wins17,matchPlayer1Wins18,matchPlayer2Wins18,matchPlayer1Wins19,matchPlayer2Wins19">Clear</button>
+                <button type="swap" x="550" y="45" width="70" height="50" tooltip="Swap the Scores" id="swapScores" swapSet1="matchPlayer1Wins1,matchPlayer1Wins2,matchPlayer1Wins3,matchPlayer1Wins4,matchPlayer1Wins5,matchPlayer1Wins6,matchPlayer1Wins7,matchPlayer1Wins8,matchPlayer1Wins9,matchPlayer1Wins10,matchPlayer1Wins11,matchPlayer1Wins12,matchPlayer1Wins13,matchPlayer1Wins14,matchPlayer1Wins15,matchPlayer1Wins16,matchPlayer1Wins17,matchPlayer1Wins18,matchPlayer1Wins19" swapSet2="matchPlayer2Wins1,matchPlayer2Wins2,matchPlayer2Wins3,matchPlayer2Wins4,matchPlayer2Wins5,matchPlayer2Wins6,matchPlayer2Wins7,matchPlayer2Wins8,matchPlayer2Wins9,matchPlayer2Wins10,matchPlayer2Wins11,matchPlayer2Wins12,matchPlayer2Wins13,matchPlayer2Wins14,matchPlayer2Wins15,matchPlayer2Wins16,matchPlayer2Wins17,matchPlayer2Wins18,matchPlayer2Wins19">Swap</button>
+                <button type="reset" x="630" y="45" width="70" height="50" tooltip="Clear the Scores" id="clearScores" reset="matchPlayer1Wins1,matchPlayer2Wins1,matchPlayer1Wins2,matchPlayer2Wins2,matchPlayer1Wins3,matchPlayer2Wins3,matchPlayer1Wins4,matchPlayer2Wins4,matchPlayer1Wins5,matchPlayer2Wins5,matchPlayer1Wins6,matchPlayer2Wins6,matchPlayer1Wins7,matchPlayer2Wins7,matchPlayer1Wins8,matchPlayer2Wins8,matchPlayer1Wins9,matchPlayer2Wins9,matchPlayer1Wins10,matchPlayer2Wins10,matchPlayer1Wins11,matchPlayer2Wins11,matchPlayer1Wins12,matchPlayer2Wins12,matchPlayer1Wins13,matchPlayer2Wins13,matchPlayer1Wins14,matchPlayer2Wins14,matchPlayer1Wins15,matchPlayer2Wins15,matchPlayer1Wins16,matchPlayer2Wins16,matchPlayer1Wins17,matchPlayer2Wins17,matchPlayer1Wins18,matchPlayer2Wins18,matchPlayer1Wins19,matchPlayer2Wins19">Clear</button>
             </tab>
         </tabSet>
     </tab>
 
     <tab name="Team Info" scrollable="1">
-        <button type="swap" x="300" y="10" width="50" height="23" tooltip="Swap the Teams" id="swapTeams" swapSet1="team1ActivePlayer,team1Player1IsLose,team1Player1Id,team1Player1NameMain,team1Player1NameSub,team1Player2IsLose,team1Player2Id,team1Player2NameMain,team1Player2NameSub,team1Player3IsLose,team1Player3Id,team1Player3NameMain,team1Player3NameSub,team1Player4IsLose,team1Player4Id,team1Player4NameMain,team1Player4NameSub,team1Player5IsLose,team1Player5Id,team1Player5NameMain,team1Player5NameSub,team1Player6IsLose,team1Player6Id,team1Player6NameMain,team1Player6NameSub,team1Player7IsLose,team1Player7Id,team1Player7NameMain,team1Player7NameSub,team1Player8IsLose,team1Player8Id,team1Player8NameMain,team1Player8NameSub,team1Player9IsLose,team1Player9Id,team1Player9NameMain,team1Player9NameSub,team1Player10IsLose,team1Player10Id,team1Player10NameMain,team1Player10NameSub,team1Player11IsLose,team1Player11Id,team1Player11NameMain,team1Player11NameSub,team1Player12IsLose,team1Player12Id,team1Player12NameMain,team1Player12NameSub,team1Player13IsLose,team1Player13Id,team1Player13NameMain,team1Player13NameSub,team1Player14IsLose,team1Player14Id,team1Player14NameMain,team1Player14NameSub,team1Player15IsLose,team1Player15Id,team1Player15NameMain,team1Player15NameSub,team1Player16IsLose,team1Player16Id,team1Player16NameMain,team1Player16NameSub" swapSet2="team2ActivePlayer,team2Player1IsLose,team2Player1Id,team2Player1NameMain,team2Player1NameSub,team2Player2IsLose,team2Player2Id,team2Player2NameMain,team2Player2NameSub,team2Player3IsLose,team2Player3Id,team2Player3NameMain,team2Player3NameSub,team2Player4IsLose,team2Player4Id,team2Player4NameMain,team2Player4NameSub,team2Player5IsLose,team2Player5Id,team2Player5NameMain,team2Player5NameSub,team2Player6IsLose,team2Player6Id,team2Player6NameMain,team2Player6NameSub,team2Player7IsLose,team2Player7Id,team2Player7NameMain,team2Player7NameSub,team2Player8IsLose,team2Player8Id,team2Player8NameMain,team2Player8NameSub,team2Player9IsLose,team2Player9Id,team2Player9NameMain,team2Player9NameSub,team2Player10IsLose,team2Player10Id,team2Player10NameMain,team2Player10NameSub,team2Player11IsLose,team2Player11Id,team2Player11NameMain,team2Player11NameSub,team2Player12IsLose,team2Player12Id,team2Player12NameMain,team2Player12NameSub,team2Player13IsLose,team2Player13Id,team2Player13NameMain,team2Player13NameSub,team2Player14IsLose,team2Player14Id,team2Player14NameMain,team2Player14NameSub,team2Player15IsLose,team2Player15Id,team2Player15NameMain,team2Player15NameSub,team2Player16IsLose,team2Player16Id,team2Player16NameMain,team2Player16NameSub">Swap</button>
-        <button type="reset" x="300" y="40" width="50" height="23" tooltip="Clear the Teams" id="clearTeams" reset="team1ActivePlayer,team1Player1IsLose,team1Player1Id,team1Player1NameMain,team1Player1NameSub,team1Player2IsLose,team1Player2Id,team1Player2NameMain,team1Player2NameSub,team1Player3IsLose,team1Player3Id,team1Player3NameMain,team1Player3NameSub,team1Player4IsLose,team1Player4Id,team1Player4NameMain,team1Player4NameSub,team1Player5IsLose,team1Player5Id,team1Player5NameMain,team1Player5NameSub,team1Player6IsLose,team1Player6Id,team1Player6NameMain,team1Player6NameSub,team1Player7IsLose,team1Player7Id,team1Player7NameMain,team1Player7NameSub,team1Player8IsLose,team1Player8Id,team1Player8NameMain,team1Player8NameSub,team1Player9IsLose,team1Player9Id,team1Player9NameMain,team1Player9NameSub,team1Player10IsLose,team1Player10Id,team1Player10NameMain,team1Player10NameSub,team1Player11IsLose,team1Player11Id,team1Player11NameMain,team1Player11NameSub,team1Player12IsLose,team1Player12Id,team1Player12NameMain,team1Player12NameSub,team1Player13IsLose,team1Player13Id,team1Player13NameMain,team1Player13NameSub,team1Player14IsLose,team1Player14Id,team1Player14NameMain,team1Player14NameSub,team1Player15IsLose,team1Player15Id,team1Player15NameMain,team1Player15NameSub,team1Player16IsLose,team1Player16Id,team1Player16NameMain,team1Player16NameSub,team2ActivePlayer,team2Player1IsLose,team2Player1Id,team2Player1NameMain,team2Player1NameSub,team2Player2IsLose,team2Player2Id,team2Player2NameMain,team2Player2NameSub,team2Player3IsLose,team2Player3Id,team2Player3NameMain,team2Player3NameSub,team2Player4IsLose,team2Player4Id,team2Player4NameMain,team2Player4NameSub,team2Player5IsLose,team2Player5Id,team2Player5NameMain,team2Player5NameSub,team2Player6IsLose,team2Player6Id,team2Player6NameMain,team2Player6NameSub,team2Player7IsLose,team2Player7Id,team2Player7NameMain,team2Player7NameSub,team2Player8IsLose,team2Player8Id,team2Player8NameMain,team2Player8NameSub,team2Player9IsLose,team2Player9Id,team2Player9NameMain,team2Player9NameSub,team2Player10IsLose,team2Player10Id,team2Player10NameMain,team2Player10NameSub,team2Player11IsLose,team2Player11Id,team2Player11NameMain,team2Player11NameSub,team2Player12IsLose,team2Player12Id,team2Player12NameMain,team2Player12NameSub,team2Player13IsLose,team2Player13Id,team2Player13NameMain,team2Player13NameSub,team2Player14IsLose,team2Player14Id,team2Player14NameMain,team2Player14NameSub,team2Player15IsLose,team2Player15Id,team2Player15NameMain,team2Player15NameSub,team2Player16IsLose,team2Player16Id,team2Player16NameMain,team2Player16NameSub">Clear</button>
+        <button type="swap" x="340" y="10" width="50" height="35" tooltip="Swap the Teams" id="swapTeams" swapSet1="team1ActivePlayer,team1Player1IsLose,team1Player1Id,team1Player1NameMain,team1Player1NameSub,team1Player2IsLose,team1Player2Id,team1Player2NameMain,team1Player2NameSub,team1Player3IsLose,team1Player3Id,team1Player3NameMain,team1Player3NameSub,team1Player4IsLose,team1Player4Id,team1Player4NameMain,team1Player4NameSub,team1Player5IsLose,team1Player5Id,team1Player5NameMain,team1Player5NameSub,team1Player6IsLose,team1Player6Id,team1Player6NameMain,team1Player6NameSub,team1Player7IsLose,team1Player7Id,team1Player7NameMain,team1Player7NameSub,team1Player8IsLose,team1Player8Id,team1Player8NameMain,team1Player8NameSub,team1Player9IsLose,team1Player9Id,team1Player9NameMain,team1Player9NameSub,team1Player10IsLose,team1Player10Id,team1Player10NameMain,team1Player10NameSub,team1Player11IsLose,team1Player11Id,team1Player11NameMain,team1Player11NameSub,team1Player12IsLose,team1Player12Id,team1Player12NameMain,team1Player12NameSub,team1Player13IsLose,team1Player13Id,team1Player13NameMain,team1Player13NameSub,team1Player14IsLose,team1Player14Id,team1Player14NameMain,team1Player14NameSub,team1Player15IsLose,team1Player15Id,team1Player15NameMain,team1Player15NameSub,team1Player16IsLose,team1Player16Id,team1Player16NameMain,team1Player16NameSub" swapSet2="team2ActivePlayer,team2Player1IsLose,team2Player1Id,team2Player1NameMain,team2Player1NameSub,team2Player2IsLose,team2Player2Id,team2Player2NameMain,team2Player2NameSub,team2Player3IsLose,team2Player3Id,team2Player3NameMain,team2Player3NameSub,team2Player4IsLose,team2Player4Id,team2Player4NameMain,team2Player4NameSub,team2Player5IsLose,team2Player5Id,team2Player5NameMain,team2Player5NameSub,team2Player6IsLose,team2Player6Id,team2Player6NameMain,team2Player6NameSub,team2Player7IsLose,team2Player7Id,team2Player7NameMain,team2Player7NameSub,team2Player8IsLose,team2Player8Id,team2Player8NameMain,team2Player8NameSub,team2Player9IsLose,team2Player9Id,team2Player9NameMain,team2Player9NameSub,team2Player10IsLose,team2Player10Id,team2Player10NameMain,team2Player10NameSub,team2Player11IsLose,team2Player11Id,team2Player11NameMain,team2Player11NameSub,team2Player12IsLose,team2Player12Id,team2Player12NameMain,team2Player12NameSub,team2Player13IsLose,team2Player13Id,team2Player13NameMain,team2Player13NameSub,team2Player14IsLose,team2Player14Id,team2Player14NameMain,team2Player14NameSub,team2Player15IsLose,team2Player15Id,team2Player15NameMain,team2Player15NameSub,team2Player16IsLose,team2Player16Id,team2Player16NameMain,team2Player16NameSub">Swap</button>
+        <button type="reset" x="340" y="50" width="50" height="35" tooltip="Clear the Teams" id="clearTeams" reset="team1ActivePlayer,team1Player1IsLose,team1Player1Id,team1Player1NameMain,team1Player1NameSub,team1Player2IsLose,team1Player2Id,team1Player2NameMain,team1Player2NameSub,team1Player3IsLose,team1Player3Id,team1Player3NameMain,team1Player3NameSub,team1Player4IsLose,team1Player4Id,team1Player4NameMain,team1Player4NameSub,team1Player5IsLose,team1Player5Id,team1Player5NameMain,team1Player5NameSub,team1Player6IsLose,team1Player6Id,team1Player6NameMain,team1Player6NameSub,team1Player7IsLose,team1Player7Id,team1Player7NameMain,team1Player7NameSub,team1Player8IsLose,team1Player8Id,team1Player8NameMain,team1Player8NameSub,team1Player9IsLose,team1Player9Id,team1Player9NameMain,team1Player9NameSub,team1Player10IsLose,team1Player10Id,team1Player10NameMain,team1Player10NameSub,team1Player11IsLose,team1Player11Id,team1Player11NameMain,team1Player11NameSub,team1Player12IsLose,team1Player12Id,team1Player12NameMain,team1Player12NameSub,team1Player13IsLose,team1Player13Id,team1Player13NameMain,team1Player13NameSub,team1Player14IsLose,team1Player14Id,team1Player14NameMain,team1Player14NameSub,team1Player15IsLose,team1Player15Id,team1Player15NameMain,team1Player15NameSub,team1Player16IsLose,team1Player16Id,team1Player16NameMain,team1Player16NameSub,team2ActivePlayer,team2Player1IsLose,team2Player1Id,team2Player1NameMain,team2Player1NameSub,team2Player2IsLose,team2Player2Id,team2Player2NameMain,team2Player2NameSub,team2Player3IsLose,team2Player3Id,team2Player3NameMain,team2Player3NameSub,team2Player4IsLose,team2Player4Id,team2Player4NameMain,team2Player4NameSub,team2Player5IsLose,team2Player5Id,team2Player5NameMain,team2Player5NameSub,team2Player6IsLose,team2Player6Id,team2Player6NameMain,team2Player6NameSub,team2Player7IsLose,team2Player7Id,team2Player7NameMain,team2Player7NameSub,team2Player8IsLose,team2Player8Id,team2Player8NameMain,team2Player8NameSub,team2Player9IsLose,team2Player9Id,team2Player9NameMain,team2Player9NameSub,team2Player10IsLose,team2Player10Id,team2Player10NameMain,team2Player10NameSub,team2Player11IsLose,team2Player11Id,team2Player11NameMain,team2Player11NameSub,team2Player12IsLose,team2Player12Id,team2Player12NameMain,team2Player12NameSub,team2Player13IsLose,team2Player13Id,team2Player13NameMain,team2Player13NameSub,team2Player14IsLose,team2Player14Id,team2Player14NameMain,team2Player14NameSub,team2Player15IsLose,team2Player15Id,team2Player15NameMain,team2Player15NameSub,team2Player16IsLose,team2Player16Id,team2Player16NameMain,team2Player16NameSub">Clear</button>
 
-        <tabSet x="10" y="10" width="284" height="2235">
-            <tab name="Team A                                                       ">
+        <tabSet x="10" y="10" width="324" height="2065">
+            <tab name="Team A                                                                 ">
                 <radioGroup id="team1ActivePlayer">
-                    <radioButton x="10" y="3" width="120" height="20" value="1">Player 1</radioButton>
+                    <radioButton x="10" y="13" width="120" height="20" value="1">Player 1</radioButton>
                     <radioButton x="10" y="143" width="120" height="20" value="2">Player 2</radioButton>
-                    <radioButton x="10" y="283" width="120" height="20" value="3">Player 3</radioButton>
-                    <radioButton x="10" y="423" width="120" height="20" value="4">Player 4</radioButton>
-                    <radioButton x="10" y="563" width="120" height="20" value="5">Player 5</radioButton>
-                    <radioButton x="10" y="703" width="120" height="20" value="6">Player 6</radioButton>
-                    <radioButton x="10" y="843" width="120" height="20" value="7">Player 7</radioButton>
-                    <radioButton x="10" y="983" width="120" height="20" value="8">Player 8</radioButton>
-                    <radioButton x="10" y="1123" width="120" height="20" value="9">Player 9</radioButton>
-                    <radioButton x="10" y="1263" width="120" height="20" value="10">Player 10</radioButton>
-                    <radioButton x="10" y="1403" width="120" height="20" value="11">Player 11</radioButton>
-                    <radioButton x="10" y="1543" width="120" height="20" value="12">Player 12</radioButton>
-                    <radioButton x="10" y="1683" width="120" height="20" value="13">Player 13</radioButton>
-                    <radioButton x="10" y="1823" width="120" height="20" value="14">Player 14</radioButton>
-                    <radioButton x="10" y="1963" width="120" height="20" value="15">Player 15</radioButton>
-                    <radioButton x="10" y="2103" width="120" height="20" value="16">Player 16</radioButton>
+                    <radioButton x="10" y="273" width="120" height="20" value="3">Player 3</radioButton>
+                    <radioButton x="10" y="403" width="120" height="20" value="4">Player 4</radioButton>
+                    <radioButton x="10" y="533" width="120" height="20" value="5">Player 5</radioButton>
+                    <radioButton x="10" y="663" width="120" height="20" value="6">Player 6</radioButton>
+                    <radioButton x="10" y="793" width="120" height="20" value="7">Player 7</radioButton>
+                    <radioButton x="10" y="923" width="120" height="20" value="8">Player 8</radioButton>
+                    <radioButton x="10" y="1053" width="120" height="20" value="9">Player 9</radioButton>
+                    <radioButton x="10" y="1183" width="120" height="20" value="10">Player 10</radioButton>
+                    <radioButton x="10" y="1313" width="120" height="20" value="11">Player 11</radioButton>
+                    <radioButton x="10" y="1443" width="120" height="20" value="12">Player 12</radioButton>
+                    <radioButton x="10" y="1573" width="120" height="20" value="13">Player 13</radioButton>
+                    <radioButton x="10" y="1703" width="120" height="20" value="14">Player 14</radioButton>
+                    <radioButton x="10" y="1833" width="120" height="20" value="15">Player 15</radioButton>
+                    <radioButton x="10" y="1963" width="120" height="20" value="16">Player 16</radioButton>
                 </radioGroup>
 
-                <label x="80" y="5" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="3" width="80" height="20" id="team1Player1IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="0" width="50" height="23" tooltip="Clear the Player 1" id="clearTeam1Player1" reset="team1Player1IsLose,team1Player1Id,team1Player1NameMain,team1Player1NameSub">Clear</button>
-                <label x="10" y="25" width="80" height="23">ID</label>
-                <lineEdit id="team1Player1Id" x="100" y="25" width="170" height="23" dataSet="players.csv" dataField="1">Player 1 ID</lineEdit>
-                <label x="10" y="50" width="80" height="23">Name</label>
-                <lineEdit id="team1Player1NameMain" x="100" y="50" width="170" height="23" dataSet="players.csv" dataField="2" master="team1Player1Id">Player 1 Name</lineEdit>
-                <label x="10" y="75" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team1Player1NameSub" x="100" y="75" width="170" height="23" dataSet="players.csv" dataField="3" master="team1Player1Id">Player 1 Name (Sub)</lineEdit>
+                <lineEdit id="team1Player1Id" x="85" y="5" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearTeam1Player1" type="reset" x="260" y="5" width="50" height="35" tooltip="Clear the Player 1" reset="team1Player1IsLose,team1Player1Id,team1Player1NameMain,team1Player1NameSub">Clear</button>
+                <checkBox id="team1Player1IsLose" x="30" y="45" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team1Player1NameMain" x="85" y="45" width="110" height="35" dataSet="players.csv" dataField="2" master="team1Player1Id">Name</lineEdit>
+                <lineEdit id="team1Player1NameSub" x="200" y="45" width="110" height="35" dataSet="players.csv" dataField="3" master="team1Player1Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="110" width="50" height="23" tooltip="Swap the Team A Player" id="swapTeam1Player1" swapSet1="team1Player1IsLose,team1Player1Id,team1Player1NameMain,team1Player1NameSub" swapSet2="team1Player2IsLose,team1Player2Id,team1Player2NameMain,team1Player2NameSub">Swap</button>
+                <button id="swapTeam1Player1" type="swap" x="130" y="90" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team1Player1IsLose,team1Player1Id,team1Player1NameMain,team1Player1NameSub" swapSet2="team1Player2IsLose,team1Player2Id,team1Player2NameMain,team1Player2NameSub">Swap</button>
 
-                <label x="80" y="145" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="143" width="80" height="20" id="team1Player2IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="140" width="50" height="23" tooltip="Clear the Player 2" id="clearTeam1Player2" reset="team1Player2IsLose,team1Player2Id,team1Player2NameMain,team1Player2NameSub">Clear</button>
-                <label x="10" y="165" width="80" height="23">ID</label>
-                <lineEdit id="team1Player2Id" x="100" y="165" width="170" height="23" dataSet="players.csv" dataField="1">Player 2 ID</lineEdit>
-                <label x="10" y="190" width="80" height="23">Name</label>
-                <lineEdit id="team1Player2NameMain" x="100" y="190" width="170" height="23" dataSet="players.csv" dataField="2" master="team1Player2Id">Player 2 Name</lineEdit>
-                <label x="10" y="215" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team1Player2NameSub" x="100" y="215" width="170" height="23" dataSet="players.csv" dataField="3" master="team1Player2Id">Player 2 Name (Sub)</lineEdit>
+                <lineEdit id="team1Player2Id" x="85" y="135" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearTeam1Player2" type="reset" x="260" y="135" width="50" height="35" tooltip="Clear the Player 1" reset="team1Player2IsLose,team1Player2Id,team1Player2NameMain,team1Player2NameSub">Clear</button>
+                <checkBox id="team1Player2IsLose" x="30" y="175" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team1Player2NameMain" x="85" y="175" width="110" height="35" dataSet="players.csv" dataField="2" master="team1Player2Id">Name</lineEdit>
+                <lineEdit id="team1Player2NameSub" x="200" y="175" width="110" height="35" dataSet="players.csv" dataField="3" master="team1Player2Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="250" width="50" height="23" tooltip="Swap the Team A Player" id="swapTeam1Player2" swapSet1="team1Player2IsLose,team1Player2Id,team1Player2NameMain,team1Player2NameSub" swapSet2="team1Player3IsLose,team1Player3Id,team1Player3NameMain,team1Player3NameSub">Swap</button>
+                <button id="swapTeam1Player2" type="swap" x="130" y="220" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team1Player2IsLose,team1Player2Id,team1Player2NameMain,team1Player2NameSub" swapSet2="team1Player3IsLose,team1Player3Id,team1Player3NameMain,team1Player3NameSub">Swap</button>
 
-                <label x="80" y="285" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="283" width="80" height="20" id="team1Player3IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="280" width="50" height="23" tooltip="Clear the Player 3" id="clearTeam1Player3" reset="team1Player3IsLose,team1Player3Id,team1Player3NameMain,team1Player3NameSub">Clear</button>
-                <label x="10" y="305" width="80" height="23">ID</label>
-                <lineEdit id="team1Player3Id" x="100" y="305" width="170" height="23" dataSet="players.csv" dataField="1">Player 3 ID</lineEdit>
-                <label x="10" y="330" width="80" height="23">Name</label>
-                <lineEdit id="team1Player3NameMain" x="100" y="330" width="170" height="23" dataSet="players.csv" dataField="2" master="team1Player3Id">Player 3 Name</lineEdit>
-                <label x="10" y="355" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team1Player3NameSub" x="100" y="355" width="170" height="23" dataSet="players.csv" dataField="3" master="team1Player3Id">Player 3 Name (Sub)</lineEdit>
+                <lineEdit id="team1Player3Id" x="85" y="265" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearTeam1Player3" type="reset" x="260" y="265" width="50" height="35" tooltip="Clear the Player 1" reset="team1Player3IsLose,team1Player3Id,team1Player3NameMain,team1Player3NameSub">Clear</button>
+                <checkBox id="team1Player3IsLose" x="30" y="305" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team1Player3NameMain" x="85" y="305" width="110" height="35" dataSet="players.csv" dataField="2" master="team1Player3Id">Name</lineEdit>
+                <lineEdit id="team1Player3NameSub" x="200" y="305" width="110" height="35" dataSet="players.csv" dataField="3" master="team1Player3Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="390" width="50" height="23" tooltip="Swap the Team A Player" id="swapTeam1Player3" swapSet1="team1Player3IsLose,team1Player3Id,team1Player3NameMain,team1Player3NameSub" swapSet2="team1Player4IsLose,team1Player4Id,team1Player4NameMain,team1Player4NameSub">Swap</button>
+                <button id="swapTeam1Player3" type="swap" x="130" y="350" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team1Player3IsLose,team1Player3Id,team1Player3NameMain,team1Player3NameSub" swapSet2="team1Player4IsLose,team1Player4Id,team1Player4NameMain,team1Player4NameSub">Swap</button>
 
-                <label x="80" y="425" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="423" width="80" height="20" id="team1Player4IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="420" width="50" height="23" tooltip="Clear the Player 4" id="clearTeam1Player4" reset="team1Player4IsLose,team1Player4Id,team1Player4NameMain,team1Player4NameSub">Clear</button>
-                <label x="10" y="445" width="80" height="23">ID</label>
-                <lineEdit id="team1Player4Id" x="100" y="445" width="170" height="23" dataSet="players.csv" dataField="1">Player 4 ID</lineEdit>
-                <label x="10" y="470" width="80" height="23">Name</label>
-                <lineEdit id="team1Player4NameMain" x="100" y="470" width="170" height="23" dataSet="players.csv" dataField="2" master="team1Player4Id">Player 4 Name</lineEdit>
-                <label x="10" y="495" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team1Player4NameSub" x="100" y="495" width="170" height="23" dataSet="players.csv" dataField="3" master="team1Player4Id">Player 4 Name (Sub)</lineEdit>
+                <lineEdit id="team1Player4Id" x="85" y="395" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearTeam1Player4" type="reset" x="260" y="395" width="50" height="35" tooltip="Clear the Player 1" reset="team1Player4IsLose,team1Player4Id,team1Player4NameMain,team1Player4NameSub">Clear</button>
+                <checkBox id="team1Player4IsLose" x="30" y="435" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team1Player4NameMain" x="85" y="435" width="110" height="35" dataSet="players.csv" dataField="2" master="team1Player4Id">Name</lineEdit>
+                <lineEdit id="team1Player4NameSub" x="200" y="435" width="110" height="35" dataSet="players.csv" dataField="3" master="team1Player4Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="530" width="50" height="23" tooltip="Swap the Team A Player" id="swapTeam1Player4" swapSet1="team1Player4IsLose,team1Player4Id,team1Player4NameMain,team1Player4NameSub" swapSet2="team1Player5IsLose,team1Player5Id,team1Player5NameMain,team1Player5NameSub">Swap</button>
+                <button id="swapTeam1Player4" type="swap" x="130" y="480" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team1Player4IsLose,team1Player4Id,team1Player4NameMain,team1Player4NameSub" swapSet2="team1Player5IsLose,team1Player5Id,team1Player5NameMain,team1Player5NameSub">Swap</button>
 
-                <label x="80" y="565" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="563" width="80" height="20" id="team1Player5IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="560" width="50" height="23" tooltip="Clear the Player 5" id="clearTeam1Player5" reset="team1Player5IsLose,team1Player5Id,team1Player5NameMain,team1Player5NameSub">Clear</button>
-                <label x="10" y="585" width="80" height="23">ID</label>
-                <lineEdit id="team1Player5Id" x="100" y="585" width="170" height="23" dataSet="players.csv" dataField="1">Player 5 ID</lineEdit>
-                <label x="10" y="610" width="80" height="23">Name</label>
-                <lineEdit id="team1Player5NameMain" x="100" y="610" width="170" height="23" dataSet="players.csv" dataField="2" master="team1Player5Id">Player 5 Name</lineEdit>
-                <label x="10" y="635" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team1Player5NameSub" x="100" y="635" width="170" height="23" dataSet="players.csv" dataField="3" master="team1Player5Id">Player 5 Name (Sub)</lineEdit>
+                <lineEdit id="team1Player5Id" x="85" y="525" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearTeam1Player5" type="reset" x="260" y="525" width="50" height="35" tooltip="Clear the Player 1" reset="team1Player5IsLose,team1Player5Id,team1Player5NameMain,team1Player5NameSub">Clear</button>
+                <checkBox id="team1Player5IsLose" x="30" y="565" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team1Player5NameMain" x="85" y="565" width="110" height="35" dataSet="players.csv" dataField="2" master="team1Player5Id">Name</lineEdit>
+                <lineEdit id="team1Player5NameSub" x="200" y="565" width="110" height="35" dataSet="players.csv" dataField="3" master="team1Player5Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="670" width="50" height="23" tooltip="Swap the Team A Player" id="swapTeam1Player5" swapSet1="team1Player5IsLose,team1Player5Id,team1Player5NameMain,team1Player5NameSub" swapSet2="team1Player6IsLose,team1Player6Id,team1Player6NameMain,team1Player6NameSub">Swap</button>
+                <button id="swapTeam1Player5" type="swap" x="130" y="610" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team1Player5IsLose,team1Player5Id,team1Player5NameMain,team1Player5NameSub" swapSet2="team1Player6IsLose,team1Player6Id,team1Player6NameMain,team1Player6NameSub">Swap</button>
 
-                <label x="80" y="705" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="703" width="80" height="20" id="team1Player6IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="700" width="50" height="23" tooltip="Clear the Player 6" id="clearTeam1Player6" reset="team1Player6IsLose,team1Player6Id,team1Player6NameMain,team1Player6NameSub">Clear</button>
-                <label x="10" y="725" width="80" height="23">ID</label>
-                <lineEdit id="team1Player6Id" x="100" y="725" width="170" height="23" dataSet="players.csv" dataField="1">Player 6 ID</lineEdit>
-                <label x="10" y="750" width="80" height="23">Name</label>
-                <lineEdit id="team1Player6NameMain" x="100" y="750" width="170" height="23" dataSet="players.csv" dataField="2" master="team1Player6Id">Player 6 Name</lineEdit>
-                <label x="10" y="775" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team1Player6NameSub" x="100" y="775" width="170" height="23" dataSet="players.csv" dataField="3" master="team1Player6Id">Player 6 Name (Sub)</lineEdit>
+                <lineEdit id="team1Player6Id" x="85" y="655" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearTeam1Player6" type="reset" x="260" y="655" width="50" height="35" tooltip="Clear the Player 1" reset="team1Player6IsLose,team1Player6Id,team1Player6NameMain,team1Player6NameSub">Clear</button>
+                <checkBox id="team1Player6IsLose" x="30" y="695" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team1Player6NameMain" x="85" y="695" width="110" height="35" dataSet="players.csv" dataField="2" master="team1Player6Id">Name</lineEdit>
+                <lineEdit id="team1Player6NameSub" x="200" y="695" width="110" height="35" dataSet="players.csv" dataField="3" master="team1Player6Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="810" width="50" height="23" tooltip="Swap the Team A Player" id="swapTeam1Player6" swapSet1="team1Player6IsLose,team1Player6Id,team1Player6NameMain,team1Player6NameSub" swapSet2="team1Player7IsLose,team1Player7Id,team1Player7NameMain,team1Player7NameSub">Swap</button>
+                <button id="swapTeam1Player6" type="swap" x="130" y="740" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team1Player6IsLose,team1Player6Id,team1Player6NameMain,team1Player6NameSub" swapSet2="team1Player7IsLose,team1Player7Id,team1Player7NameMain,team1Player7NameSub">Swap</button>
 
-                <label x="80" y="845" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="843" width="80" height="20" id="team1Player7IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="840" width="50" height="23" tooltip="Clear the Player 7" id="clearTeam1Player7" reset="team1Player7IsLose,team1Player7Id,team1Player7NameMain,team1Player7NameSub">Clear</button>
-                <label x="10" y="865" width="80" height="23">ID</label>
-                <lineEdit id="team1Player7Id" x="100" y="865" width="170" height="23" dataSet="players.csv" dataField="1">Player 7 ID</lineEdit>
-                <label x="10" y="890" width="80" height="23">Name</label>
-                <lineEdit id="team1Player7NameMain" x="100" y="890" width="170" height="23" dataSet="players.csv" dataField="2" master="team1Player7Id">Player 7 Name</lineEdit>
-                <label x="10" y="915" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team1Player7NameSub" x="100" y="915" width="170" height="23" dataSet="players.csv" dataField="3" master="team1Player7Id">Player 7 Name (Sub)</lineEdit>
+                <lineEdit id="team1Player7Id" x="85" y="785" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearTeam1Player7" type="reset" x="260" y="785" width="50" height="35" tooltip="Clear the Player 1" reset="team1Player7IsLose,team1Player7Id,team1Player7NameMain,team1Player7NameSub">Clear</button>
+                <checkBox id="team1Player7IsLose" x="30" y="825" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team1Player7NameMain" x="85" y="825" width="110" height="35" dataSet="players.csv" dataField="2" master="team1Player7Id">Name</lineEdit>
+                <lineEdit id="team1Player7NameSub" x="200" y="825" width="110" height="35" dataSet="players.csv" dataField="3" master="team1Player7Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="950" width="50" height="23" tooltip="Swap the Team A Player" id="swapTeam1Player7" swapSet1="team1Player7IsLose,team1Player7Id,team1Player7NameMain,team1Player7NameSub" swapSet2="team1Player8IsLose,team1Player8Id,team1Player8NameMain,team1Player8NameSub">Swap</button>
+                <button id="swapTeam1Player7" type="swap" x="130" y="870" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team1Player7IsLose,team1Player7Id,team1Player7NameMain,team1Player7NameSub" swapSet2="team1Player8IsLose,team1Player8Id,team1Player8NameMain,team1Player8NameSub">Swap</button>
 
-                <label x="80" y="985" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="983" width="80" height="20" id="team1Player8IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="980" width="50" height="23" tooltip="Clear the Player 8" id="clearTeam1Player8" reset="team1Player8IsLose,team1Player8Id,team1Player8NameMain,team1Player8NameSub">Clear</button>
-                <label x="10" y="1005" width="80" height="23">ID</label>
-                <lineEdit id="team1Player8Id" x="100" y="1005" width="170" height="23" dataSet="players.csv" dataField="1">Player 8 ID</lineEdit>
-                <label x="10" y="1030" width="80" height="23">Name</label>
-                <lineEdit id="team1Player8NameMain" x="100" y="1030" width="170" height="23" dataSet="players.csv" dataField="2" master="team1Player8Id">Player 8 Name</lineEdit>
-                <label x="10" y="1055" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team1Player8NameSub" x="100" y="1055" width="170" height="23" dataSet="players.csv" dataField="3" master="team1Player8Id">Player 8 Name (Sub)</lineEdit>
+                <lineEdit id="team1Player8Id" x="85" y="915" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearTeam1Player8" type="reset" x="260" y="915" width="50" height="35" tooltip="Clear the Player 1" reset="team1Player8IsLose,team1Player8Id,team1Player8NameMain,team1Player8NameSub">Clear</button>
+                <checkBox id="team1Player8IsLose" x="30" y="955" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team1Player8NameMain" x="85" y="955" width="110" height="35" dataSet="players.csv" dataField="2" master="team1Player8Id">Name</lineEdit>
+                <lineEdit id="team1Player8NameSub" x="200" y="955" width="110" height="35" dataSet="players.csv" dataField="3" master="team1Player8Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="1090" width="50" height="23" tooltip="Swap the Team A Player" id="swapTeam1Player8" swapSet1="team1Player8IsLose,team1Player8Id,team1Player8NameMain,team1Player8NameSub" swapSet2="team1Player9IsLose,team1Player9Id,team1Player9NameMain,team1Player9NameSub">Swap</button>
+                <button id="swapTeam1Player8" type="swap" x="130" y="1000" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team1Player8IsLose,team1Player8Id,team1Player8NameMain,team1Player8NameSub" swapSet2="team1Player9IsLose,team1Player9Id,team1Player9NameMain,team1Player9NameSub">Swap</button>
 
-                <label x="80" y="1125" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="1123" width="80" height="20" id="team1Player9IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="1120" width="50" height="23" tooltip="Clear the Player 9" id="clearTeam1Player9" reset="team1Player9IsLose,team1Player9Id,team1Player9NameMain,team1Player9NameSub">Clear</button>
-                <label x="10" y="1145" width="80" height="23">ID</label>
-                <lineEdit id="team1Player9Id" x="100" y="1145" width="170" height="23" dataSet="players.csv" dataField="1">Player 9 ID</lineEdit>
-                <label x="10" y="1170" width="80" height="23">Name</label>
-                <lineEdit id="team1Player9NameMain" x="100" y="1170" width="170" height="23" dataSet="players.csv" dataField="2" master="team1Player9Id">Player 9 Name</lineEdit>
-                <label x="10" y="1195" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team1Player9NameSub" x="100" y="1195" width="170" height="23" dataSet="players.csv" dataField="3" master="team1Player9Id">Player 9 Name (Sub)</lineEdit>
+                <lineEdit id="team1Player9Id" x="85" y="1045" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearTeam1Player9" type="reset" x="260" y="1045" width="50" height="35" tooltip="Clear the Player 1" reset="team1Player9IsLose,team1Player9Id,team1Player9NameMain,team1Player9NameSub">Clear</button>
+                <checkBox id="team1Player9IsLose" x="30" y="1085" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team1Player9NameMain" x="85" y="1085" width="110" height="35" dataSet="players.csv" dataField="2" master="team1Player9Id">Name</lineEdit>
+                <lineEdit id="team1Player9NameSub" x="200" y="1085" width="110" height="35" dataSet="players.csv" dataField="3" master="team1Player9Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="1230" width="50" height="23" tooltip="Swap the Team A Player" id="swapTeam1Player9" swapSet1="team1Player9IsLose,team1Player9Id,team1Player9NameMain,team1Player9NameSub" swapSet2="team1Player10IsLose,team1Player10Id,team1Player10NameMain,team1Player10NameSub">Swap</button>
+                <button id="swapTeam1Player9" type="swap" x="130" y="1130" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team1Player9IsLose,team1Player9Id,team1Player9NameMain,team1Player9NameSub" swapSet2="team1Player10IsLose,team1Player10Id,team1Player10NameMain,team1Player10NameSub">Swap</button>
 
-                <label x="80" y="1265" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="1263" width="80" height="20" id="team1Player10IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="1260" width="50" height="23" tooltip="Clear the Player 10" id="clearTeam1Player10" reset="team1Player10IsLose,team1Player10Id,team1Player10NameMain,team1Player10NameSub">Clear</button>
-                <label x="10" y="1285" width="80" height="23">ID</label>
-                <lineEdit id="team1Player10Id" x="100" y="1285" width="170" height="23" dataSet="players.csv" dataField="1">Player 10 ID</lineEdit>
-                <label x="10" y="1310" width="80" height="23">Name</label>
-                <lineEdit id="team1Player10NameMain" x="100" y="1310" width="170" height="23" dataSet="players.csv" dataField="2" master="team1Player10Id">Player 10 Name</lineEdit>
-                <label x="10" y="1335" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team1Player10NameSub" x="100" y="1335" width="170" height="23" dataSet="players.csv" dataField="3" master="team1Player10Id">Player 10 Name (Sub)</lineEdit>
+                <lineEdit id="team1Player10Id" x="85" y="1175" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearTeam1Player10" type="reset" x="260" y="1175" width="50" height="35" tooltip="Clear the Player 1" reset="team1Player10IsLose,team1Player10Id,team1Player10NameMain,team1Player10NameSub">Clear</button>
+                <checkBox id="team1Player10IsLose" x="30" y="1215" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team1Player10NameMain" x="85" y="1215" width="110" height="35" dataSet="players.csv" dataField="2" master="team1Player10Id">Name</lineEdit>
+                <lineEdit id="team1Player10NameSub" x="200" y="1215" width="110" height="35" dataSet="players.csv" dataField="3" master="team1Player10Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="1370" width="50" height="23" tooltip="Swap the Team A Player" id="swapTeam1Player10" swapSet1="team1Player10IsLose,team1Player10Id,team1Player10NameMain,team1Player10NameSub" swapSet2="team1Player11IsLose,team1Player11Id,team1Player11NameMain,team1Player11NameSub">Swap</button>
+                <button id="swapTeam1Player10" type="swap" x="130" y="1260" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team1Player10IsLose,team1Player10Id,team1Player10NameMain,team1Player10NameSub" swapSet2="team1Player11IsLose,team1Player11Id,team1Player11NameMain,team1Player11NameSub">Swap</button>
 
-                <label x="80" y="1405" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="1403" width="80" height="20" id="team1Player11IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="1400" width="50" height="23" tooltip="Clear the Player 11" id="clearTeam1Player11" reset="team1Player11IsLose,team1Player11Id,team1Player11NameMain,team1Player11NameSub">Clear</button>
-                <label x="10" y="1425" width="80" height="23">ID</label>
-                <lineEdit id="team1Player11Id" x="100" y="1425" width="170" height="23" dataSet="players.csv" dataField="1">Player 11 ID</lineEdit>
-                <label x="10" y="1450" width="80" height="23">Name</label>
-                <lineEdit id="team1Player11NameMain" x="100" y="1450" width="170" height="23" dataSet="players.csv" dataField="2" master="team1Player11Id">Player 11 Name</lineEdit>
-                <label x="10" y="1475" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team1Player11NameSub" x="100" y="1475" width="170" height="23" dataSet="players.csv" dataField="3" master="team1Player11Id">Player 11 Name (Sub)</lineEdit>
+                <lineEdit id="team1Player11Id" x="85" y="1305" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearTeam1Player11" type="reset" x="260" y="1305" width="50" height="35" tooltip="Clear the Player 1" reset="team1Player11IsLose,team1Player11Id,team1Player11NameMain,team1Player11NameSub">Clear</button>
+                <checkBox id="team1Player11IsLose" x="30" y="1345" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team1Player11NameMain" x="85" y="1345" width="110" height="35" dataSet="players.csv" dataField="2" master="team1Player11Id">Name</lineEdit>
+                <lineEdit id="team1Player11NameSub" x="200" y="1345" width="110" height="35" dataSet="players.csv" dataField="3" master="team1Player11Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="1510" width="50" height="23" tooltip="Swap the Team A Player" id="swapTeam1Player11" swapSet1="team1Player11IsLose,team1Player11Id,team1Player11NameMain,team1Player11NameSub" swapSet2="team1Player12IsLose,team1Player12Id,team1Player12NameMain,team1Player12NameSub">Swap</button>
+                <button id="swapTeam1Player11" type="swap" x="130" y="1390" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team1Player11IsLose,team1Player11Id,team1Player11NameMain,team1Player11NameSub" swapSet2="team1Player12IsLose,team1Player12Id,team1Player12NameMain,team1Player12NameSub">Swap</button>
 
-                <label x="80" y="1545" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="1543" width="80" height="20" id="team1Player12IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="1540" width="50" height="23" tooltip="Clear the Player 12" id="clearTeam1Player12" reset="team1Player12IsLose,team1Player12Id,team1Player12NameMain,team1Player12NameSub">Clear</button>
-                <label x="10" y="1565" width="80" height="23">ID</label>
-                <lineEdit id="team1Player12Id" x="100" y="1565" width="170" height="23" dataSet="players.csv" dataField="1">Player 12 ID</lineEdit>
-                <label x="10" y="1590" width="80" height="23">Name</label>
-                <lineEdit id="team1Player12NameMain" x="100" y="1590" width="170" height="23" dataSet="players.csv" dataField="2" master="team1Player12Id">Player 12 Name</lineEdit>
-                <label x="10" y="1615" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team1Player12NameSub" x="100" y="1615" width="170" height="23" dataSet="players.csv" dataField="3" master="team1Player12Id">Player 12 Name (Sub)</lineEdit>
+                <lineEdit id="team1Player12Id" x="85" y="1435" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearTeam1Player12" type="reset" x="260" y="1435" width="50" height="35" tooltip="Clear the Player 1" reset="team1Player12IsLose,team1Player12Id,team1Player12NameMain,team1Player12NameSub">Clear</button>
+                <checkBox id="team1Player12IsLose" x="30" y="1475" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team1Player12NameMain" x="85" y="1475" width="110" height="35" dataSet="players.csv" dataField="2" master="team1Player12Id">Name</lineEdit>
+                <lineEdit id="team1Player12NameSub" x="200" y="1475" width="110" height="35" dataSet="players.csv" dataField="3" master="team1Player12Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="1650" width="50" height="23" tooltip="Swap the Team A Player" id="swapTeam1Player12" swapSet1="team1Player12IsLose,team1Player12Id,team1Player12NameMain,team1Player12NameSub" swapSet2="team1Player13IsLose,team1Player13Id,team1Player13NameMain,team1Player13NameSub">Swap</button>
+                <button id="swapTeam1Player12" type="swap" x="130" y="1520" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team1Player12IsLose,team1Player12Id,team1Player12NameMain,team1Player12NameSub" swapSet2="team1Player13IsLose,team1Player13Id,team1Player13NameMain,team1Player13NameSub">Swap</button>
 
-                <label x="80" y="1685" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="1683" width="80" height="20" id="team1Player13IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="1680" width="50" height="23" tooltip="Clear the Player 13" id="clearTeam1Player13" reset="team1Player13IsLose,team1Player13Id,team1Player13NameMain,team1Player13NameSub">Clear</button>
-                <label x="10" y="1705" width="80" height="23">ID</label>
-                <lineEdit id="team1Player13Id" x="100" y="1705" width="170" height="23" dataSet="players.csv" dataField="1">Player 13 ID</lineEdit>
-                <label x="10" y="1730" width="80" height="23">Name</label>
-                <lineEdit id="team1Player13NameMain" x="100" y="1730" width="170" height="23" dataSet="players.csv" dataField="2" master="team1Player13Id">Player 13 Name</lineEdit>
-                <label x="10" y="1755" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team1Player13NameSub" x="100" y="1755" width="170" height="23" dataSet="players.csv" dataField="3" master="team1Player13Id">Player 13 Name (Sub)</lineEdit>
+                <lineEdit id="team1Player13Id" x="85" y="1565" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearTeam1Player13" type="reset" x="260" y="1565" width="50" height="35" tooltip="Clear the Player 1" reset="team1Player13IsLose,team1Player13Id,team1Player13NameMain,team1Player13NameSub">Clear</button>
+                <checkBox id="team1Player13IsLose" x="30" y="1605" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team1Player13NameMain" x="85" y="1605" width="110" height="35" dataSet="players.csv" dataField="2" master="team1Player13Id">Name</lineEdit>
+                <lineEdit id="team1Player13NameSub" x="200" y="1605" width="110" height="35" dataSet="players.csv" dataField="3" master="team1Player13Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="1790" width="50" height="23" tooltip="Swap the Team A Player" id="swapTeam1Player13" swapSet1="team1Player13IsLose,team1Player13Id,team1Player13NameMain,team1Player13NameSub" swapSet2="team1Player14IsLose,team1Player14Id,team1Player14NameMain,team1Player14NameSub">Swap</button>
+                <button id="swapTeam1Player13" type="swap" x="130" y="1650" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team1Player13IsLose,team1Player13Id,team1Player13NameMain,team1Player13NameSub" swapSet2="team1Player14IsLose,team1Player14Id,team1Player14NameMain,team1Player14NameSub">Swap</button>
 
-                <label x="80" y="1825" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="1823" width="80" height="20" id="team1Player14IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="1820" width="50" height="23" tooltip="Clear the Player 14" id="clearTeam1Player14" reset="team1Player14IsLose,team1Player14Id,team1Player14NameMain,team1Player14NameSub">Clear</button>
-                <label x="10" y="1845" width="80" height="23">ID</label>
-                <lineEdit id="team1Player14Id" x="100" y="1845" width="170" height="23" dataSet="players.csv" dataField="1">Player 14 ID</lineEdit>
-                <label x="10" y="1870" width="80" height="23">Name</label>
-                <lineEdit id="team1Player14NameMain" x="100" y="1870" width="170" height="23" dataSet="players.csv" dataField="2" master="team1Player14Id">Player 14 Name</lineEdit>
-                <label x="10" y="1895" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team1Player14NameSub" x="100" y="1895" width="170" height="23" dataSet="players.csv" dataField="3" master="team1Player14Id">Player 14 Name (Sub)</lineEdit>
+                <lineEdit id="team1Player14Id" x="85" y="1695" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearTeam1Player14" type="reset" x="260" y="1695" width="50" height="35" tooltip="Clear the Player 1" reset="team1Player14IsLose,team1Player14Id,team1Player14NameMain,team1Player14NameSub">Clear</button>
+                <checkBox id="team1Player14IsLose" x="30" y="1735" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team1Player14NameMain" x="85" y="1735" width="110" height="35" dataSet="players.csv" dataField="2" master="team1Player14Id">Name</lineEdit>
+                <lineEdit id="team1Player14NameSub" x="200" y="1735" width="110" height="35" dataSet="players.csv" dataField="3" master="team1Player14Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="1930" width="50" height="23" tooltip="Swap the Team A Player" id="swapTeam1Player14" swapSet1="team1Player14IsLose,team1Player14Id,team1Player14NameMain,team1Player14NameSub" swapSet2="team1Player15IsLose,team1Player15Id,team1Player15NameMain,team1Player15NameSub">Swap</button>
+                <button id="swapTeam1Player14" type="swap" x="130" y="1780" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team1Player14IsLose,team1Player14Id,team1Player14NameMain,team1Player14NameSub" swapSet2="team1Player15IsLose,team1Player15Id,team1Player15NameMain,team1Player15NameSub">Swap</button>
 
-                <label x="80" y="1965" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="1963" width="80" height="20" id="team1Player15IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="1960" width="50" height="23" tooltip="Clear the Player 15" id="clearTeam1Player15" reset="team1Player15IsLose,team1Player15Id,team1Player15NameMain,team1Player15NameSub">Clear</button>
-                <label x="10" y="1985" width="80" height="23">ID</label>
-                <lineEdit id="team1Player15Id" x="100" y="1985" width="170" height="23" dataSet="players.csv" dataField="1">Player 15 ID</lineEdit>
-                <label x="10" y="2010" width="80" height="23">Name</label>
-                <lineEdit id="team1Player15NameMain" x="100" y="2010" width="170" height="23" dataSet="players.csv" dataField="2" master="team1Player15Id">Player 15 Name</lineEdit>
-                <label x="10" y="2035" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team1Player15NameSub" x="100" y="2035" width="170" height="23" dataSet="players.csv" dataField="3" master="team1Player15Id">Player 15 Name (Sub)</lineEdit>
+                <lineEdit id="team1Player15Id" x="85" y="1825" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearTeam1Player15" type="reset" x="260" y="1825" width="50" height="35" tooltip="Clear the Player 1" reset="team1Player15IsLose,team1Player15Id,team1Player15NameMain,team1Player15NameSub">Clear</button>
+                <checkBox id="team1Player15IsLose" x="30" y="1865" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team1Player15NameMain" x="85" y="1865" width="110" height="35" dataSet="players.csv" dataField="2" master="team1Player15Id">Name</lineEdit>
+                <lineEdit id="team1Player15NameSub" x="200" y="1865" width="110" height="35" dataSet="players.csv" dataField="3" master="team1Player15Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="2070" width="50" height="23" tooltip="Swap the Team A Player" id="swapTeam1Player15" swapSet1="team1Player15IsLose,team1Player15Id,team1Player15NameMain,team1Player15NameSub" swapSet2="team1Player16IsLose,team1Player16Id,team1Player16NameMain,team1Player16NameSub">Swap</button>
+                <button id="swapTeam1Player15" type="swap" x="130" y="1910" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team1Player15IsLose,team1Player15Id,team1Player15NameMain,team1Player15NameSub" swapSet2="team1Player16IsLose,team1Player16Id,team1Player16NameMain,team1Player16NameSub">Swap</button>
 
-                <label x="80" y="2105" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="2103" width="80" height="20" id="team1Player16IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="2100" width="50" height="23" tooltip="Clear the Player 16" id="clearTeam1Player16" reset="team1Player16IsLose,team1Player16Id,team1Player16NameMain,team1Player16NameSub">Clear</button>
-                <label x="10" y="2125" width="80" height="23">ID</label>
-                <lineEdit id="team1Player16Id" x="100" y="2125" width="170" height="23" dataSet="players.csv" dataField="1">Player 16 ID</lineEdit>
-                <label x="10" y="2150" width="80" height="23">Name</label>
-                <lineEdit id="team1Player16NameMain" x="100" y="2150" width="170" height="23" dataSet="players.csv" dataField="2" master="team1Player16Id">Player 16 Name</lineEdit>
-                <label x="10" y="2175" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team1Player16NameSub" x="100" y="2175" width="170" height="23" dataSet="players.csv" dataField="3" master="team1Player16Id">Player 16 Name (Sub)</lineEdit>
+                <lineEdit id="team1Player16Id" x="85" y="1955" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearTeam1Player16" type="reset" x="260" y="1955" width="50" height="35" tooltip="Clear the Player 1" reset="team1Player16IsLose,team1Player16Id,team1Player16NameMain,team1Player16NameSub">Clear</button>
+                <checkBox id="team1Player16IsLose" x="30" y="1995" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team1Player16NameMain" x="85" y="1995" width="110" height="35" dataSet="players.csv" dataField="2" master="team1Player16Id">Name</lineEdit>
+                <lineEdit id="team1Player16NameSub" x="200" y="1995" width="110" height="35" dataSet="players.csv" dataField="3" master="team1Player16Id">Name (Sub)</lineEdit>
             </tab>
         </tabSet>
 
-        <tabSet x="355" y="10" width="284" height="2235">
-            <tab name="Team B                                                       ">
+        <tabSet x="398" y="10" width="324" height="2065">
+            <tab name="Team B                                                                 ">
                 <radioGroup id="team2ActivePlayer">
-                    <radioButton x="10" y="3" width="120" height="20" value="1">Player 1</radioButton>
+                    <radioButton x="10" y="13" width="120" height="20" value="1">Player 1</radioButton>
                     <radioButton x="10" y="143" width="120" height="20" value="2">Player 2</radioButton>
-                    <radioButton x="10" y="283" width="120" height="20" value="3">Player 3</radioButton>
-                    <radioButton x="10" y="423" width="120" height="20" value="4">Player 4</radioButton>
-                    <radioButton x="10" y="563" width="120" height="20" value="5">Player 5</radioButton>
-                    <radioButton x="10" y="703" width="120" height="20" value="6">Player 6</radioButton>
-                    <radioButton x="10" y="843" width="120" height="20" value="7">Player 7</radioButton>
-                    <radioButton x="10" y="983" width="120" height="20" value="8">Player 8</radioButton>
-                    <radioButton x="10" y="1123" width="120" height="20" value="9">Player 9</radioButton>
-                    <radioButton x="10" y="1263" width="120" height="20" value="10">Player 10</radioButton>
-                    <radioButton x="10" y="1403" width="120" height="20" value="11">Player 11</radioButton>
-                    <radioButton x="10" y="1543" width="120" height="20" value="12">Player 12</radioButton>
-                    <radioButton x="10" y="1683" width="120" height="20" value="13">Player 13</radioButton>
-                    <radioButton x="10" y="1823" width="120" height="20" value="14">Player 14</radioButton>
-                    <radioButton x="10" y="1963" width="120" height="20" value="15">Player 15</radioButton>
-                    <radioButton x="10" y="2103" width="120" height="20" value="16">Player 16</radioButton>
+                    <radioButton x="10" y="273" width="120" height="20" value="3">Player 3</radioButton>
+                    <radioButton x="10" y="403" width="120" height="20" value="4">Player 4</radioButton>
+                    <radioButton x="10" y="533" width="120" height="20" value="5">Player 5</radioButton>
+                    <radioButton x="10" y="663" width="120" height="20" value="6">Player 6</radioButton>
+                    <radioButton x="10" y="793" width="120" height="20" value="7">Player 7</radioButton>
+                    <radioButton x="10" y="923" width="120" height="20" value="8">Player 8</radioButton>
+                    <radioButton x="10" y="1053" width="120" height="20" value="9">Player 9</radioButton>
+                    <radioButton x="10" y="1183" width="120" height="20" value="10">Player 10</radioButton>
+                    <radioButton x="10" y="1313" width="120" height="20" value="11">Player 11</radioButton>
+                    <radioButton x="10" y="1443" width="120" height="20" value="12">Player 12</radioButton>
+                    <radioButton x="10" y="1573" width="120" height="20" value="13">Player 13</radioButton>
+                    <radioButton x="10" y="1703" width="120" height="20" value="14">Player 14</radioButton>
+                    <radioButton x="10" y="1833" width="120" height="20" value="15">Player 15</radioButton>
+                    <radioButton x="10" y="1963" width="120" height="20" value="16">Player 16</radioButton>
                 </radioGroup>
 
-                <label x="80" y="5" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="3" width="80" height="20" id="team2Player1IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="0" width="50" height="23" tooltip="Clear the Player 1" id="clearteam2Player1" reset="team2Player1IsLose,team2Player1Id,team2Player1NameMain,team2Player1NameSub">Clear</button>
-                <label x="10" y="25" width="80" height="23">ID</label>
-                <lineEdit id="team2Player1Id" x="100" y="25" width="170" height="23" dataSet="players.csv" dataField="1">Player 1 ID</lineEdit>
-                <label x="10" y="50" width="80" height="23">Name</label>
-                <lineEdit id="team2Player1NameMain" x="100" y="50" width="170" height="23" dataSet="players.csv" dataField="2" master="team2Player1Id">Player 1 Name</lineEdit>
-                <label x="10" y="75" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team2Player1NameSub" x="100" y="75" width="170" height="23" dataSet="players.csv" dataField="3" master="team2Player1Id">Player 1 Name (Sub)</lineEdit>
+                <lineEdit id="team2Player1Id" x="85" y="5" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearteam2Player1" type="reset" x="260" y="5" width="50" height="35" tooltip="Clear the Player 1" reset="team2Player1IsLose,team2Player1Id,team2Player1NameMain,team2Player1NameSub">Clear</button>
+                <checkBox id="team2Player1IsLose" x="30" y="45" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team2Player1NameMain" x="85" y="45" width="110" height="35" dataSet="players.csv" dataField="2" master="team2Player1Id">Name</lineEdit>
+                <lineEdit id="team2Player1NameSub" x="200" y="45" width="110" height="35" dataSet="players.csv" dataField="3" master="team2Player1Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="110" width="50" height="23" tooltip="Swap the Team A Player" id="swapteam2Player1" swapSet1="team2Player1IsLose,team2Player1Id,team2Player1NameMain,team2Player1NameSub" swapSet2="team2Player2IsLose,team2Player2Id,team2Player2NameMain,team2Player2NameSub">Swap</button>
+                <button id="swapteam2Player1" type="swap" x="130" y="90" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team2Player1IsLose,team2Player1Id,team2Player1NameMain,team2Player1NameSub" swapSet2="team2Player2IsLose,team2Player2Id,team2Player2NameMain,team2Player2NameSub">Swap</button>
 
-                <label x="80" y="145" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="143" width="80" height="20" id="team2Player2IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="140" width="50" height="23" tooltip="Clear the Player 2" id="clearteam2Player2" reset="team2Player2IsLose,team2Player2Id,team2Player2NameMain,team2Player2NameSub">Clear</button>
-                <label x="10" y="165" width="80" height="23">ID</label>
-                <lineEdit id="team2Player2Id" x="100" y="165" width="170" height="23" dataSet="players.csv" dataField="1">Player 2 ID</lineEdit>
-                <label x="10" y="190" width="80" height="23">Name</label>
-                <lineEdit id="team2Player2NameMain" x="100" y="190" width="170" height="23" dataSet="players.csv" dataField="2" master="team2Player2Id">Player 2 Name</lineEdit>
-                <label x="10" y="215" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team2Player2NameSub" x="100" y="215" width="170" height="23" dataSet="players.csv" dataField="3" master="team2Player2Id">Player 2 Name (Sub)</lineEdit>
+                <lineEdit id="team2Player2Id" x="85" y="135" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearteam2Player2" type="reset" x="260" y="135" width="50" height="35" tooltip="Clear the Player 1" reset="team2Player2IsLose,team2Player2Id,team2Player2NameMain,team2Player2NameSub">Clear</button>
+                <checkBox id="team2Player2IsLose" x="30" y="175" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team2Player2NameMain" x="85" y="175" width="110" height="35" dataSet="players.csv" dataField="2" master="team2Player2Id">Name</lineEdit>
+                <lineEdit id="team2Player2NameSub" x="200" y="175" width="110" height="35" dataSet="players.csv" dataField="3" master="team2Player2Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="250" width="50" height="23" tooltip="Swap the Team A Player" id="swapteam2Player2" swapSet1="team2Player2IsLose,team2Player2Id,team2Player2NameMain,team2Player2NameSub" swapSet2="team2Player3IsLose,team2Player3Id,team2Player3NameMain,team2Player3NameSub">Swap</button>
+                <button id="swapteam2Player2" type="swap" x="130" y="220" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team2Player2IsLose,team2Player2Id,team2Player2NameMain,team2Player2NameSub" swapSet2="team2Player3IsLose,team2Player3Id,team2Player3NameMain,team2Player3NameSub">Swap</button>
 
-                <label x="80" y="285" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="283" width="80" height="20" id="team2Player3IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="280" width="50" height="23" tooltip="Clear the Player 3" id="clearteam2Player3" reset="team2Player3IsLose,team2Player3Id,team2Player3NameMain,team2Player3NameSub">Clear</button>
-                <label x="10" y="305" width="80" height="23">ID</label>
-                <lineEdit id="team2Player3Id" x="100" y="305" width="170" height="23" dataSet="players.csv" dataField="1">Player 3 ID</lineEdit>
-                <label x="10" y="330" width="80" height="23">Name</label>
-                <lineEdit id="team2Player3NameMain" x="100" y="330" width="170" height="23" dataSet="players.csv" dataField="2" master="team2Player3Id">Player 3 Name</lineEdit>
-                <label x="10" y="355" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team2Player3NameSub" x="100" y="355" width="170" height="23" dataSet="players.csv" dataField="3" master="team2Player3Id">Player 3 Name (Sub)</lineEdit>
+                <lineEdit id="team2Player3Id" x="85" y="265" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearteam2Player3" type="reset" x="260" y="265" width="50" height="35" tooltip="Clear the Player 1" reset="team2Player3IsLose,team2Player3Id,team2Player3NameMain,team2Player3NameSub">Clear</button>
+                <checkBox id="team2Player3IsLose" x="30" y="305" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team2Player3NameMain" x="85" y="305" width="110" height="35" dataSet="players.csv" dataField="2" master="team2Player3Id">Name</lineEdit>
+                <lineEdit id="team2Player3NameSub" x="200" y="305" width="110" height="35" dataSet="players.csv" dataField="3" master="team2Player3Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="390" width="50" height="23" tooltip="Swap the Team A Player" id="swapteam2Player3" swapSet1="team2Player3IsLose,team2Player3Id,team2Player3NameMain,team2Player3NameSub" swapSet2="team2Player4IsLose,team2Player4Id,team2Player4NameMain,team2Player4NameSub">Swap</button>
+                <button id="swapteam2Player3" type="swap" x="130" y="350" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team2Player3IsLose,team2Player3Id,team2Player3NameMain,team2Player3NameSub" swapSet2="team2Player4IsLose,team2Player4Id,team2Player4NameMain,team2Player4NameSub">Swap</button>
 
-                <label x="80" y="425" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="423" width="80" height="20" id="team2Player4IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="420" width="50" height="23" tooltip="Clear the Player 4" id="clearteam2Player4" reset="team2Player4IsLose,team2Player4Id,team2Player4NameMain,team2Player4NameSub">Clear</button>
-                <label x="10" y="445" width="80" height="23">ID</label>
-                <lineEdit id="team2Player4Id" x="100" y="445" width="170" height="23" dataSet="players.csv" dataField="1">Player 4 ID</lineEdit>
-                <label x="10" y="470" width="80" height="23">Name</label>
-                <lineEdit id="team2Player4NameMain" x="100" y="470" width="170" height="23" dataSet="players.csv" dataField="2" master="team2Player4Id">Player 4 Name</lineEdit>
-                <label x="10" y="495" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team2Player4NameSub" x="100" y="495" width="170" height="23" dataSet="players.csv" dataField="3" master="team2Player4Id">Player 4 Name (Sub)</lineEdit>
+                <lineEdit id="team2Player4Id" x="85" y="395" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearteam2Player4" type="reset" x="260" y="395" width="50" height="35" tooltip="Clear the Player 1" reset="team2Player4IsLose,team2Player4Id,team2Player4NameMain,team2Player4NameSub">Clear</button>
+                <checkBox id="team2Player4IsLose" x="30" y="435" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team2Player4NameMain" x="85" y="435" width="110" height="35" dataSet="players.csv" dataField="2" master="team2Player4Id">Name</lineEdit>
+                <lineEdit id="team2Player4NameSub" x="200" y="435" width="110" height="35" dataSet="players.csv" dataField="3" master="team2Player4Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="530" width="50" height="23" tooltip="Swap the Team A Player" id="swapteam2Player4" swapSet1="team2Player4IsLose,team2Player4Id,team2Player4NameMain,team2Player4NameSub" swapSet2="team2Player5IsLose,team2Player5Id,team2Player5NameMain,team2Player5NameSub">Swap</button>
+                <button id="swapteam2Player4" type="swap" x="130" y="480" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team2Player4IsLose,team2Player4Id,team2Player4NameMain,team2Player4NameSub" swapSet2="team2Player5IsLose,team2Player5Id,team2Player5NameMain,team2Player5NameSub">Swap</button>
 
-                <label x="80" y="565" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="563" width="80" height="20" id="team2Player5IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="560" width="50" height="23" tooltip="Clear the Player 5" id="clearteam2Player5" reset="team2Player5IsLose,team2Player5Id,team2Player5NameMain,team2Player5NameSub">Clear</button>
-                <label x="10" y="585" width="80" height="23">ID</label>
-                <lineEdit id="team2Player5Id" x="100" y="585" width="170" height="23" dataSet="players.csv" dataField="1">Player 5 ID</lineEdit>
-                <label x="10" y="610" width="80" height="23">Name</label>
-                <lineEdit id="team2Player5NameMain" x="100" y="610" width="170" height="23" dataSet="players.csv" dataField="2" master="team2Player5Id">Player 5 Name</lineEdit>
-                <label x="10" y="635" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team2Player5NameSub" x="100" y="635" width="170" height="23" dataSet="players.csv" dataField="3" master="team2Player5Id">Player 5 Name (Sub)</lineEdit>
+                <lineEdit id="team2Player5Id" x="85" y="525" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearteam2Player5" type="reset" x="260" y="525" width="50" height="35" tooltip="Clear the Player 1" reset="team2Player5IsLose,team2Player5Id,team2Player5NameMain,team2Player5NameSub">Clear</button>
+                <checkBox id="team2Player5IsLose" x="30" y="565" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team2Player5NameMain" x="85" y="565" width="110" height="35" dataSet="players.csv" dataField="2" master="team2Player5Id">Name</lineEdit>
+                <lineEdit id="team2Player5NameSub" x="200" y="565" width="110" height="35" dataSet="players.csv" dataField="3" master="team2Player5Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="670" width="50" height="23" tooltip="Swap the Team A Player" id="swapteam2Player5" swapSet1="team2Player5IsLose,team2Player5Id,team2Player5NameMain,team2Player5NameSub" swapSet2="team2Player6IsLose,team2Player6Id,team2Player6NameMain,team2Player6NameSub">Swap</button>
+                <button id="swapteam2Player5" type="swap" x="130" y="610" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team2Player5IsLose,team2Player5Id,team2Player5NameMain,team2Player5NameSub" swapSet2="team2Player6IsLose,team2Player6Id,team2Player6NameMain,team2Player6NameSub">Swap</button>
 
-                <label x="80" y="705" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="703" width="80" height="20" id="team2Player6IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="700" width="50" height="23" tooltip="Clear the Player 6" id="clearteam2Player6" reset="team2Player6IsLose,team2Player6Id,team2Player6NameMain,team2Player6NameSub">Clear</button>
-                <label x="10" y="725" width="80" height="23">ID</label>
-                <lineEdit id="team2Player6Id" x="100" y="725" width="170" height="23" dataSet="players.csv" dataField="1">Player 6 ID</lineEdit>
-                <label x="10" y="750" width="80" height="23">Name</label>
-                <lineEdit id="team2Player6NameMain" x="100" y="750" width="170" height="23" dataSet="players.csv" dataField="2" master="team2Player6Id">Player 6 Name</lineEdit>
-                <label x="10" y="775" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team2Player6NameSub" x="100" y="775" width="170" height="23" dataSet="players.csv" dataField="3" master="team2Player6Id">Player 6 Name (Sub)</lineEdit>
+                <lineEdit id="team2Player6Id" x="85" y="655" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearteam2Player6" type="reset" x="260" y="655" width="50" height="35" tooltip="Clear the Player 1" reset="team2Player6IsLose,team2Player6Id,team2Player6NameMain,team2Player6NameSub">Clear</button>
+                <checkBox id="team2Player6IsLose" x="30" y="695" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team2Player6NameMain" x="85" y="695" width="110" height="35" dataSet="players.csv" dataField="2" master="team2Player6Id">Name</lineEdit>
+                <lineEdit id="team2Player6NameSub" x="200" y="695" width="110" height="35" dataSet="players.csv" dataField="3" master="team2Player6Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="810" width="50" height="23" tooltip="Swap the Team A Player" id="swapteam2Player6" swapSet1="team2Player6IsLose,team2Player6Id,team2Player6NameMain,team2Player6NameSub" swapSet2="team2Player7IsLose,team2Player7Id,team2Player7NameMain,team2Player7NameSub">Swap</button>
+                <button id="swapteam2Player6" type="swap" x="130" y="740" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team2Player6IsLose,team2Player6Id,team2Player6NameMain,team2Player6NameSub" swapSet2="team2Player7IsLose,team2Player7Id,team2Player7NameMain,team2Player7NameSub">Swap</button>
 
-                <label x="80" y="845" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="843" width="80" height="20" id="team2Player7IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="840" width="50" height="23" tooltip="Clear the Player 7" id="clearteam2Player7" reset="team2Player7IsLose,team2Player7Id,team2Player7NameMain,team2Player7NameSub">Clear</button>
-                <label x="10" y="865" width="80" height="23">ID</label>
-                <lineEdit id="team2Player7Id" x="100" y="865" width="170" height="23" dataSet="players.csv" dataField="1">Player 7 ID</lineEdit>
-                <label x="10" y="890" width="80" height="23">Name</label>
-                <lineEdit id="team2Player7NameMain" x="100" y="890" width="170" height="23" dataSet="players.csv" dataField="2" master="team2Player7Id">Player 7 Name</lineEdit>
-                <label x="10" y="915" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team2Player7NameSub" x="100" y="915" width="170" height="23" dataSet="players.csv" dataField="3" master="team2Player7Id">Player 7 Name (Sub)</lineEdit>
+                <lineEdit id="team2Player7Id" x="85" y="785" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearteam2Player7" type="reset" x="260" y="785" width="50" height="35" tooltip="Clear the Player 1" reset="team2Player7IsLose,team2Player7Id,team2Player7NameMain,team2Player7NameSub">Clear</button>
+                <checkBox id="team2Player7IsLose" x="30" y="825" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team2Player7NameMain" x="85" y="825" width="110" height="35" dataSet="players.csv" dataField="2" master="team2Player7Id">Name</lineEdit>
+                <lineEdit id="team2Player7NameSub" x="200" y="825" width="110" height="35" dataSet="players.csv" dataField="3" master="team2Player7Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="950" width="50" height="23" tooltip="Swap the Team A Player" id="swapteam2Player7" swapSet1="team2Player7IsLose,team2Player7Id,team2Player7NameMain,team2Player7NameSub" swapSet2="team2Player8IsLose,team2Player8Id,team2Player8NameMain,team2Player8NameSub">Swap</button>
+                <button id="swapteam2Player7" type="swap" x="130" y="870" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team2Player7IsLose,team2Player7Id,team2Player7NameMain,team2Player7NameSub" swapSet2="team2Player8IsLose,team2Player8Id,team2Player8NameMain,team2Player8NameSub">Swap</button>
 
-                <label x="80" y="985" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="983" width="80" height="20" id="team2Player8IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="980" width="50" height="23" tooltip="Clear the Player 8" id="clearteam2Player8" reset="team2Player8IsLose,team2Player8Id,team2Player8NameMain,team2Player8NameSub">Clear</button>
-                <label x="10" y="1005" width="80" height="23">ID</label>
-                <lineEdit id="team2Player8Id" x="100" y="1005" width="170" height="23" dataSet="players.csv" dataField="1">Player 8 ID</lineEdit>
-                <label x="10" y="1030" width="80" height="23">Name</label>
-                <lineEdit id="team2Player8NameMain" x="100" y="1030" width="170" height="23" dataSet="players.csv" dataField="2" master="team2Player8Id">Player 8 Name</lineEdit>
-                <label x="10" y="1055" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team2Player8NameSub" x="100" y="1055" width="170" height="23" dataSet="players.csv" dataField="3" master="team2Player8Id">Player 8 Name (Sub)</lineEdit>
+                <lineEdit id="team2Player8Id" x="85" y="915" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearteam2Player8" type="reset" x="260" y="915" width="50" height="35" tooltip="Clear the Player 1" reset="team2Player8IsLose,team2Player8Id,team2Player8NameMain,team2Player8NameSub">Clear</button>
+                <checkBox id="team2Player8IsLose" x="30" y="955" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team2Player8NameMain" x="85" y="955" width="110" height="35" dataSet="players.csv" dataField="2" master="team2Player8Id">Name</lineEdit>
+                <lineEdit id="team2Player8NameSub" x="200" y="955" width="110" height="35" dataSet="players.csv" dataField="3" master="team2Player8Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="1090" width="50" height="23" tooltip="Swap the Team A Player" id="swapteam2Player8" swapSet1="team2Player8IsLose,team2Player8Id,team2Player8NameMain,team2Player8NameSub" swapSet2="team2Player9IsLose,team2Player9Id,team2Player9NameMain,team2Player9NameSub">Swap</button>
+                <button id="swapteam2Player8" type="swap" x="130" y="1000" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team2Player8IsLose,team2Player8Id,team2Player8NameMain,team2Player8NameSub" swapSet2="team2Player9IsLose,team2Player9Id,team2Player9NameMain,team2Player9NameSub">Swap</button>
 
-                <label x="80" y="1125" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="1123" width="80" height="20" id="team2Player9IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="1120" width="50" height="23" tooltip="Clear the Player 9" id="clearteam2Player9" reset="team2Player9IsLose,team2Player9Id,team2Player9NameMain,team2Player9NameSub">Clear</button>
-                <label x="10" y="1145" width="80" height="23">ID</label>
-                <lineEdit id="team2Player9Id" x="100" y="1145" width="170" height="23" dataSet="players.csv" dataField="1">Player 9 ID</lineEdit>
-                <label x="10" y="1170" width="80" height="23">Name</label>
-                <lineEdit id="team2Player9NameMain" x="100" y="1170" width="170" height="23" dataSet="players.csv" dataField="2" master="team2Player9Id">Player 9 Name</lineEdit>
-                <label x="10" y="1195" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team2Player9NameSub" x="100" y="1195" width="170" height="23" dataSet="players.csv" dataField="3" master="team2Player9Id">Player 9 Name (Sub)</lineEdit>
+                <lineEdit id="team2Player9Id" x="85" y="1045" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearteam2Player9" type="reset" x="260" y="1045" width="50" height="35" tooltip="Clear the Player 1" reset="team2Player9IsLose,team2Player9Id,team2Player9NameMain,team2Player9NameSub">Clear</button>
+                <checkBox id="team2Player9IsLose" x="30" y="1085" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team2Player9NameMain" x="85" y="1085" width="110" height="35" dataSet="players.csv" dataField="2" master="team2Player9Id">Name</lineEdit>
+                <lineEdit id="team2Player9NameSub" x="200" y="1085" width="110" height="35" dataSet="players.csv" dataField="3" master="team2Player9Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="1230" width="50" height="23" tooltip="Swap the Team A Player" id="swapteam2Player9" swapSet1="team2Player9IsLose,team2Player9Id,team2Player9NameMain,team2Player9NameSub" swapSet2="team2Player10IsLose,team2Player10Id,team2Player10NameMain,team2Player10NameSub">Swap</button>
+                <button id="swapteam2Player9" type="swap" x="130" y="1130" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team2Player9IsLose,team2Player9Id,team2Player9NameMain,team2Player9NameSub" swapSet2="team2Player10IsLose,team2Player10Id,team2Player10NameMain,team2Player10NameSub">Swap</button>
 
-                <label x="80" y="1265" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="1263" width="80" height="20" id="team2Player10IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="1260" width="50" height="23" tooltip="Clear the Player 10" id="clearteam2Player10" reset="team2Player10IsLose,team2Player10Id,team2Player10NameMain,team2Player10NameSub">Clear</button>
-                <label x="10" y="1285" width="80" height="23">ID</label>
-                <lineEdit id="team2Player10Id" x="100" y="1285" width="170" height="23" dataSet="players.csv" dataField="1">Player 10 ID</lineEdit>
-                <label x="10" y="1310" width="80" height="23">Name</label>
-                <lineEdit id="team2Player10NameMain" x="100" y="1310" width="170" height="23" dataSet="players.csv" dataField="2" master="team2Player10Id">Player 10 Name</lineEdit>
-                <label x="10" y="1335" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team2Player10NameSub" x="100" y="1335" width="170" height="23" dataSet="players.csv" dataField="3" master="team2Player10Id">Player 10 Name (Sub)</lineEdit>
+                <lineEdit id="team2Player10Id" x="85" y="1175" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearteam2Player10" type="reset" x="260" y="1175" width="50" height="35" tooltip="Clear the Player 1" reset="team2Player10IsLose,team2Player10Id,team2Player10NameMain,team2Player10NameSub">Clear</button>
+                <checkBox id="team2Player10IsLose" x="30" y="1215" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team2Player10NameMain" x="85" y="1215" width="110" height="35" dataSet="players.csv" dataField="2" master="team2Player10Id">Name</lineEdit>
+                <lineEdit id="team2Player10NameSub" x="200" y="1215" width="110" height="35" dataSet="players.csv" dataField="3" master="team2Player10Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="1370" width="50" height="23" tooltip="Swap the Team A Player" id="swapteam2Player10" swapSet1="team2Player10IsLose,team2Player10Id,team2Player10NameMain,team2Player10NameSub" swapSet2="team2Player11IsLose,team2Player11Id,team2Player11NameMain,team2Player11NameSub">Swap</button>
+                <button id="swapteam2Player10" type="swap" x="130" y="1260" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team2Player10IsLose,team2Player10Id,team2Player10NameMain,team2Player10NameSub" swapSet2="team2Player11IsLose,team2Player11Id,team2Player11NameMain,team2Player11NameSub">Swap</button>
 
-                <label x="80" y="1405" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="1403" width="80" height="20" id="team2Player11IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="1400" width="50" height="23" tooltip="Clear the Player 11" id="clearteam2Player11" reset="team2Player11IsLose,team2Player11Id,team2Player11NameMain,team2Player11NameSub">Clear</button>
-                <label x="10" y="1425" width="80" height="23">ID</label>
-                <lineEdit id="team2Player11Id" x="100" y="1425" width="170" height="23" dataSet="players.csv" dataField="1">Player 11 ID</lineEdit>
-                <label x="10" y="1450" width="80" height="23">Name</label>
-                <lineEdit id="team2Player11NameMain" x="100" y="1450" width="170" height="23" dataSet="players.csv" dataField="2" master="team2Player11Id">Player 11 Name</lineEdit>
-                <label x="10" y="1475" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team2Player11NameSub" x="100" y="1475" width="170" height="23" dataSet="players.csv" dataField="3" master="team2Player11Id">Player 11 Name (Sub)</lineEdit>
+                <lineEdit id="team2Player11Id" x="85" y="1305" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearteam2Player11" type="reset" x="260" y="1305" width="50" height="35" tooltip="Clear the Player 1" reset="team2Player11IsLose,team2Player11Id,team2Player11NameMain,team2Player11NameSub">Clear</button>
+                <checkBox id="team2Player11IsLose" x="30" y="1345" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team2Player11NameMain" x="85" y="1345" width="110" height="35" dataSet="players.csv" dataField="2" master="team2Player11Id">Name</lineEdit>
+                <lineEdit id="team2Player11NameSub" x="200" y="1345" width="110" height="35" dataSet="players.csv" dataField="3" master="team2Player11Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="1510" width="50" height="23" tooltip="Swap the Team A Player" id="swapteam2Player11" swapSet1="team2Player11IsLose,team2Player11Id,team2Player11NameMain,team2Player11NameSub" swapSet2="team2Player12IsLose,team2Player12Id,team2Player12NameMain,team2Player12NameSub">Swap</button>
+                <button id="swapteam2Player11" type="swap" x="130" y="1390" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team2Player11IsLose,team2Player11Id,team2Player11NameMain,team2Player11NameSub" swapSet2="team2Player12IsLose,team2Player12Id,team2Player12NameMain,team2Player12NameSub">Swap</button>
 
-                <label x="80" y="1545" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="1543" width="80" height="20" id="team2Player12IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="1540" width="50" height="23" tooltip="Clear the Player 12" id="clearteam2Player12" reset="team2Player12IsLose,team2Player12Id,team2Player12NameMain,team2Player12NameSub">Clear</button>
-                <label x="10" y="1565" width="80" height="23">ID</label>
-                <lineEdit id="team2Player12Id" x="100" y="1565" width="170" height="23" dataSet="players.csv" dataField="1">Player 12 ID</lineEdit>
-                <label x="10" y="1590" width="80" height="23">Name</label>
-                <lineEdit id="team2Player12NameMain" x="100" y="1590" width="170" height="23" dataSet="players.csv" dataField="2" master="team2Player12Id">Player 12 Name</lineEdit>
-                <label x="10" y="1615" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team2Player12NameSub" x="100" y="1615" width="170" height="23" dataSet="players.csv" dataField="3" master="team2Player12Id">Player 12 Name (Sub)</lineEdit>
+                <lineEdit id="team2Player12Id" x="85" y="1435" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearteam2Player12" type="reset" x="260" y="1435" width="50" height="35" tooltip="Clear the Player 1" reset="team2Player12IsLose,team2Player12Id,team2Player12NameMain,team2Player12NameSub">Clear</button>
+                <checkBox id="team2Player12IsLose" x="30" y="1475" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team2Player12NameMain" x="85" y="1475" width="110" height="35" dataSet="players.csv" dataField="2" master="team2Player12Id">Name</lineEdit>
+                <lineEdit id="team2Player12NameSub" x="200" y="1475" width="110" height="35" dataSet="players.csv" dataField="3" master="team2Player12Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="1650" width="50" height="23" tooltip="Swap the Team A Player" id="swapteam2Player12" swapSet1="team2Player12IsLose,team2Player12Id,team2Player12NameMain,team2Player12NameSub" swapSet2="team2Player13IsLose,team2Player13Id,team2Player13NameMain,team2Player13NameSub">Swap</button>
+                <button id="swapteam2Player12" type="swap" x="130" y="1520" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team2Player12IsLose,team2Player12Id,team2Player12NameMain,team2Player12NameSub" swapSet2="team2Player13IsLose,team2Player13Id,team2Player13NameMain,team2Player13NameSub">Swap</button>
 
-                <label x="80" y="1685" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="1683" width="80" height="20" id="team2Player13IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="1680" width="50" height="23" tooltip="Clear the Player 13" id="clearteam2Player13" reset="team2Player13IsLose,team2Player13Id,team2Player13NameMain,team2Player13NameSub">Clear</button>
-                <label x="10" y="1705" width="80" height="23">ID</label>
-                <lineEdit id="team2Player13Id" x="100" y="1705" width="170" height="23" dataSet="players.csv" dataField="1">Player 13 ID</lineEdit>
-                <label x="10" y="1730" width="80" height="23">Name</label>
-                <lineEdit id="team2Player13NameMain" x="100" y="1730" width="170" height="23" dataSet="players.csv" dataField="2" master="team2Player13Id">Player 13 Name</lineEdit>
-                <label x="10" y="1755" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team2Player13NameSub" x="100" y="1755" width="170" height="23" dataSet="players.csv" dataField="3" master="team2Player13Id">Player 13 Name (Sub)</lineEdit>
+                <lineEdit id="team2Player13Id" x="85" y="1565" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearteam2Player13" type="reset" x="260" y="1565" width="50" height="35" tooltip="Clear the Player 1" reset="team2Player13IsLose,team2Player13Id,team2Player13NameMain,team2Player13NameSub">Clear</button>
+                <checkBox id="team2Player13IsLose" x="30" y="1605" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team2Player13NameMain" x="85" y="1605" width="110" height="35" dataSet="players.csv" dataField="2" master="team2Player13Id">Name</lineEdit>
+                <lineEdit id="team2Player13NameSub" x="200" y="1605" width="110" height="35" dataSet="players.csv" dataField="3" master="team2Player13Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="1790" width="50" height="23" tooltip="Swap the Team A Player" id="swapteam2Player13" swapSet1="team2Player13IsLose,team2Player13Id,team2Player13NameMain,team2Player13NameSub" swapSet2="team2Player14IsLose,team2Player14Id,team2Player14NameMain,team2Player14NameSub">Swap</button>
+                <button id="swapteam2Player13" type="swap" x="130" y="1650" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team2Player13IsLose,team2Player13Id,team2Player13NameMain,team2Player13NameSub" swapSet2="team2Player14IsLose,team2Player14Id,team2Player14NameMain,team2Player14NameSub">Swap</button>
 
-                <label x="80" y="1825" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="1823" width="80" height="20" id="team2Player14IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="1820" width="50" height="23" tooltip="Clear the Player 14" id="clearteam2Player14" reset="team2Player14IsLose,team2Player14Id,team2Player14NameMain,team2Player14NameSub">Clear</button>
-                <label x="10" y="1845" width="80" height="23">ID</label>
-                <lineEdit id="team2Player14Id" x="100" y="1845" width="170" height="23" dataSet="players.csv" dataField="1">Player 14 ID</lineEdit>
-                <label x="10" y="1870" width="80" height="23">Name</label>
-                <lineEdit id="team2Player14NameMain" x="100" y="1870" width="170" height="23" dataSet="players.csv" dataField="2" master="team2Player14Id">Player 14 Name</lineEdit>
-                <label x="10" y="1895" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team2Player14NameSub" x="100" y="1895" width="170" height="23" dataSet="players.csv" dataField="3" master="team2Player14Id">Player 14 Name (Sub)</lineEdit>
+                <lineEdit id="team2Player14Id" x="85" y="1695" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearteam2Player14" type="reset" x="260" y="1695" width="50" height="35" tooltip="Clear the Player 1" reset="team2Player14IsLose,team2Player14Id,team2Player14NameMain,team2Player14NameSub">Clear</button>
+                <checkBox id="team2Player14IsLose" x="30" y="1735" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team2Player14NameMain" x="85" y="1735" width="110" height="35" dataSet="players.csv" dataField="2" master="team2Player14Id">Name</lineEdit>
+                <lineEdit id="team2Player14NameSub" x="200" y="1735" width="110" height="35" dataSet="players.csv" dataField="3" master="team2Player14Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="1930" width="50" height="23" tooltip="Swap the Team A Player" id="swapteam2Player14" swapSet1="team2Player14IsLose,team2Player14Id,team2Player14NameMain,team2Player14NameSub" swapSet2="team2Player15IsLose,team2Player15Id,team2Player15NameMain,team2Player15NameSub">Swap</button>
+                <button id="swapteam2Player14" type="swap" x="130" y="1780" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team2Player14IsLose,team2Player14Id,team2Player14NameMain,team2Player14NameSub" swapSet2="team2Player15IsLose,team2Player15Id,team2Player15NameMain,team2Player15NameSub">Swap</button>
 
-                <label x="80" y="1965" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="1963" width="80" height="20" id="team2Player15IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="1960" width="50" height="23" tooltip="Clear the Player 15" id="clearteam2Player15" reset="team2Player15IsLose,team2Player15Id,team2Player15NameMain,team2Player15NameSub">Clear</button>
-                <label x="10" y="1985" width="80" height="23">ID</label>
-                <lineEdit id="team2Player15Id" x="100" y="1985" width="170" height="23" dataSet="players.csv" dataField="1">Player 15 ID</lineEdit>
-                <label x="10" y="2010" width="80" height="23">Name</label>
-                <lineEdit id="team2Player15NameMain" x="100" y="2010" width="170" height="23" dataSet="players.csv" dataField="2" master="team2Player15Id">Player 15 Name</lineEdit>
-                <label x="10" y="2035" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team2Player15NameSub" x="100" y="2035" width="170" height="23" dataSet="players.csv" dataField="3" master="team2Player15Id">Player 15 Name (Sub)</lineEdit>
+                <lineEdit id="team2Player15Id" x="85" y="1825" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearteam2Player15" type="reset" x="260" y="1825" width="50" height="35" tooltip="Clear the Player 1" reset="team2Player15IsLose,team2Player15Id,team2Player15NameMain,team2Player15NameSub">Clear</button>
+                <checkBox id="team2Player15IsLose" x="30" y="1865" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team2Player15NameMain" x="85" y="1865" width="110" height="35" dataSet="players.csv" dataField="2" master="team2Player15Id">Name</lineEdit>
+                <lineEdit id="team2Player15NameSub" x="200" y="1865" width="110" height="35" dataSet="players.csv" dataField="3" master="team2Player15Id">Name (Sub)</lineEdit>
 
-                <button type="swap" x="110" y="2070" width="50" height="23" tooltip="Swap the Team A Player" id="swapteam2Player15" swapSet1="team2Player15IsLose,team2Player15Id,team2Player15NameMain,team2Player15NameSub" swapSet2="team2Player16IsLose,team2Player16Id,team2Player16NameMain,team2Player16NameSub">Swap</button>
+                <button id="swapteam2Player15" type="swap" x="130" y="1910" width="50" height="35" tooltip="Swap the Team A Player" swapSet1="team2Player15IsLose,team2Player15Id,team2Player15NameMain,team2Player15NameSub" swapSet2="team2Player16IsLose,team2Player16Id,team2Player16NameMain,team2Player16NameSub">Swap</button>
 
-                <label x="80" y="2105" width="70" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <checkBox x="160" y="2103" width="80" height="20" id="team2Player16IsLose">Lose</checkBox>
-                <button type="reset" x="220" y="2100" width="50" height="23" tooltip="Clear the Player 16" id="clearteam2Player16" reset="team2Player16IsLose,team2Player16Id,team2Player16NameMain,team2Player16NameSub">Clear</button>
-                <label x="10" y="2125" width="80" height="23">ID</label>
-                <lineEdit id="team2Player16Id" x="100" y="2125" width="170" height="23" dataSet="players.csv" dataField="1">Player 16 ID</lineEdit>
-                <label x="10" y="2150" width="80" height="23">Name</label>
-                <lineEdit id="team2Player16NameMain" x="100" y="2150" width="170" height="23" dataSet="players.csv" dataField="2" master="team2Player16Id">Player 16 Name</lineEdit>
-                <label x="10" y="2175" width="80" height="23">Name (Sub)</label>
-                <lineEdit id="team2Player16NameSub" x="100" y="2175" width="170" height="23" dataSet="players.csv" dataField="3" master="team2Player16Id">Player 16 Name (Sub)</lineEdit>
+                <lineEdit id="team2Player16Id" x="85" y="1955" width="110" height="35" dataSet="players.csv" dataField="1">ID</lineEdit>
+                <button id="clearteam2Player16" type="reset" x="260" y="1955" width="50" height="35" tooltip="Clear the Player 1" reset="team2Player16IsLose,team2Player16Id,team2Player16NameMain,team2Player16NameSub">Clear</button>
+                <checkBox id="team2Player16IsLose" x="30" y="1995" width="80" height="35">Lose</checkBox>
+                <lineEdit id="team2Player16NameMain" x="85" y="1995" width="110" height="35" dataSet="players.csv" dataField="2" master="team2Player16Id">Name</lineEdit>
+                <lineEdit id="team2Player16NameSub" x="200" y="1995" width="110" height="35" dataSet="players.csv" dataField="3" master="team2Player16Id">Name (Sub)</lineEdit>
             </tab>
         </tabSet>
     </tab>
 
     <tab name="Options">
-        <tabSet x="10" y="10" width="195" height="140">
+        <tabSet x="10" y="10" width="195" height="160">
             <tab name="Duration                                ">
-                <label x="10" y="0" width="170" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <label x="10" y="20" width="110" height="23">Fade (ms)</label>
-                <lineEdit id="optionsDurationFade" x="120" y="20" width="60" height="23">1000</lineEdit>
+                <label x="10" y="5" width="110" height="35">Fade (ms)</label>
+                <lineEdit id="optionsDurationFade" x="120" y="5" width="60" height="35">1000</lineEdit>
 
-                <label x="10" y="50" width="110" height="23">Main Language (ms)</label>
-                <lineEdit id="optionsDurationMainLanguage" x="120" y="50" width="60" height="23">10000</lineEdit>
+                <label x="10" y="45" width="110" height="35">Main Language (ms)</label>
+                <lineEdit id="optionsDurationMainLanguage" x="120" y="45" width="60" height="35">10000</lineEdit>
 
-                <label x="10" y="80" width="110" height="23">Sub Language (ms)</label>
-                <lineEdit id="optionsDurationSubLanguage" x="120" y="80" width="60" height="23">5000</lineEdit>
+                <label x="10" y="85" width="110" height="35">Sub Language (ms)</label>
+                <lineEdit id="optionsDurationSubLanguage" x="120" y="85" width="60" height="35">5000</lineEdit>
             </tab>
         </tabSet>
 
-        <tabSet x="215" y="10" width="214" height="140">
+        <tabSet x="215" y="10" width="214" height="160">
             <tab name="Layout                                       ">
-                <label x="10" y="0" width="190" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <label x="10" y="20" width="130" height="23">First to N Width</label>
-                <lineEdit id="optionsLayoutFirstToNWidth" x="140" y="20" width="60" height="23">1350px</lineEdit>
+                <label x="10" y="5" width="130" height="35">First to N Width</label>
+                <lineEdit id="optionsLayoutFirstToNWidth" x="140" y="5" width="60" height="35">1350px</lineEdit>
 
-                <label x="10" y="50" width="130" height="23">Team Info Width</label>
-                <lineEdit id="optionsLayoutTeamInfoWidth" x="140" y="50" width="60" height="23">285px</lineEdit>
+                <label x="10" y="45" width="130" height="35">Team Info Width</label>
+                <lineEdit id="optionsLayoutTeamInfoWidth" x="140" y="45" width="60" height="35">285px</lineEdit>
 
-                <label x="10" y="80" width="130" height="23">Team Info Margin Top</label>
-                <lineEdit id="optionsLayoutTeamInfoMarginTop" x="140" y="80" width="60" height="23">440px</lineEdit>
+                <label x="10" y="85" width="130" height="35">Team Info Margin Top</label>
+                <lineEdit id="optionsLayoutTeamInfoMarginTop" x="140" y="85" width="60" height="35">440px</lineEdit>
             </tab>
         </tabSet>
 
-        <tabSet x="440" y="10" width="212" height="140">
+        <tabSet x="440" y="10" width="212" height="160">
             <tab name="Team                                        ">
-                <label x="10" y="0" width="190" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <label x="10" y="20" width="130" height="23">Team A Player Count</label>
-                <lineEdit id="optionsTeam1PlayerCount" x="140" y="20" width="60" height="23">8</lineEdit>
+                <label x="10" y="5" width="130" height="35">Team A Player Count</label>
+                <lineEdit id="optionsTeam1PlayerCount" x="140" y="5" width="60" height="35">8</lineEdit>
 
-                <label x="10" y="50" width="130" height="23">Team B Player Count</label>
-                <lineEdit id="optionsTeam2PlayerCount" x="140" y="50" width="60" height="23">8</lineEdit>
+                <label x="10" y="45" width="130" height="35">Team B Player Count</label>
+                <lineEdit id="optionsTeam2PlayerCount" x="140" y="45" width="60" height="35">8</lineEdit>
             </tab>
         </tabSet>
     </tab>
