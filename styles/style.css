@@ -22,12 +22,21 @@ div {
 
 .container {
     position: relative;
+    width: 100vw;
+    height: 100vw;
+}
+
+.first-to-n {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    height: 64px;
 }
 
 .main {
     position: absolute;
     width: 100%;
-    height: 64px;
+    height: 100%;
 }
 
 .inner {
@@ -130,12 +139,14 @@ div {
     margin-right: 8px;
 }
 
-.player1-area-inner {
+.player1-area-inner,
+.team1-name-area-inner {
     position: absolute;
     transform-origin: right;
 }
 
-.player2-area-inner {
+.player2-area-inner,
+.team2-name-area-inner {
     position: absolute;
     transform-origin: left;
 }
@@ -194,46 +205,119 @@ div {
     justify-content: flex-end;
 }
 
-.message {
-    font-size: 16px;
-    text-align: center;
+.info {
+    position: relative;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(100vw - 64px);
 }
 
-.error {
-    color: #fff9c4;
-    text-shadow: #bc5100 0 0 0.1em, #bc5100 0 0 0.2em, #bc5100 0 0 0.3em,
-        #bc5100 0 0 0.4em, #bc5100 0 0 0.5em;
+.team-info {
+    margin-top: 0px;
+    width: 285px;
 }
 
-@media screen and (max-height: 63px) {
-    body {
-        height: 96px;
-    }
+.team-player {
+    position: relative;
+    width: 265px;
+    height: 32px;
+    opacity: 0;
+}
 
-    .main {
-        height: 48px;
-    }
+.team-player.active {
+    width: 280px;
+    box-shadow: 0 0 0.5em 0.2em #bc5100;
+    z-index: 100;
+}
 
-    .comment-area {
-        height: 14px;
-        margin-top: 6px;
-        font-size: 12px;
-    }
+.team1-info {
+    align-items: flex-start;
+}
 
-    .name-area {
-        margin-top: -6px;
-        font-size: 24px;
-    }
+.team1-player {
+    margin-top: 4px;
+}
 
-    .name-area-big {
-        margin-top: -14px;
-    }
+.team1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
 
-    .wins-area {
-        height: 24px;
-    }
+.team1.border {
+    clip-path: polygon(
+        calc(0%) calc(0%),
+        calc(100%) calc(0%),
+        calc(100%) calc(100%),
+        calc(0%) calc(100%)
+    );
+}
 
-    .wins {
-        font-size: 18px;
-    }
+.team1.inner-border {
+    clip-path: polygon(
+        calc(0%) calc(0% + 2px),
+        calc(100% - 2px) calc(0% + 2px),
+        calc(100% - 2px) calc(100% - 2px),
+        calc(0%) calc(100% - 2px)
+    );
+}
+
+.team1.background {
+    clip-path: polygon(
+        calc(0%) calc(0% + 3px),
+        calc(100% - 3px) calc(0% + 3px),
+        calc(100% - 3px) calc(100% - 3px),
+        calc(0%) calc(100% - 3px)
+    );
+    background: linear-gradient(270deg, #0d47a1, #000000);
+}
+
+.team1-name-area-inner {
+    margin: 0 8px;
+}
+
+.team2-info {
+    align-items: flex-end;
+}
+
+.team2-player {
+    margin-top: 4px;
+}
+
+.team2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.team2.border {
+    clip-path: polygon(
+        calc(0%) calc(0%),
+        calc(100%) calc(0%),
+        calc(100%) calc(100%),
+        calc(0%) calc(100%)
+    );
+}
+
+.team2.inner-border {
+    clip-path: polygon(
+        calc(0% + 2px) calc(0% + 2px),
+        calc(100%) calc(0% + 2px),
+        calc(100%) calc(100% - 2px),
+        calc(0% + 2px) calc(100% - 2px)
+    );
+}
+
+.team2.background {
+    clip-path: polygon(
+        calc(0% + 3px) calc(0% + 3px),
+        calc(100%) calc(0% + 3px),
+        calc(100%) calc(100% - 3px),
+        calc(0% + 3px) calc(100% - 3px)
+    );
+    background: linear-gradient(90deg, #b71c1c, #000000);
+}
+
+.team2-name-area-inner {
+    margin: 0 8px;
 }

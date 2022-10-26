@@ -129,7 +129,7 @@ class MainViewModel {
 
     /**
      * メインビューモデルの新しいインスタンスを初期化します。
-     * @param {Object} configuration
+     * @param {Object} configuration 構成設定。
      */
     constructor(configuration) {
         this.#configuration = configuration;
@@ -137,7 +137,7 @@ class MainViewModel {
 
     /**
      * 画面を初期化します。
-     * @param {Object} data
+     * @param {Object} data StreamControl JSON データ。
      */
     async initialize(data) {
         this.setDurations(data);
@@ -151,6 +151,20 @@ class MainViewModel {
                 this.#configuration.duration.fade
             );
         $('#player2-background')
+            .show()
+            .effect(
+                'slide',
+                { direction: 'right' },
+                this.#configuration.duration.fade
+            );
+        $('#team1')
+            .show()
+            .effect(
+                'slide',
+                { direction: 'left' },
+                this.#configuration.duration.fade
+            );
+        $('#team2')
             .show()
             .effect(
                 'slide',
@@ -193,15 +207,42 @@ class MainViewModel {
             false
         );
 
+        // チーム情報
+        for (
+            let number = 1;
+            number <= this.#configuration.teamPlayersCount.max;
+            number++
+        ) {
+            $(`#team1-player${number}-name-main`).crossFadeWithRotation(
+                this.#configuration.duration,
+                true
+            );
+            $(`#team1-player${number}-name-sub`).crossFadeWithRotation(
+                this.#configuration.duration,
+                false
+            );
+
+            $(`#team2-player${number}-name-main`).crossFadeWithRotation(
+                this.#configuration.duration,
+                true
+            );
+            $(`#team2-player${number}-name-sub`).crossFadeWithRotation(
+                this.#configuration.duration,
+                false
+            );
+        }
+
         await this.update(data);
     }
 
     /**
      * 画面を更新します。
-     * @param {Object} data
+     * @param {Object} data StreamControl JSON データ。
      */
     async update(data) {
         this.setDurations(data);
+        await this.setLayouts(data);
+        this.setTeams(data);
         this.setTexts(data);
     }
 
@@ -219,7 +260,7 @@ class MainViewModel {
 
     /**
      * StreamControl JSON データの設定値で時間オプションを設定します。
-     * @param {Object} data
+     * @param {Object} data StreamControl JSON データ。
      */
     setDurations(data) {
         if (!Utility.isEmpty(data.optionsDurationMainLanguage)) {
@@ -242,8 +283,76 @@ class MainViewModel {
     }
 
     /**
+     * StreamControl JSON データの設定値でレイアウトオプションを設定します。
+     * @param {Object} data StreamControl JSON データ。
+     */
+    async setLayouts(data) {
+        if (!Utility.isEmpty(data.optionsLayoutFirstToNWidth)) {
+            this.#configuration.layout.firstToNWidth =
+                data.optionsLayoutFirstToNWidth;
+        }
+
+        if (!Utility.isEmpty(data.optionsLayoutTeamInfoWidth)) {
+            this.#configuration.layout.teamInfoWidth =
+                data.optionsLayoutTeamInfoWidth;
+        }
+
+        if (!Utility.isEmpty(data.optionsLayoutTeamInfoMarginTop)) {
+            this.#configuration.layout.teamInfoMarginTop =
+                data.optionsLayoutTeamInfoMarginTop;
+        }
+
+        $('.first-to-n').animate(
+            {
+                width: this.#configuration.layout.firstToNWidth,
+            },
+            this.#configuration.duration.fade
+        );
+
+        $('.team-info').animate(
+            {
+                width: this.#configuration.layout.teamInfoWidth,
+            },
+            this.#configuration.duration.fade
+        );
+
+        $('.team-info').animate(
+            {
+                marginTop: this.#configuration.layout.teamInfoMarginTop,
+            },
+            this.#configuration.duration.fade
+        );
+
+        await Task.delay(this.#configuration.duration.fade);
+    }
+
+    /**
+     * StreamControl JSON データの設定値でチームオプションを設定します。
+     * @param {Object} data StreamControl JSON データ。
+     */
+    setTeams(data) {
+        if (!Utility.isEmpty(data.optionsTeam1PlayerCount)) {
+            const count = parseInt(data.optionsTeam1PlayerCount);
+
+            this.#configuration.teamPlayersCount.team1 =
+                count <= this.#configuration.teamPlayersCount.max
+                    ? count
+                    : this.#configuration.teamPlayersCount.max;
+        }
+
+        if (!Utility.isEmpty(data.optionsTeam2PlayerCount)) {
+            const count = parseInt(data.optionsTeam2PlayerCount);
+
+            this.#configuration.teamPlayersCount.team2 =
+                count <= this.#configuration.teamPlayersCount.max
+                    ? count
+                    : this.#configuration.teamPlayersCount.max;
+        }
+    }
+
+    /**
      * StreamControl JSON データでテキストを設定します。
-     * @param {Object} data
+     * @param {Object} data StreamControl JSON データ。
      */
     setTexts(data) {
         // Player 1
@@ -260,6 +369,7 @@ class MainViewModel {
             true
         );
 
+        // サブの入力がない場合、メインを表示します。
         if (Utility.isEmpty(data.matchPlayer1NameSub)) {
             data.matchPlayer1NameSub = data.matchPlayer1NameMain;
         }
@@ -313,6 +423,7 @@ class MainViewModel {
             true
         );
 
+        // サブの入力がない場合、メインを表示します。
         if (Utility.isEmpty(data.matchPlayer2NameSub)) {
             data.matchPlayer2NameSub = data.matchPlayer2NameMain;
         }
@@ -413,6 +524,115 @@ class MainViewModel {
             false,
             true
         );
+
+        // チーム情報
+        for (
+            let number = 1;
+            number <= this.#configuration.teamPlayersCount.max;
+            number++
+        ) {
+            // チーム人数より大きいチームプレイヤー情報は隠します。
+            // また、Lose にチェックがある場合は半透明、そうでなければ表示します。
+            if (this.#configuration.teamPlayersCount.team1 < number) {
+                $(`#team1-player${number}`).animate(
+                    { opacity: 0 },
+                    this.#configuration.duration.fade
+                );
+            } else if (
+                data[`team1Player${number}IsLose`] === CheckBoxValue.CHECKED
+            ) {
+                $(`#team1-player${number}`).animate(
+                    { opacity: 0.5 },
+                    this.#configuration.duration.fade
+                );
+            } else {
+                $(`#team1-player${number}`).animate(
+                    { opacity: 1 },
+                    this.#configuration.duration.fade
+                );
+            }
+
+            if (this.#configuration.teamPlayersCount.team2 < number) {
+                $(`#team2-player${number}`).animate(
+                    { opacity: 0 },
+                    this.#configuration.duration.fade
+                );
+            } else if (
+                data[`team2Player${number}IsLose`] === CheckBoxValue.CHECKED
+            ) {
+                $(`#team2-player${number}`).animate(
+                    { opacity: 0.5 },
+                    this.#configuration.duration.fade
+                );
+            } else {
+                $(`#team2-player${number}`).animate(
+                    { opacity: 1 },
+                    this.#configuration.duration.fade
+                );
+            }
+
+            // サブの入力がない場合、メインを表示します。
+            if (Utility.isEmpty(data[`team1Player${number}NameSub`])) {
+                data[`team1Player${number}NameSub`] =
+                    data[`team1Player${number}NameMain`];
+            }
+
+            if (Utility.isEmpty(data[`team2Player${number}NameSub`])) {
+                data[`team2Player${number}NameSub`] =
+                    data[`team2Player${number}NameMain`];
+            }
+
+            $(`#team1-player${number}-name-main`).textWithFade(
+                data[`team1Player${number}NameMain`],
+                this.#configuration.duration.fade,
+                false,
+                true
+            );
+            $(`#team1-player${number}-name-sub`).textWithFade(
+                data[`team1Player${number}NameSub`],
+                this.#configuration.duration.fade,
+                true,
+                true
+            );
+
+            $(`#team2-player${number}-name-main`).textWithFade(
+                data[`team2Player${number}NameMain`],
+                this.#configuration.duration.fade,
+                false,
+                true
+            );
+            $(`#team2-player${number}-name-sub`).textWithFade(
+                data[`team2Player${number}NameSub`],
+                this.#configuration.duration.fade,
+                true,
+                true
+            );
+
+            // アクティブを設定します。
+            if (number === parseInt(data.team1ActivePlayer)) {
+                $(`#team1-player${number}`).addClass(
+                    'active',
+                    this.#configuration.duration.fade
+                );
+            } else {
+                $(`#team1-player${number}`).removeClass(
+                    'active',
+                    this.#configuration.duration.fade
+                );
+            }
+
+            if (number === parseInt(data.team2ActivePlayer)) {
+                $(`#team2-player${number}`).addClass(
+                    'active',
+                    this.#configuration.duration.fade
+                );
+            } else {
+                $(`#team2-player${number}`).removeClass(
+                    'active',
+                    this.#configuration.duration.fade
+                );
+            }
+        }
     }
 
     /**
@@ -484,7 +704,8 @@ class Extensions {
                 this.text(text);
 
                 const width = this.width();
-                const parentWidth = this.parent().width();
+                const parentWidth =
+                    this.parent().width() + width - this.outerWidth(true);
                 const ratio = width <= parentWidth ? 1 : parentWidth / width;
                 this.css('transform', `scaleX(${ratio})`);
 
@@ -517,7 +738,8 @@ class Extensions {
             this.text(text);
 
             const width = this.width();
-            const parentWidth = this.parent().width();
+            const parentWidth =
+                this.parent().width() + width - this.outerWidth(true);
             const ratio = width <= parentWidth ? 1 : parentWidth / width;
             this.css('transform', `scaleX(${ratio})`);
 
