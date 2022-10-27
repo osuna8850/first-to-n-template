@@ -157,20 +157,6 @@ class MainViewModel {
                 { direction: 'right' },
                 this.#configuration.duration.fade
             );
-        $('#team1')
-            .show()
-            .effect(
-                'slide',
-                { direction: 'left' },
-                this.#configuration.duration.fade
-            );
-        $('#team2')
-            .show()
-            .effect(
-                'slide',
-                { direction: 'right' },
-                this.#configuration.duration.fade
-            );
         await Task.delay(this.#configuration.duration.fade);
 
         // クロスフェードのアニメーションを登録します。
@@ -210,7 +196,7 @@ class MainViewModel {
         // チーム情報
         for (
             let number = 1;
-            number <= this.#configuration.teamPlayersCount.max;
+            number <= this.#configuration.teamPlayers.maxCount;
             number++
         ) {
             $(`#team1-player${number}-name-main`).crossFadeWithRotation(
@@ -242,7 +228,7 @@ class MainViewModel {
     async update(data) {
         this.setDurations(data);
         await this.setLayouts(data);
-        this.setTeams(data);
+        await this.setTeams(data);
         this.setTexts(data);
     }
 
@@ -263,6 +249,7 @@ class MainViewModel {
      * @param {Object} data StreamControl JSON データ。
      */
     setDurations(data) {
+        // StreamControl JSON データの設定値を反映します。
         if (!Utility.isEmpty(data.optionsDurationMainLanguage)) {
             this.#configuration.duration.mainLanguage = parseInt(
                 data.optionsDurationMainLanguage
@@ -287,9 +274,40 @@ class MainViewModel {
      * @param {Object} data StreamControl JSON データ。
      */
     async setLayouts(data) {
+        // StreamControl JSON データの設定値を反映します。
         if (!Utility.isEmpty(data.optionsLayoutFirstToNWidth)) {
             this.#configuration.layout.firstToNWidth =
                 data.optionsLayoutFirstToNWidth;
+        }
+
+        if (!Utility.isEmpty(data.optionsLayoutFirstToNHeight)) {
+            this.#configuration.layout.firstToNHeight =
+                data.optionsLayoutFirstToNHeight;
+        }
+
+        if (!Utility.isEmpty(data.optionsLayoutCommentFontSize)) {
+            this.#configuration.layout.commentFontSize =
+                data.optionsLayoutCommentFontSize;
+        }
+
+        if (!Utility.isEmpty(data.optionsLayoutNameFontSize)) {
+            this.#configuration.layout.nameFontSize =
+                data.optionsLayoutNameFontSize;
+        }
+
+        if (!Utility.isEmpty(data.optionsLayoutNameOnlyFontSize)) {
+            this.#configuration.layout.nameOnlyFontSize =
+                data.optionsLayoutNameOnlyFontSize;
+        }
+
+        if (!Utility.isEmpty(data.optionsLayoutWinsCountFontSize)) {
+            this.#configuration.layout.winsCountFontSize =
+                data.optionsLayoutWinsCountFontSize;
+        }
+
+        if (!Utility.isEmpty(data.optionsLayoutWinsFontSize)) {
+            this.#configuration.layout.winsFontSize =
+                data.optionsLayoutWinsFontSize;
         }
 
         if (!Utility.isEmpty(data.optionsLayoutTeamInfoWidth)) {
@@ -302,9 +320,69 @@ class MainViewModel {
                 data.optionsLayoutTeamInfoMarginTop;
         }
 
+        if (!Utility.isEmpty(data.optionsLayoutTeamPlayerHeight)) {
+            this.#configuration.layout.teamPlayerHeight =
+                data.optionsLayoutTeamPlayerHeight;
+        }
+
+        if (!Utility.isEmpty(data.optionsLayoutTeamPlayerFontSize)) {
+            this.#configuration.layout.teamPlayerFontSize =
+                data.optionsLayoutTeamPlayerFontSize;
+        }
+
+        // クラスの付け外しをします。
+        if (Utility.isEmpty(data.matchPlayer1CommentMain)) {
+            $('#player1-name-main').switchClass('name-area', 'name-area-big');
+        } else {
+            $('#player1-name-main').switchClass('name-area-big', 'name-area');
+        }
+
+        if (Utility.isEmpty(data.matchPlayer1CommentSub)) {
+            $('#player1-name-sub').switchClass('name-area', 'name-area-big');
+        } else {
+            $('#player1-name-sub').switchClass('name-area-big', 'name-area');
+        }
+
+        // レイアウトの変更をアニメーションします。
         $('.first-to-n').animate(
             {
                 width: this.#configuration.layout.firstToNWidth,
+                height: this.#configuration.layout.firstToNHeight,
+            },
+            this.#configuration.duration.fade
+        );
+
+        $('.comment-area').animate(
+            {
+                fontSize: this.#configuration.layout.commentFontSize,
+            },
+            this.#configuration.duration.fade
+        );
+
+        $('.name-area').animate(
+            {
+                fontSize: this.#configuration.layout.nameFontSize,
+            },
+            this.#configuration.duration.fade
+        );
+
+        $('.name-area-big').animate(
+            {
+                fontSize: this.#configuration.layout.nameOnlyFontSize,
+            },
+            this.#configuration.duration.fade
+        );
+
+        $('.wins-count-area').animate(
+            {
+                fontSize: this.#configuration.layout.winsCountFontSize,
+            },
+            this.#configuration.duration.fade
+        );
+
+        $('.wins').animate(
+            {
+                fontSize: this.#configuration.layout.winsFontSize,
             },
             this.#configuration.duration.fade
         );
@@ -312,13 +390,15 @@ class MainViewModel {
         $('.team-info').animate(
             {
                 width: this.#configuration.layout.teamInfoWidth,
+                marginTop: this.#configuration.layout.teamInfoMarginTop,
             },
             this.#configuration.duration.fade
         );
 
-        $('.team-info').animate(
+        $('.team-player').animate(
             {
-                marginTop: this.#configuration.layout.teamInfoMarginTop,
+                height: this.#configuration.layout.teamPlayerHeight,
+                fontSize: this.#configuration.layout.teamPlayerFontSize,
             },
             this.#configuration.duration.fade
         );
@@ -330,24 +410,27 @@ class MainViewModel {
      * StreamControl JSON データの設定値でチームオプションを設定します。
      * @param {Object} data StreamControl JSON データ。
      */
-    setTeams(data) {
+    async setTeams(data) {
+        // StreamControl JSON データの設定値を反映します。
         if (!Utility.isEmpty(data.optionsTeam1PlayerCount)) {
             const count = parseInt(data.optionsTeam1PlayerCount);
 
-            this.#configuration.teamPlayersCount.team1 =
-                count <= this.#configuration.teamPlayersCount.max
+            this.#configuration.teamPlayers.team1Count =
+                count <= this.#configuration.teamPlayers.maxCount
                     ? count
-                    : this.#configuration.teamPlayersCount.max;
+                    : this.#configuration.teamPlayers.maxCount;
         }
 
         if (!Utility.isEmpty(data.optionsTeam2PlayerCount)) {
             const count = parseInt(data.optionsTeam2PlayerCount);
 
-            this.#configuration.teamPlayersCount.team2 =
-                count <= this.#configuration.teamPlayersCount.max
+            this.#configuration.teamPlayers.team2Count =
+                count <= this.#configuration.teamPlayers.maxCount
                     ? count
-                    : this.#configuration.teamPlayersCount.max;
+                    : this.#configuration.teamPlayers.maxCount;
         }
+
+        await Task.delay(this.#configuration.duration.fade);
     }
 
     /**
@@ -396,18 +479,6 @@ class MainViewModel {
             false,
             true
         );
-
-        if (Utility.isEmpty(data.matchPlayer1CommentMain)) {
-            $('#player1-name-main').switchClass('name-area', 'name-area-big');
-        } else {
-            $('#player1-name-main').switchClass('name-area-big', 'name-area');
-        }
-
-        if (Utility.isEmpty(data.matchPlayer1CommentSub)) {
-            $('#player1-name-sub').switchClass('name-area', 'name-area-big');
-        } else {
-            $('#player1-name-sub').switchClass('name-area-big', 'name-area');
-        }
 
         // Player 2
         $('#player2-name-main').textWithFade(
@@ -528,12 +599,12 @@ class MainViewModel {
         // チーム情報
         for (
             let number = 1;
-            number <= this.#configuration.teamPlayersCount.max;
+            number <= this.#configuration.teamPlayers.maxCount;
             number++
         ) {
             // チーム人数より大きいチームプレイヤー情報は隠します。
             // また、Lose にチェックがある場合は半透明、そうでなければ表示します。
-            if (this.#configuration.teamPlayersCount.team1 < number) {
+            if (this.#configuration.teamPlayers.team1Count < number) {
                 $(`#team1-player${number}`).animate(
                     { opacity: 0 },
                     this.#configuration.duration.fade
@@ -552,7 +623,7 @@ class MainViewModel {
                 );
             }
 
-            if (this.#configuration.teamPlayersCount.team2 < number) {
+            if (this.#configuration.teamPlayers.team2Count < number) {
                 $(`#team2-player${number}`).animate(
                     { opacity: 0 },
                     this.#configuration.duration.fade
@@ -582,27 +653,36 @@ class MainViewModel {
                     data[`team2Player${number}NameMain`];
             }
 
+            // テキストを設定します。
             $(`#team1-player${number}-name-main`).textWithFade(
-                data[`team1Player${number}NameMain`],
+                Utility.isEmpty(data[`team1Player${number}NameMain`])
+                    ? ''
+                    : `${number}. ${data[`team1Player${number}NameMain`]}`,
                 this.#configuration.duration.fade,
                 false,
                 true
             );
             $(`#team1-player${number}-name-sub`).textWithFade(
-                data[`team1Player${number}NameSub`],
+                Utility.isEmpty(data[`team1Player${number}NameSub`])
+                    ? ''
+                    : `${number}. ${data[`team1Player${number}NameSub`]}`,
                 this.#configuration.duration.fade,
                 true,
                 true
             );
 
             $(`#team2-player${number}-name-main`).textWithFade(
-                data[`team2Player${number}NameMain`],
+                Utility.isEmpty(data[`team2Player${number}NameMain`])
+                    ? ''
+                    : `${number}. ${data[`team2Player${number}NameMain`]}`,
                 this.#configuration.duration.fade,
                 false,
                 true
             );
             $(`#team2-player${number}-name-sub`).textWithFade(
-                data[`team2Player${number}NameSub`],
+                Utility.isEmpty(data[`team2Player${number}NameSub`])
+                    ? ''
+                    : `${number}. ${data[`team2Player${number}NameSub`]}`,
                 this.#configuration.duration.fade,
                 true,
                 true
@@ -694,13 +774,8 @@ class Extensions {
             isFadeOutOnly,
             isOverwrite
         ) {
-            // テキストが同一の場合、何もしません。
-            if (this.text() === text) {
-                return;
-            }
-
-            // テキストが非表示の場合、テキストだけを設定して終了します。
-            if (this.css('opacity') === '0') {
+            // テキストが同一の場合、またはテキストが非表示の場合、テキストとスケールを設定して終了します。
+            if (this.text() === text || this.css('opacity') === '0') {
                 this.text(text);
 
                 const width = this.width();

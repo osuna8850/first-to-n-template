@@ -1,18 +1,18 @@
 <!DOCTYPE StreamControlLayout>
-<layout width="492" height="378" tabbed="1">
+<layout width="492" height="350" tabbed="1">
     <tab name="Match Info">
-        <tabSet x="2" y="4" width="206" height="182">
+        <tabSet x="2" y="4" width="206" height="165">
             <tab name="Player 1                                   ">
-                <label x="3" y="9" width="80" height="23">Preset</label>
-                <lineEdit id="matchPlayer1Id" x="65" y="9" width="133" height="20" dataSet="players.csv" dataField="1">Preset</lineEdit>
-                <label x="3" y="39" width="80" height="23">Name</label>
-                <lineEdit id="matchPlayer1NameMain" x="65" y="39" width="133" height="20" dataSet="players.csv" dataField="2" master="matchPlayer1Id">Name</lineEdit>
-                <label x="3" y="69" width="80" height="23">Name(Sub)</label>
-                <lineEdit id="matchPlayer1NameSub" x="65" y="69" width="133" height="20" dataSet="players.csv" dataField="3" master="matchPlayer1Id">Name(Sub)</lineEdit>
-                <label x="3" y="99" width="80" height="23">Comment</label>
-                <lineEdit id="matchPlayer1CommentMain" x="65" y="99" width="133" height="20" dataSet="players.csv" dataField="4" master="matchPlayer1Id">Comment</lineEdit>
-                <label x="3" y="129" width="80" height="23">Comm(Sub)</label>
-                <lineEdit id="matchPlayer1CommentSub" x="65" y="129" width="133" height="20" dataSet="players.csv" dataField="5" master="matchPlayer1Id">Comm(Sub)</lineEdit>
+                <label x="3" y="10" width="80" height="23">Preset</label>
+                <lineEdit id="matchPlayer1Id" x="65" y="10" width="133" height="20" dataSet="players.csv" dataField="1">Preset</lineEdit>
+                <label x="3" y="35" width="80" height="23">Name</label>
+                <lineEdit id="matchPlayer1NameMain" x="65" y="35" width="133" height="20" dataSet="players.csv" dataField="2" master="matchPlayer1Id">Name</lineEdit>
+                <label x="3" y="60" width="80" height="23">Name(Sub)</label>
+                <lineEdit id="matchPlayer1NameSub" x="65" y="60" width="133" height="20" dataSet="players.csv" dataField="3" master="matchPlayer1Id">Name(Sub)</lineEdit>
+                <label x="3" y="85" width="80" height="23">Comment</label>
+                <lineEdit id="matchPlayer1CommentMain" x="65" y="85" width="133" height="20" dataSet="players.csv" dataField="4" master="matchPlayer1Id">Comment</lineEdit>
+                <label x="3" y="110" width="80" height="23">Comm(Sub)</label>
+                <lineEdit id="matchPlayer1CommentSub" x="65" y="110" width="133" height="20" dataSet="players.csv" dataField="5" master="matchPlayer1Id">Comm(Sub)</lineEdit>
             </tab>
         </tabSet>
         <label x="13" y="25" width="200" height="16">―――――――――――――――</label>
@@ -21,24 +21,24 @@
         <button type="swap" x="210" y="67" width="50" height="20" tooltip="Swap the Players" id="swapPlayers" swapSet1="matchPlayer1Id,matchPlayer1NameMain,matchPlayer1NameSub,matchPlayer1CommentMain,matchPlayer1CommentSub" swapSet2="matchPlayer2Id,matchPlayer2NameMain,matchPlayer2NameSub,matchPlayer2CommentMain,matchPlayer2CommentSub">Swap</button>
         <button type="reset" x="210" y="97" width="50" height="20" tooltip="Clear the Players" id="clearPlayers" reset="matchPlayer1Id,matchPlayer1NameMain,matchPlayer1NameSub,matchPlayer1CommentMain,matchPlayer1CommentSub,matchPlayer2Id,matchPlayer2NameMain,matchPlayer2NameSub,matchPlayer2CommentMain,matchPlayer2CommentSub">All Clear</button>
 
-        <tabSet x="262" y="4" width="206" height="182">
+        <tabSet x="262" y="4" width="206" height="165">
             <tab name=" Player 2                                  ">
-                <label x="3" y="9" width="80" height="23">Preset</label>
-                <lineEdit id="matchPlayer2Id" x="65" y="9" width="133" height="20" dataSet="players.csv" dataField="1">Preset</lineEdit>
-                <label x="3" y="39" width="80" height="23">Name</label>
-                <lineEdit id="matchPlayer2NameMain" x="65" y="39" width="133" height="20" dataSet="players.csv" dataField="2" master="matchPlayer2Id">Name</lineEdit>
-                <label x="3" y="69" width="80" height="23">Name(Sub)</label>
-                <lineEdit id="matchPlayer2NameSub" x="65" y="69" width="133" height="20" dataSet="players.csv" dataField="3" master="matchPlayer2Id">Name(Sub)</lineEdit>
-                <label x="3" y="99" width="80" height="23">Comment</label>
-                <lineEdit id="matchPlayer2CommentMain" x="65" y="99" width="133" height="20" dataSet="players.csv" dataField="4" master="matchPlayer2Id">Comment</lineEdit>
-                <label x="3" y="129" width="80" height="23">Comm(Sub)</label>
-                <lineEdit id="matchPlayer2CommentSub" x="65" y="129" width="133" height="20" dataSet="players.csv" dataField="5" master="matchPlayer2Id">Comm(Sub)</lineEdit>
+                <label x="3" y="10" width="80" height="23">Preset</label>
+                <lineEdit id="matchPlayer2Id" x="65" y="10" width="133" height="20" dataSet="players.csv" dataField="1">Preset</lineEdit>
+                <label x="3" y="35" width="80" height="23">Name</label>
+                <lineEdit id="matchPlayer2NameMain" x="65" y="35" width="133" height="20" dataSet="players.csv" dataField="2" master="matchPlayer2Id">Name</lineEdit>
+                <label x="3" y="60" width="80" height="23">Name(Sub)</label>
+                <lineEdit id="matchPlayer2NameSub" x="65" y="60" width="133" height="20" dataSet="players.csv" dataField="3" master="matchPlayer2Id">Name(Sub)</lineEdit>
+                <label x="3" y="85" width="80" height="23">Comment</label>
+                <lineEdit id="matchPlayer2CommentMain" x="65" y="85" width="133" height="20" dataSet="players.csv" dataField="4" master="matchPlayer2Id">Comment</lineEdit>
+                <label x="3" y="110" width="80" height="23">Comm(Sub)</label>
+                <lineEdit id="matchPlayer2CommentSub" x="65" y="110" width="133" height="20" dataSet="players.csv" dataField="5" master="matchPlayer2Id">Comm(Sub)</lineEdit>
             </tab>
         </tabSet>
         <label x="275" y="25" width="200" height="16">―――――――――――――――</label>
         <button type="reset" x="412" y="8" width="50" height="20" tooltip="Clear the Player 2" id="clearPlayer2" reset="matchPlayer2Id,matchPlayer2NameMain,matchPlayer2NameSub,matchPlayer2CommentMain,matchPlayer2CommentSub">Clear</button>
 
-        <tabSet x="2" y="190" width="468" height="120">
+        <tabSet x="2" y="170" width="468" height="110">
             <tab name="Win / Lose                                                                                                 ">
                 <label x="10" y="15" width="60" height="13">First to</label>
                 <radioGroup id="matchFirstTo">
@@ -46,51 +46,51 @@
                     <radioButton x="110" y="12" width="40" height="20" value="10">10</radioButton>
                 </radioGroup>
 
-                <label x="10" y="45" width="60" height="13">Player 1</label>
-                <label x="10" y="75" width="60" height="13">Player 2</label>
-                <checkBox x="70" y="42" width="20" height="20" id="matchPlayer1Wins1" />
-                <checkBox x="70" y="72" width="20" height="20" id="matchPlayer2Wins1" />
-                <checkBox x="90" y="42" width="20" height="20" id="matchPlayer1Wins2" />
-                <checkBox x="90" y="72" width="20" height="20" id="matchPlayer2Wins2" />
-                <checkBox x="110" y="42" width="20" height="20" id="matchPlayer1Wins3" />
-                <checkBox x="110" y="72" width="20" height="20" id="matchPlayer2Wins3" />
-                <checkBox x="130" y="42" width="20" height="20" id="matchPlayer1Wins4" />
-                <checkBox x="130" y="72" width="20" height="20" id="matchPlayer2Wins4" />
-                <checkBox x="150" y="42" width="20" height="20" id="matchPlayer1Wins5" />
-                <checkBox x="150" y="72" width="20" height="20" id="matchPlayer2Wins5" />
-                <checkBox x="170" y="42" width="20" height="20" id="matchPlayer1Wins6" />
-                <checkBox x="170" y="72" width="20" height="20" id="matchPlayer2Wins6" />
-                <checkBox x="190" y="42" width="20" height="20" id="matchPlayer1Wins7" />
-                <checkBox x="190" y="72" width="20" height="20" id="matchPlayer2Wins7" />
-                <checkBox x="210" y="42" width="20" height="20" id="matchPlayer1Wins8" />
-                <checkBox x="210" y="72" width="20" height="20" id="matchPlayer2Wins8" />
-                <checkBox x="230" y="42" width="20" height="20" id="matchPlayer1Wins9" />
-                <checkBox x="230" y="72" width="20" height="20" id="matchPlayer2Wins9" />
-                <checkBox x="250" y="42" width="20" height="20" id="matchPlayer1Wins10" />
-                <checkBox x="250" y="72" width="20" height="20" id="matchPlayer2Wins10" />
-                <checkBox x="270" y="42" width="20" height="20" id="matchPlayer1Wins11" />
-                <checkBox x="270" y="72" width="20" height="20" id="matchPlayer2Wins11" />
-                <checkBox x="290" y="42" width="20" height="20" id="matchPlayer1Wins12" />
-                <checkBox x="290" y="72" width="20" height="20" id="matchPlayer2Wins12" />
-                <checkBox x="310" y="42" width="20" height="20" id="matchPlayer1Wins13" />
-                <checkBox x="310" y="72" width="20" height="20" id="matchPlayer2Wins13" />
-                <checkBox x="330" y="42" width="20" height="20" id="matchPlayer1Wins14" />
-                <checkBox x="330" y="72" width="20" height="20" id="matchPlayer2Wins14" />
-                <checkBox x="350" y="42" width="20" height="20" id="matchPlayer1Wins15" />
-                <checkBox x="350" y="72" width="20" height="20" id="matchPlayer2Wins15" />
-                <checkBox x="370" y="42" width="20" height="20" id="matchPlayer1Wins16" />
-                <checkBox x="370" y="72" width="20" height="20" id="matchPlayer2Wins16" />
-                <checkBox x="390" y="42" width="20" height="20" id="matchPlayer1Wins17" />
-                <checkBox x="390" y="72" width="20" height="20" id="matchPlayer2Wins17" />
-                <checkBox x="410" y="42" width="20" height="20" id="matchPlayer1Wins18" />
-                <checkBox x="410" y="72" width="20" height="20" id="matchPlayer2Wins18" />
-                <checkBox x="430" y="42" width="20" height="20" id="matchPlayer1Wins19" />
-                <checkBox x="430" y="72" width="20" height="20" id="matchPlayer2Wins19" />
+                <label x="10" y="40" width="60" height="13">Player 1</label>
+                <label x="10" y="65" width="60" height="13">Player 2</label>
+                <checkBox x="70" y="37" width="20" height="20" id="matchPlayer1Wins1" />
+                <checkBox x="70" y="62" width="20" height="20" id="matchPlayer2Wins1" />
+                <checkBox x="90" y="37" width="20" height="20" id="matchPlayer1Wins2" />
+                <checkBox x="90" y="62" width="20" height="20" id="matchPlayer2Wins2" />
+                <checkBox x="110" y="37" width="20" height="20" id="matchPlayer1Wins3" />
+                <checkBox x="110" y="62" width="20" height="20" id="matchPlayer2Wins3" />
+                <checkBox x="130" y="37" width="20" height="20" id="matchPlayer1Wins4" />
+                <checkBox x="130" y="62" width="20" height="20" id="matchPlayer2Wins4" />
+                <checkBox x="150" y="37" width="20" height="20" id="matchPlayer1Wins5" />
+                <checkBox x="150" y="62" width="20" height="20" id="matchPlayer2Wins5" />
+                <checkBox x="170" y="37" width="20" height="20" id="matchPlayer1Wins6" />
+                <checkBox x="170" y="62" width="20" height="20" id="matchPlayer2Wins6" />
+                <checkBox x="190" y="37" width="20" height="20" id="matchPlayer1Wins7" />
+                <checkBox x="190" y="62" width="20" height="20" id="matchPlayer2Wins7" />
+                <checkBox x="210" y="37" width="20" height="20" id="matchPlayer1Wins8" />
+                <checkBox x="210" y="62" width="20" height="20" id="matchPlayer2Wins8" />
+                <checkBox x="230" y="37" width="20" height="20" id="matchPlayer1Wins9" />
+                <checkBox x="230" y="62" width="20" height="20" id="matchPlayer2Wins9" />
+                <checkBox x="250" y="37" width="20" height="20" id="matchPlayer1Wins10" />
+                <checkBox x="250" y="62" width="20" height="20" id="matchPlayer2Wins10" />
+                <checkBox x="270" y="37" width="20" height="20" id="matchPlayer1Wins11" />
+                <checkBox x="270" y="62" width="20" height="20" id="matchPlayer2Wins11" />
+                <checkBox x="290" y="37" width="20" height="20" id="matchPlayer1Wins12" />
+                <checkBox x="290" y="62" width="20" height="20" id="matchPlayer2Wins12" />
+                <checkBox x="310" y="37" width="20" height="20" id="matchPlayer1Wins13" />
+                <checkBox x="310" y="62" width="20" height="20" id="matchPlayer2Wins13" />
+                <checkBox x="330" y="37" width="20" height="20" id="matchPlayer1Wins14" />
+                <checkBox x="330" y="62" width="20" height="20" id="matchPlayer2Wins14" />
+                <checkBox x="350" y="37" width="20" height="20" id="matchPlayer1Wins15" />
+                <checkBox x="350" y="62" width="20" height="20" id="matchPlayer2Wins15" />
+                <checkBox x="370" y="37" width="20" height="20" id="matchPlayer1Wins16" />
+                <checkBox x="370" y="62" width="20" height="20" id="matchPlayer2Wins16" />
+                <checkBox x="390" y="37" width="20" height="20" id="matchPlayer1Wins17" />
+                <checkBox x="390" y="62" width="20" height="20" id="matchPlayer2Wins17" />
+                <checkBox x="410" y="37" width="20" height="20" id="matchPlayer1Wins18" />
+                <checkBox x="410" y="62" width="20" height="20" id="matchPlayer2Wins18" />
+                <checkBox x="430" y="37" width="20" height="20" id="matchPlayer1Wins19" />
+                <checkBox x="430" y="62" width="20" height="20" id="matchPlayer2Wins19" />
 
-                <button type="reset" x="380" y="12" width="70" height="23" tooltip="Clear the Scores" id="clearScores" reset="matchPlayer1Wins1,matchPlayer2Wins1,matchPlayer1Wins2,matchPlayer2Wins2,matchPlayer1Wins3,matchPlayer2Wins3,matchPlayer1Wins4,matchPlayer2Wins4,matchPlayer1Wins5,matchPlayer2Wins5,matchPlayer1Wins6,matchPlayer2Wins6,matchPlayer1Wins7,matchPlayer2Wins7,matchPlayer1Wins8,matchPlayer2Wins8,matchPlayer1Wins9,matchPlayer2Wins9,matchPlayer1Wins10,matchPlayer2Wins10,matchPlayer1Wins11,matchPlayer2Wins11,matchPlayer1Wins12,matchPlayer2Wins12,matchPlayer1Wins13,matchPlayer2Wins13,matchPlayer1Wins14,matchPlayer2Wins14,matchPlayer1Wins15,matchPlayer2Wins15,matchPlayer1Wins16,matchPlayer2Wins16,matchPlayer1Wins17,matchPlayer2Wins17,matchPlayer1Wins18,matchPlayer2Wins18,matchPlayer1Wins19,matchPlayer2Wins19">Score Reset</button>
+                <button type="reset" x="380" y="10" width="70" height="23" tooltip="Clear the Scores" id="clearScores" reset="matchPlayer1Wins1,matchPlayer2Wins1,matchPlayer1Wins2,matchPlayer2Wins2,matchPlayer1Wins3,matchPlayer2Wins3,matchPlayer1Wins4,matchPlayer2Wins4,matchPlayer1Wins5,matchPlayer2Wins5,matchPlayer1Wins6,matchPlayer2Wins6,matchPlayer1Wins7,matchPlayer2Wins7,matchPlayer1Wins8,matchPlayer2Wins8,matchPlayer1Wins9,matchPlayer2Wins9,matchPlayer1Wins10,matchPlayer2Wins10,matchPlayer1Wins11,matchPlayer2Wins11,matchPlayer1Wins12,matchPlayer2Wins12,matchPlayer1Wins13,matchPlayer2Wins13,matchPlayer1Wins14,matchPlayer2Wins14,matchPlayer1Wins15,matchPlayer2Wins15,matchPlayer1Wins16,matchPlayer2Wins16,matchPlayer1Wins17,matchPlayer2Wins17,matchPlayer1Wins18,matchPlayer2Wins18,matchPlayer1Wins19,matchPlayer2Wins19">Score Reset</button>
             </tab>
         </tabSet>
-        <label x="13" y="210" width="608" height="16">―――――――――――――――――――――――――――――――――――――</label>
+        <label x="13" y="190" width="608" height="16">―――――――――――――――――――――――――――――――――――――</label>
     </tab>
 
     <tab name="Team Info" scrollable="1">
@@ -492,43 +492,67 @@
         </tabSet>
     </tab>
 
-    <tab name="Options">
-        <tabSet x="2" y="4" width="211" height="140">
-            <tab name="Duration                                    ">
-                <label x="10" y="0" width="170" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <label x="10" y="20" width="110" height="23">Fade (ms)</label>
-                <lineEdit id="optionsDurationFade" x="140" y="20" width="60" height="23">1000</lineEdit>
-
-                <label x="10" y="50" width="110" height="23">Main Words (ms)</label>
-                <lineEdit id="optionsDurationMainLanguage" x="140" y="50" width="60" height="23">10000</lineEdit>
-
-                <label x="10" y="80" width="110" height="23">Sub Words (ms)</label>
-                <lineEdit id="optionsDurationSubLanguage" x="140" y="80" width="60" height="23">5000</lineEdit>
-            </tab>
-        </tabSet>
-
-        <tabSet x="216" y="4" width="214" height="140">
+    <tab name="Options" scrollable="1">
+        <tabSet x="2" y="4" width="214" height="320">
             <tab name="Layout                                       ">
                 <label x="10" y="0" width="190" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <label x="10" y="20" width="130" height="23">First to N Width</label>
-                <lineEdit id="optionsLayoutFirstToNWidth" x="140" y="20" width="60" height="23">1350px</lineEdit>
+                <label x="10" y="15" width="130" height="23">First to N Width</label>
+                <lineEdit id="optionsLayoutFirstToNWidth" x="140" y="15" width="60" height="23">1350</lineEdit>
 
-                <label x="10" y="50" width="130" height="23">Team Info Width</label>
-                <lineEdit id="optionsLayoutTeamInfoWidth" x="140" y="50" width="60" height="23">285px</lineEdit>
+                <label x="10" y="40" width="130" height="23">First to N Height</label>
+                <lineEdit id="optionsLayoutFirstToNHeight" x="140" y="40" width="60" height="23">64</lineEdit>
 
-                <label x="10" y="80" width="130" height="23">Team Info Margin Top</label>
-                <lineEdit id="optionsLayoutTeamInfoMarginTop" x="140" y="80" width="60" height="23">440px</lineEdit>
+                <label x="10" y="65" width="130" height="23">Comment Font Size</label>
+                <lineEdit id="optionsLayoutCommentFontSize" x="140" y="65" width="60" height="23">16</lineEdit>
+
+                <label x="10" y="90" width="130" height="23">Name Font Size</label>
+                <lineEdit id="optionsLayoutNameFontSize" x="140" y="90" width="60" height="23">28</lineEdit>
+
+                <label x="10" y="115" width="130" height="23">Name Only Font Size</label>
+                <lineEdit id="optionsLayoutNameOnlyFontSize" x="140" y="115" width="60" height="23">40</lineEdit>
+
+                <label x="10" y="140" width="130" height="23">Win Count Font Size</label>
+                <lineEdit id="optionsLayoutWinsCountFontSize" x="140" y="140" width="60" height="23">40</lineEdit>
+
+                <label x="10" y="165" width="130" height="23">Win Font Size</label>
+                <lineEdit id="optionsLayoutWinsFontSize" x="140" y="165" width="60" height="23">22</lineEdit>
+
+                <label x="10" y="190" width="130" height="23">Team Info Width</label>
+                <lineEdit id="optionsLayoutTeamInfoWidth" x="140" y="190" width="60" height="23">285</lineEdit>
+
+                <label x="10" y="215" width="130" height="23">Team Info Margin Top</label>
+                <lineEdit id="optionsLayoutTeamInfoMarginTop" x="140" y="215" width="60" height="23">440</lineEdit>
+
+                <label x="10" y="240" width="130" height="23">Team Player Height</label>
+                <lineEdit id="optionsLayoutTeamPlayerHeight" x="140" y="240" width="60" height="23">48</lineEdit>
+
+                <label x="10" y="265" width="130" height="23">Team Player Font Size</label>
+                <lineEdit id="optionsLayoutTeamPlayerFontSize" x="140" y="265" width="60" height="23">24</lineEdit>
             </tab>
         </tabSet>
 
-        <tabSet x="2" y="145" width="212" height="140">
+        <tabSet x="220" y="102" width="211" height="120">
+            <tab name="Duration                                    ">
+                <label x="10" y="0" width="190" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
+                <label x="10" y="15" width="110" height="23">Fade (ms)</label>
+                <lineEdit id="optionsDurationFade" x="140" y="15" width="60" height="23">1000</lineEdit>
+
+                <label x="10" y="40" width="110" height="23">Main Words (ms)</label>
+                <lineEdit id="optionsDurationMainLanguage" x="140" y="40" width="60" height="23">10000</lineEdit>
+
+                <label x="10" y="65" width="110" height="23">Sub Words (ms)</label>
+                <lineEdit id="optionsDurationSubLanguage" x="140" y="65" width="60" height="23">5000</lineEdit>
+            </tab>
+        </tabSet>
+
+        <tabSet x="220" y="4" width="212" height="95">
             <tab name="Team                                        ">
                 <label x="10" y="0" width="190" height="16">――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</label>
-                <label x="10" y="20" width="130" height="23">Team A Player Count</label>
-                <lineEdit id="optionsTeam1PlayerCount" x="140" y="20" width="60" height="23">8</lineEdit>
+                <label x="10" y="15" width="130" height="23">Team A Player Count</label>
+                <lineEdit id="optionsTeam1PlayerCount" x="140" y="15" width="60" height="23">8</lineEdit>
 
-                <label x="10" y="50" width="130" height="23">Team B Player Count</label>
-                <lineEdit id="optionsTeam2PlayerCount" x="140" y="50" width="60" height="23">8</lineEdit>
+                <label x="10" y="40" width="130" height="23">Team B Player Count</label>
+                <lineEdit id="optionsTeam2PlayerCount" x="140" y="40" width="60" height="23">8</lineEdit>
             </tab>
         </tabSet>
     </tab>
