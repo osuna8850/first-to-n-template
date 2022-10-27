@@ -176,7 +176,7 @@ div {
 }
 
 .wins-area {
-    height: 32px;
+    height: 50%;
 }
 
 .wins {
@@ -220,13 +220,14 @@ div {
 .team-player {
     position: relative;
     width: 265px;
-    height: 32px;
+    height: 48px;
     opacity: 0;
+    font-size: 24px;
 }
 
 .team-player.active {
     width: 280px;
-    box-shadow: 0 0 0.5em 0.2em #bc5100;
+    box-shadow: 0 0 0.5em 0.2em #4fc3f7;
     z-index: 100;
 }
 
