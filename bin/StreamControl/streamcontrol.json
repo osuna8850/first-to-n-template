@@ -64,7 +64,7 @@
     "optionsLayoutWinsFontSize": "22",
     "optionsTeam1PlayerCount": "8",
     "optionsTeam2PlayerCount": "8",
-    "team1ActivePlayer": "5",
+    "team1ActivePlayer": "2",
     "team1Player10Id": "",
     "team1Player10IsLose": "0",
     "team1Player10NameMain": "",
@@ -129,7 +129,7 @@
     "team1Player9IsLose": "0",
     "team1Player9NameMain": "",
     "team1Player9NameSub": "",
-    "team2ActivePlayer": "5",
+    "team2ActivePlayer": "3",
     "team2Player10Id": "",
     "team2Player10IsLose": "0",
     "team2Player10NameMain": "",
@@ -194,5 +194,5 @@
     "team2Player9IsLose": "0",
     "team2Player9NameMain": "",
     "team2Player9NameSub": "",
-    "timestamp": "1666838387"
+    "timestamp": "1666853283"
 }
