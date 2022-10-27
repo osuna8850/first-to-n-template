@@ -219,14 +219,14 @@ div {
 
 .team-player {
     position: relative;
-    width: 265px;
+    width: calc(100% - 20px);
     height: 48px;
     opacity: 0;
     font-size: 24px;
 }
 
 .team-player.active {
-    width: 280px;
+    width: calc(100% - 5px);
     box-shadow: 0 0 0.5em 0.2em #4fc3f7;
     z-index: 100;
 }
